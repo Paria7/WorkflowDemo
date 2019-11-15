@@ -1,0 +1,114 @@
+[
+  {
+    "Id": 1,
+    "ParentId": null,
+    "FunctionId": null,
+    "Title": "Home",
+    "Url": "/",
+    "Position": 0,
+    "Icon": "Bosch-Ic-components",
+    "Unlinked": false,
+    "Items": []
+  },
+  {
+    "Id": 3,
+    "ParentId": null,
+    "FunctionId": null,
+    "Title": "Base Config",
+    "Url": "base-config",
+    "Position": 3,
+    "Icon": "Bosch-Ic-components",
+    "Unlinked": true,
+    "Items": [
+      {
+        "Id": 31,
+        "ParentId": 3,
+        "FunctionId": 1,
+        "Title": "Plant",
+        "Url": "plant",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      },
+      {
+        "Id": 32,
+        "ParentId": 3,
+        "FunctionId": 2,
+        "Title": "Line",
+        "Url": "line",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      },
+      {
+        "Id": 58,
+        "ParentId": 3,
+        "FunctionId": 3,
+        "Title": "Route",
+        "Url": "route",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "ParentId": null,
+    "FunctionId": null,
+    "Title": "Adminstration",
+    "Url": "administration",
+    "Position": 3,
+    "Icon": "Bosch-Ic-components",
+    "Unlinked": true,
+    "Items": [
+      {
+        "Id": 41,
+        "ParentId": 4,
+        "FunctionId": 4,
+        "Title": "User Management",
+        "Url": "user-management",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      },
+      {
+        "Id": 42,
+        "ParentId": 4,
+        "FunctionId": 5,
+        "Title": "Role Management",
+        "Url": "role-management",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      },
+      {
+        "Id": 51,
+        "ParentId": 4,
+        "FunctionId": 6,
+        "Title": "Access Control",
+        "Url": "access-control",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      },
+      {
+        "Id": 60,
+        "ParentId": 4,
+        "FunctionId": 7,
+        "Title": "System Parameter",
+        "Url": "system-parameter",
+        "Position": 0,
+        "Icon": "Bosch-Ic-components",
+        "Unlinked": false,
+        "Items": []
+      }
+    ]
+  }
+]

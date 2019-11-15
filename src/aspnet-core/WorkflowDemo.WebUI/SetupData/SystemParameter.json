@@ -1,0 +1,17 @@
+[
+  {
+    "Key": "GATEWAY_URL",
+    "Value": "http://smc-dev/gateway",
+    "Remark": ""
+  },
+  {
+    "Key": "MES_API_PATH",
+    "Value": "mes",
+    "Remark": ""
+  },
+  {
+    "Key": "GENERIC_API_PATH",
+    "Value": "generic",
+    "Remark": ""
+  }
+]

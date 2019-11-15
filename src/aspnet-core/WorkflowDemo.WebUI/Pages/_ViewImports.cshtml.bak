@@ -1,0 +1,3 @@
+@using BHSS.PVP.WebUI
+@namespace BHSS.PVP.WebUI.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

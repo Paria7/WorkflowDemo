@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Data Source=PC-TNSN-1;Initial Catalog=WorkflowDemo;Persist Security Info=True;User ID=sa;Password=abc123!@#" Microsoft.EntityFrameworkCore.SqlServer -o Entities -c SMCContext -f --use-database-names

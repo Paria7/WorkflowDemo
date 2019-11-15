@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "Group": "Base Config",
+    "Name": "Plant",
+    "Description": "Plant"
+  },
+  {
+    "Id": 2,
+    "Group": "Base Config",
+    "Name": "Line",
+    "Description": "Line"
+  },
+  {
+    "Id": 3,
+    "Group": "Base Config",
+    "Name": "Route",
+    "Description": "Route"
+  },
+  {
+    "Id": 4,
+    "Group": "Administration",
+    "Name": "User Management",
+    "Description": "User Management"
+  },
+  {
+    "Id": 5,
+    "Group": "Administration",
+    "Name": "Role Management",
+    "Description": "Role Management"
+  },
+  {
+    "Id": 6,
+    "Group": "Administration",
+    "Name": "Access Control",
+    "Description": "Access Control"
+  },
+  {
+    "Id": 7,
+    "Group": "Administration",
+    "Name": "System Parameter",
+    "Description": "System Parameter"
+  }
+]

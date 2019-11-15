@@ -1,0 +1,278 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using WorkflowDemo.WebUI.Entities;
+
+namespace WorkflowDemo.WebUI.Repositories
+{
+    /// <summary>
+    /// Represents the Entity Framework repository
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type</typeparam>
+    public partial class EfRepository<TEntity> : IRepository<TEntity> where TEntity : EntityBase
+    {
+        #region Fields
+
+        private readonly WorkflowDemoContext _context;
+
+        private DbSet<TEntity> _entities;
+
+        #endregion
+
+        #region Ctor
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public EfRepository(WorkflowDemoContext context, IHttpContextAccessor httpContextAccessor)
+        {
+            this._context = context;
+            this.CurrentUserName = httpContextAccessor.HttpContext?.User?.Identity?.Name ?? "";
+        }
+
+        #endregion
+
+        #region Utilities
+
+        /// <summary>
+        /// Rollback of entity changes and return full error message
+        /// </summary>
+        /// <param name="exception">Exception</param>
+        /// <returns>Error message</returns>
+        protected string GetFullErrorTextAndRollbackEntityChanges(DbUpdateException exception)
+        {
+            //rollback entity changes
+            if (_context is DbContext dbContext)
+            {
+                var entries = dbContext.ChangeTracker.Entries()
+                    .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified).ToList();
+
+                entries.ForEach(entry => entry.State = EntityState.Unchanged);
+            }
+
+            _context.SaveChanges();
+            return exception.ToString();
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Get entity by identifier
+        /// </summary>
+        /// <param name="id">Identifier</param>
+        /// <returns>Entity</returns>
+        public virtual TEntity GetById(object id)
+        {
+            return Entities.Find(id);
+        }
+
+        /// <summary>
+        /// Insert entity
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        public virtual void Insert(TEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            try
+            {
+                Entities.Add(entity);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException exception)
+            {
+                //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+
+        /// <summary>
+        /// Insert entities
+        /// </summary>
+        /// <param name="entities">Entities</param>
+        public virtual void Insert(IEnumerable<TEntity> entities)
+        {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
+            try
+            {
+                Entities.AddRange(entities);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException exception)
+            {
+                //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+
+        public virtual void BulkInsert(IList<TEntity> entities)
+        {
+            if (entities == null || entities.Count == 0)
+            {
+                return;
+            }
+
+            Insert(entities);
+
+            //var dataSource = GetBulkInsertTable(entities);
+            //var tableName = dataSource.TableName;
+            //var connection = _context.Database.GetDbConnection() as SqlConnection;
+            ////connection.State != ConnectionState.Closed ? connection : new SqlConnection(connection.ConnectionString)
+            //if (connection.State == ConnectionState.Closed)
+            //{
+            //    connection.Open();
+            //}
+            //using (var bulkCopy = new SqlBulkCopy(connection)
+            //{
+            //    DestinationTableName = tableName,
+            //    BatchSize = 3000
+            //})
+            //{
+            //    bulkCopy.WriteToServer(dataSource);
+            //}
+        }
+
+        protected virtual DataTable GetBulkInsertTable(IList<TEntity> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Update entity
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        public virtual void Update(TEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            try
+            {
+                Entities.Update(entity);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException exception)
+            {
+                //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+
+        /// <summary>
+        /// Update entities
+        /// </summary>
+        /// <param name="entities">Entities</param>
+        public virtual void Update(IEnumerable<TEntity> entities)
+        {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
+            try
+            {
+                Entities.UpdateRange(entities);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException exception)
+            {
+                //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+
+        /// <summary>
+        /// Delete entity
+        /// </summary>
+        /// <param name="entity">Entity</param>
+        public virtual void Delete(TEntity entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
+            try
+            {
+                Entities.Remove(entity);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException exception)
+            {
+                //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+
+        /// <summary>
+        /// Delete entities
+        /// </summary>
+        /// <param name="entities">Entities</param>
+        public virtual void Delete(IEnumerable<TEntity> entities)
+        {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
+            try
+            {
+                Entities.RemoveRange(entities);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException exception)
+            {
+                //ensure that the detailed error text is saved in the Log
+                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+            }
+        }
+
+        protected string NewId()
+        {
+            return Guid.NewGuid().ToString();
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets a table
+        /// </summary>
+        public virtual IQueryable<TEntity> Table => Entities;
+
+        /// <summary>
+        /// Gets a table with "no tracking" enabled (EF feature) Use it only when you load record(s) only for read-only operations
+        /// </summary>
+        public virtual IQueryable<TEntity> TableNoTracking => Entities.AsNoTracking();
+
+        /// <summary>
+        /// Gets an entity set
+        /// </summary>
+        public virtual DbSet<TEntity> Entities
+        {
+            get
+            {
+                if (_entities == null)
+                    _entities = _context.Set<TEntity>();
+
+                return _entities;
+            }
+        }
+
+        public virtual WorkflowDemoContext Context
+        {
+            get
+            {
+                return this._context;
+            }
+        }
+
+        public string CurrentUserName { get; set; }
+
+        #endregion
+    }
+}
