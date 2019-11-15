@@ -1,0 +1,15 @@
+@mixin make-border($width, $borderColor) {
+  border-width: $width;
+  border-color: $borderColor;
+  border-style: solid;
+
+  @include border-radius(0);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+

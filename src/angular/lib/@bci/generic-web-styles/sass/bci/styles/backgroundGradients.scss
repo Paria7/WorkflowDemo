@@ -1,0 +1,56 @@
+//
+// Background color gradient variations predefinition
+// ==========================================================================
+
+// u-Background__gradient--{modifiers}
+//
+// Markup:
+// <div style="height: 300px" class="{$modifiers}"></div>
+//
+// .u-Background__gradient--fuchsia-violet  -  Gradient from Fuchsia to violet
+// .u-Background__gradient--red-fuchsia - Gradient from Fuchsia to red
+// .u-Background__gradient--violet-darkBlue - Gradient from violet to darkBlue
+// .u-Background__gradient--darkBlue-lightBlue - Gradient from darkBlue to lightBlue
+// .u-Background__gradient--lightBlue-turquoise - Gradient from lightBlue to Turquoise
+// .u-Background__gradient--turquoise-lightGreen - Gradient from Turquoise to lightGreen
+// .u-Background__gradient--lightGreen-darkGreen - Gradient from ligthGreen to DarkGreen
+//
+// sg-wrapper:
+// <sg-wrapper-content/>
+//
+// Styleguide 0.2.6
+
+.u-Background__gradient--fuchsia-violet {
+
+  @include two-color-gradient(fuchsia-violet, 10%, 90%);
+}
+
+.u-Background__gradient--red-fuchsia {
+
+  @include two-color-gradient(red-fuchsia, 10%, 90%);
+}
+
+.u-Background__gradient--violet-darkBlue {
+
+  @include two-color-gradient(violet-darkBlue, 10%, 90%);
+}
+
+.u-Background__gradient--darkBlue-lightBlue {
+
+  @include two-color-gradient(darkBlue-lightBlue, 10%, 90%);
+}
+
+.u-Background__gradient--lightBlue-turquoise {
+
+  @include two-color-gradient(lightBlue-turquoise, 10%, 90%);
+}
+
+.u-Background__gradient--turquoise-lightGreen {
+
+  @include two-color-gradient(turquoise-lightGreen, 10%, 90%);
+}
+
+.u-Background__gradient--lightGreen-darkGreen {
+
+  @include two-color-gradient(lightGreen-darkGreen, 10%, 90%);
+}

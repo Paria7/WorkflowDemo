@@ -1,0 +1,55 @@
+
+<mat-table #table [dataSource]="users$ | async">
+    <ng-container matColumnDef="no">
+        <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+            {{i+1}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeNo">
+        <mat-header-cell *matHeaderCellDef>{{'UserManagement.EmployeeNo'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+            {{row.EmployeeNo}}
+        </mat-cell>
+        <!-- <mat-cell *matCellDef="let row;let i = index" (click)="selectRow(row, i)" [ngStyle]="{'background-color':i === activeRowIndex? '#F7F7F7' : 'transparent' }">
+            {{row.Name}}
+        </mat-cell> -->
+    </ng-container>
+
+    <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef>{{'UserManagement.UserName'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+            {{row.Name}}
+        </mat-cell>
+        <!-- <mat-cell *matCellDef="let row;let i = index" (click)="selectRow(row, i)" [ngStyle]="{'background-color':i === activeRowIndex? '#F7F7F7' : 'transparent' }">
+            {{row.Name}}
+        </mat-cell> -->
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>{{'UserManagement.Status'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+            {{row.StatusName}}
+        </mat-cell>
+        <!-- <mat-cell *matCellDef="let row;let i = index" (click)="selectRow(row, i)" [ngStyle]="{'background-color':i === activeRowIndex? '#F7F7F7' : 'transparent' }">
+            {{row.Name}}
+        </mat-cell> -->
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button (click)="add()">
+                <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+            </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+            <button mat-icon-button (click)="remove(row,i)">
+                <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+    <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+</mat-table>

@@ -1,0 +1,107 @@
+//-------------------------------------------------------------------------------------------------------------- NAVIGATION BUTTONS
+@mixin make-pagination-button-previous($font-size) {
+  &::after {
+    @include make-icon($Bosch-Ic-arrow-expand-left, $font-size);
+  }
+}
+
+@mixin make-pagination-button-next($font-size) {
+  &::after {
+    @include make-icon($Bosch-Ic-arrow-expand-right, $font-size);
+  }
+}
+
+//-------------------------------------------------------------------------------------------------------------- BASIC ELEMENT STYLES
+@mixin reset-pagination-element-pre-defined-styles {
+  margin: 0;
+  padding: 0;
+  line-height: $line-height-base;
+  color: $font-color;
+  border: none;
+  background: none;
+  text-decoration: none;
+}
+
+@mixin make-pagination-element($base-size, $font-size) {
+  cursor: pointer;
+  font-size: $font-size;
+  display: inline-block;
+  width: $base-size;
+  height: $base-size;
+  line-height: $base-size;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 4px;
+  color: $boschBlack;
+  background-color: transparent;
+
+  &:first-child {
+    @include make-pagination-button-previous($font-size);
+  }
+
+  &:last-child {
+    @include make-pagination-button-next($font-size);
+  }
+}
+
+//-------------------------------------------------------------------------------------------------------------- ELEMENT STATES
+@mixin make-pagination-element-hover {
+  color: $pagination-hover-color;
+
+  * {
+    color: $pagination-hover-color;
+  }
+}
+
+@mixin make-pagination-element-selected($base-size ) {
+  color: $pagination-selected-color;
+  background-color: $pagination-selected-bg-color;
+  cursor: default;
+}
+
+@mixin make-pagination-element-disabled {
+  opacity: 0.33;
+  cursor: not-allowed;
+  color: $font-color;
+
+  * {
+    cursor: not-allowed;
+    color: $font-color;
+  }
+}
+
+//-------------------------------------------------------------------------------------------------------------- PAGINATION TYPES
+@mixin make-pagination($base-size:$pagination-medium-size-base, $font-size:$pagination-medium-font-size) {
+
+  *, *:hover, *:active, *:focus {
+    @include reset-pagination-element-pre-defined-styles;
+  }
+
+  > *, > *:hover, > *:active, > *:focus {
+    @include make-pagination-element($base-size, $font-size);
+  }
+
+  > *:hover {
+    @include make-pagination-element-hover;
+  }
+
+  > *:disabled, *.disabled {
+    @include make-pagination-element-disabled;
+  }
+
+  > *.selected {
+    @include make-pagination-element-selected($base-size);
+  }
+}
+
+@mixin make-pagination-small {
+  @include make-pagination($pagination-small-size-base, $pagination-small-font-size);
+}
+
+@mixin make-pagination-medium {
+  @include make-pagination($pagination-medium-size-base, $pagination-medium-font-size);
+}
+
+@mixin make-pagination-large {
+  @include make-pagination($pagination-large-size-base, $pagination-large-font-size);
+}

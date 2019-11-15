@@ -1,0 +1,7 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+
+.mat-drawer-container,
+.mat-drawer-content {
+  background-color: $boschWhite;
+  color: $font-color;
+}

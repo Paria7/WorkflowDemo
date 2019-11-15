@@ -1,0 +1,157 @@
+@import '~@bci/generic-web-styles/sass/bci-theme';
+
+
+// Color palettes from Bosch design spec.
+// See https://www.google.com/design/spec/style/color.html
+//
+// Contrast colors are hard-coded because it is too difficult (probably impossible) to
+// calculate them. These contrast colors are pulled from the public Material Design spec swatches.
+// While the contrast colors in the spec are not prescriptive, we use them for convenience.
+
+
+$black-87-opacity: rgba(black, 0.87);
+$white-87-opacity: rgba(white, 0.87);
+$black-12-opacity: rgba(black, 0.12);
+$white-12-opacity: rgba(white, 0.12);
+$black-6-opacity: rgba(black, 0.06);
+$white-6-opacity: rgba(white, 0.06);
+
+$mat-bci: (
+        50: $boschDarkBlue50,
+        100: $boschDarkBlue50,
+        200: $boschDarkBlue50,
+        300: $boschDarkBlue50,
+        400: $boschDarkBlue50,
+        500: $boschDarkBlue,
+        600: $boschDarkBlue,
+        700: $boschDarkBlue,
+        800: $boschDarkBlue,
+        900: $boschDarkBlue,
+        A100: $boschDarkBlue50,
+        A200: $boschDarkBlue,
+        A400: $boschDarkBlue,
+        A700: $boschDarkBlue,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: white,
+                400: white,
+                500: $white-87-opacity,
+                600: $white-87-opacity,
+                700: $white-87-opacity,
+                800: $white-87-opacity,
+                900: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: white,
+                A400: white,
+                A700: $white-87-opacity,
+        )
+);
+
+$mat-bci-light-blue: (
+        50: $boschLightBlue50,
+        100: $boschLightBlue50,
+        200: $boschLightBlue50,
+        300: $boschLightBlue50,
+        400: $boschLightBlue50,
+        500: $boschLightBlue,
+        600: $boschLightBlue,
+        700: $boschLightBlue,
+        800: $boschLightBlue,
+        900: $boschLightBlue,
+        A100: $boschLightBlue50,
+        A200: $boschLightBlue,
+        A400: $boschLightBlue,
+        A700: $boschLightBlue,
+        contrast: (
+                50: $black-87-opacity,
+                100: $black-87-opacity,
+                200: $black-87-opacity,
+                300: $black-87-opacity,
+                400: $black-87-opacity,
+                500: white,
+                600: white,
+                700: white,
+                800: white,
+                900: $white-87-opacity,
+                A100: $black-87-opacity,
+                A200: $black-87-opacity,
+                A400: $black-87-opacity,
+                A700: white,
+        )
+);
+
+
+$mat-grey: (
+  0: $boschWhite,
+  50: $boschLightGray25,
+  100: $boschLightGray25,
+  200: $boschLightGray25,
+  300: $boschLightGray50,
+  400: $boschLightGray50,
+  500: $boschLightGray50,
+  600: $boschLightGray50,
+  700: $boschLightGray50,
+  800: $boschLightGray50,
+  900: $boschLightGray50,
+  1000: $boschLightGray50,
+  A100: $boschWhite,
+  A200: $boschLightGray50,
+  A400: $boschLightGray50,
+  A700: $boschLightGray,
+  contrast: (
+    0: $black-87-opacity,
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: $black-87-opacity,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    1000: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $white-87-opacity,
+  )
+);
+
+// Background palette for light themes.
+$mat-bci-theme-background: (
+        status-bar: map_get($mat-grey, 300),
+        app-bar:    map_get($mat-grey, 100),
+        background: map_get($mat-grey, 50),
+        hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+        card:       $boschWhite,
+        dialog:     $boschWhite,
+        disabled-button: $boschLightGray,
+        raised-button: $boschWhite,
+        focused-button: $boschLightBlue,
+        selected-button: map_get($mat-grey, 300),
+        selected-disabled-button: map_get($mat-grey, 400),
+        disabled-button-toggle: map_get($mat-grey, 200),
+        unselected-chip: map_get($mat-grey, 300),
+);
+
+
+// Foreground palette for light themes.
+$mat-bci-theme-foreground: (
+        base:              $boschBlack,
+        divider:           $black-12-opacity,
+        dividers:          $black-12-opacity,
+        disabled:          rgba(black, 0.38),
+        disabled-button:   rgba(black, 0.38),
+        disabled-text:     rgba(black, 0.38),
+        hint-text:         rgba(black, 0.38),
+        secondary-text:    rgba(black, 0.54),
+        icon:              rgba(black, 0.54),
+        icons:             rgba(black, 0.54),
+        text:              rgba(black, 0.87),
+        slider-off:        rgba(black, 0.26),
+        slider-off-active: rgba(black, 0.38),
+);
+

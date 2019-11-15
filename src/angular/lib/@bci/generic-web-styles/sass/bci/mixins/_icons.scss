@@ -1,0 +1,9 @@
+@mixin make-icon($icon-name, $font-size: 28px) {
+    font-family: "Bosch-Ic";
+    content: $icon-name;
+    font-style: normal;
+    font-size: $font-size;
+}
+
+@import "../_bosch-ic";
+@import "../_bosch-ic-legacynaming";

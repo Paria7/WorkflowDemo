@@ -1,0 +1,22 @@
+@mixin make-table-of-contents-element-variant($color, $bgColor) {
+  color: $color;
+  background-color: $bgColor;
+}
+
+@mixin make-table-of-contents-element {
+  padding: 10px 15px;
+  border: 1px solid $table-of-contents-border-color;
+  margin-bottom: -1px;
+  display: block;
+  cursor: pointer;
+
+  @include make-table-of-contents-element-variant($table-of-contents-color, transparent);
+
+  &:hover, &.hover, &:focus, &.focus {
+    @include make-table-of-contents-element-variant($table-of-contents-hover-color, $table-of-contents-hover-bg-color);
+  }
+}
+
+@mixin make-table-of-contents {
+  margin-bottom: 20px;
+}

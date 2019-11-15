@@ -1,0 +1,11 @@
+<div class="test" style="display: block">
+  <form>
+    <h2>文件上传demo</h2>
+    <div class="form-group row">
+      <label for="file" class="col-sm-2 col-form-label">文件</label>
+      <input type="file" name="file" id="file" class="form-control" #fileInput (change)="upload()">
+    </div>
+
+    <button mat-raised-button color="primary" (click)="uploadSubmit()">上传</button>
+  </form>
+</div>

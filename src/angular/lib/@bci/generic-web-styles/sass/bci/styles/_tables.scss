@@ -1,0 +1,40 @@
+@mixin tables-row-variant-link($state) {
+  $placeholder: getTableCellStylePlaceholder($state);
+
+  .table, .table-primary {
+    @include table-row-variant($state) {
+      @extend %#{$placeholder};
+    }
+  }
+
+  .table-hover {
+    @include table-row-variant-hover($state) {
+      @extend %#{$placeholder}-hover;
+    }
+  }
+
+  .table-striped {
+    @include table-row-variant-stripes($state) {
+      @extend %#{$placeholder}-stripes;
+    }
+  }
+
+  .table-striped.table-hover {
+    @include table-row-variant-stripes-hover($state) {
+      @extend %#{$placeholder}-stripes-hover;
+    }
+  }
+}
+
+
+@each $tableRowState in $tableRowStates {
+  @include tables-row-variant-link($tableRowState);
+}
+
+.table-primary {
+  @include make-table;
+}
+
+.table-striped {
+  @include make-table-striped;
+}

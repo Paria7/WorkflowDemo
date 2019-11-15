@@ -1,0 +1,67 @@
+.clickable-element {
+  @include make-clickable-element;
+}
+
+// Primary / Default Buttons
+// --------------------------------------------------
+.button-primary, .button-default {
+  @include make-primary-button;
+
+  &.button-lg {
+    @include make-primary-button-large;
+  }
+
+  &.button-sm {
+    @include make-primary-button-small;
+  }
+
+  &.button-xs {
+    @include make-primary-button-xsmall;
+  }
+}
+
+// Secondary Buttons
+// --------------------------------------------------
+.button-secondary {
+  @include make-secondary-button;
+
+  &.button-lg {
+    @include make-secondary-button-large;
+  }
+
+  &.button-sm {
+    @include make-secondary-button-small;
+  }
+
+  &.button-xs {
+    @include make-secondary-button-xsmall;
+  }
+}
+
+
+// Link Buttons = Flat Buttons in Frontify
+// -------------------------
+.button-link {
+  @include make-link-button;
+
+  &.button-lg {
+    @include make-link-button-large;
+  }
+
+  &.button-sm {
+    @include make-link-button-small;
+  }
+
+  &.no-arrow {
+    @include make-link-button-no-arrow;
+  }
+}
+
+// Block Buttons
+// --------------------------------------------------
+.button-block,
+input[type="submit"].button-block,
+input[type="reset"].button-block,
+input[type="button"].button-block {
+  @include make-block-button;
+}

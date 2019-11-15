@@ -1,0 +1,100 @@
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">
+        {{row.Description}}</div>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="tpmDescription">
+    <mat-header-cell *matHeaderCellDef>{{'TpmPlanDetails.TPMDescription'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.TpmDescription}}" matTooltipPosition="above">
+        {{row.TpmDescription}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Status'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Status}}" matTooltipPosition="above">{{row.Status}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="result">
+    <mat-header-cell *matHeaderCellDef>{{'OPL.Result'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Result}}" matTooltipPosition="above">{{row.Result}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="area">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Area'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Area}}" matTooltipPosition="above">{{row.Area}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="valueStream">
+    <mat-header-cell *matHeaderCellDef>{{'Common.ValueStream'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.ValueStream}}" matTooltipPosition="above">{{row.ValueStream}}
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="line">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Line'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Line}}" matTooltipPosition="above">{{row.Line}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="device">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Device'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Device}}" matTooltipPosition="above">{{row.Device}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createDate">
+    <mat-header-cell *matHeaderCellDef>{{'OPL.CreateDate'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.CreatedOn}}" matTooltipPosition="above">
+        {{row.CreatedOn|date: 'yyyy-MM-dd'}}
+      </div>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="closeDate">
+    <mat-header-cell *matHeaderCellDef>{{'OPL.CloseDate'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.ClosedOn}}" matTooltipPosition="above">
+        {{row.ClosedOn|date: 'yyyy-MM-dd'}}
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Operation'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-icon-button (click)="edit(row)">
+        <mat-icon [fontIcon]="tabIndex==2?'Bosch-Ic-general-scaling-view':'Bosch-Ic-edit'"
+          [matTooltip]="tabIndex==2?'View':'Edit'" matTooltipPosition="above"></mat-icon>
+      </button>
+      <div *ngIf="tabIndex!=2">
+        <button mat-icon-button (click)="delete(row.Id)" [disabled]="row.StatusValue>3">
+          <mat-icon fontIcon="Bosch-Ic-delete" matTooltip="Delete" matTooltipPosition="above"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="cancel(row.Id)" [disabled]="row.StatusValue>3">
+          <mat-icon fontIcon="Bosch-Ic-undo" matTooltip="Cancel" matTooltipPosition="above"></mat-icon>
+        </button>
+      </div>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayColumns">
+  </mat-header-row>
+  <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+</mat-table>
+
+<mat-paginator (page)="changePage($event)" [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons></mat-paginator>

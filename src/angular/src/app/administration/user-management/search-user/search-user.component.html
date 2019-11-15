@@ -1,0 +1,62 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'UserManagement.QueryUser'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form [formGroup]="form">
+    <mat-dialog-content>
+        <mat-grid-list cols="4" rowHeight="80px">
+            <mat-grid-tile [colspan]="3">
+                <mat-form-field>
+                    <input [(ngModel)]="queryModel.name" matInput placeholder="{{'UserManagement.UserNameOrMail'|translate}}" formControlName="Name">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1">
+                <button mat-raised-button color="primary" type="submit" (click)="query()">{{'Common.Query'|translate}}
+                </button>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="select">
+                <mat-header-cell fxFlex="50px" *matHeaderCellDef>&nbsp;</mat-header-cell>
+                <mat-cell fxFlex="50px" *matCellDef="let row">
+                    <mat-checkbox #myCheckbox (click)="clickCheckbox(myCheckbox.checked)">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.UserName'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.FirstName'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.FirstName}}" matTooltipPosition="above">{{row.FirstName}}</div>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="secondName">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.SecondName'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.SecondName}}" matTooltipPosition="above">{{row.SecondName}}</div>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="mail">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Mail'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Mail}}" matTooltipPosition="above">{{row.Mail}}</div>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayColumns">
+            </mat-header-row>
+            <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+        </mat-table>
+    </mat-dialog-content>
+    <div class="primary-actions">
+        <button type="button" mat-raised-button (click)="ok()">{{'Common.Ok'|translate}}</button>
+        <button type="button" mat-button (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+    </div>
+</form>

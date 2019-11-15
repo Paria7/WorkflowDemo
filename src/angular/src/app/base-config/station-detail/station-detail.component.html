@@ -1,0 +1,166 @@
+<app-layout>
+  <form [formGroup]="form" (submit)="query()">
+    <mat-grid-list cols="8" rowHeight="80px">
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input [(ngModel)]="queryModel.Code" matInput placeholder="{{'StationDetail.Code'|translate}}" formControlName="Code">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input [(ngModel)]="queryModel.Name" matInput placeholder="{{'StationDetail.Name'|translate}}" formControlName="Name">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.PlantId" placeholder="{{'Plant.Title'|translate}}" formControlName="Plant" (selectionChange)='onChangePlant($event)'>
+            <mat-option></mat-option>
+            <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.AreaId" placeholder="{{'Common.Area'|translate}}" formControlName="Area" (selectionChange)='onChangeArea($event)'>
+            <mat-option></mat-option>
+            <mat-option *ngFor="let area of areas" [value]="area.Id">{{area.AreaName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.ValueStreamId" placeholder="{{'Common.ValueStream'|translate}}" formControlName="ValueStream"
+            (selectionChange)='onChangeValueStream($event)'>
+            <mat-option></mat-option>
+            <mat-option *ngFor="let valueStream of valueStreams" [value]="valueStream.Id">{{valueStream.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.LineId" placeholder="{{'Common.Line'|translate}}" formControlName="Line">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let line of lines" [value]="line.Id">{{line.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.Status" placeholder="{{'Common.Status'|translate}}" formControlName="Status">
+            <mat-option [value]="0">{{'Common.All'|translate}}</mat-option>
+            <mat-option *ngFor="let status of statuses" [value]="status.Id">
+              {{ status.Name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <button mat-raised-button color="primary">{{'Common.Query'|translate}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="no">
+      <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row;let i = index">
+        {{i+1}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef>{{'StationDetail.Code'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Code}}" matTooltipPosition="above">{{row.Code}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>{{'StationDetail.Name'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>{{'Common.Status'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.StatusName}}" matTooltipPosition="above">{{row.StatusName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">{{row.Description}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="plant">
+      <mat-header-cell *matHeaderCellDef>{{'Plant.Title'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.PlantName}}" matTooltipPosition="above">{{row.PlantName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="area">
+      <mat-header-cell *matHeaderCellDef>{{'Common.Area'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.AreaName}}" matTooltipPosition="above">{{row.AreaName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="valueStream">
+      <mat-header-cell *matHeaderCellDef>{{'Common.ValueStream'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.ValueStreamName}}" matTooltipPosition="above">{{row.ValueStreamName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="line">
+      <mat-header-cell *matHeaderCellDef>{{'Common.Line'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.LineName}}" matTooltipPosition="above">{{row.LineName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateUser">
+      <mat-header-cell *matHeaderCellDef>{{'Common.UpdateUser'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.UpdatedBy}}" matTooltipPosition="above">{{row.UpdatedBy}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateTime">
+      <mat-header-cell *matHeaderCellDef>{{'Common.UpdateTime'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.UpdatedOn | date: 'yyyy-MM-dd HH:mm:ss'}}" matTooltipPosition="above">
+          {{row.UpdatedOn | date: 'yyyy-MM-dd HH:mm:ss'}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="add()">
+          <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="edit(row)">
+          <mat-icon fontIcon="Bosch-Ic-edit" matTooltip="Edit" matTooltipPosition="above"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="viewDevices(row)">
+          <mat-icon fontIcon="Bosch-Ic-general-scaling-view" matTooltip="Devices" matTooltipPosition="above"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="remove(row.Id)">
+          <mat-icon fontIcon="Bosch-Ic-delete" matTooltip="Delete" matTooltipPosition="above"></mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+    <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator (page)="changePage($event)" [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</app-layout>

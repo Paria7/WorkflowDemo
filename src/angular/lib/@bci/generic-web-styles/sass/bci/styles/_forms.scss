@@ -1,0 +1,11 @@
+input {
+  @include make-form-input;
+}
+
+.search-input {
+  @include make-form-input-search;
+}
+
+textarea {
+  @include make-textarea;
+}

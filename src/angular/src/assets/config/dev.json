@@ -1,0 +1,6 @@
+{
+  "environment": "dev",
+  "endpointNavigation": "api/System/getmenus",
+  "endpointUserNavigation": "api/System/getusermenus",
+  "apiBaseUrl": "http://localhost:61655"
+}

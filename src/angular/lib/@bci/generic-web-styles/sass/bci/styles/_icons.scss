@@ -1,0 +1,1454 @@
+@import '../mixins/icons';
+
+
+.Bosch-Ic {
+  font-family: "Bosch-Ic";
+  font-style: normal;
+  font-size: 28px;
+}
+
+.Bosch-Ic-Large{
+  font-family: "Bosch-Ic";
+  font-style: normal;
+  font-size: $icon-font-size-large;
+  vertical-align: middle;
+}
+
+.Bosch-Ic-Normal{
+  font-family: "Bosch-Ic";
+  font-style: normal;
+  font-size: $icon-font-size-normal;
+  vertical-align: middle;
+}
+
+.Bosch-Ic-Small{
+  font-family: "Bosch-Ic";
+  font-style: normal;
+  font-size: $icon-font-size-small;
+  vertical-align: middle;
+}
+
+.Bosch-Ic-Disabled,
+.Bosch-Ic-Disabled:hover,
+.Bosch-Ic[disabled],
+.Bosch-Ic[disabled]:hover{
+  cursor:not-allowed;
+  color: $boschDarkGray25;
+  &:hover{
+    color:$boschDarkGray25;
+  }
+}
+
+.Bosch-Ic-Clickable{
+  cursor:pointer;
+  &:hover{
+    color:$boschLightBlue50;
+  }
+}
+
+.Bosch-Ic-Activated{
+  color: $boschLightBlue;
+}
+
+.Bosch-IC-find-part:before {
+  content: $Bosch-IC-find-part;
+}
+
+.Bosch-IC-next-station:before {
+  content: $Bosch-IC-next-station;
+}
+
+.Bosch-Ic-HMI:before {
+  content: $Bosch-Ic-HMI;
+}
+
+.Bosch-Ic-StarterKit:before {
+  content: $Bosch-Ic-StarterKit;
+}
+
+.Bosch-Ic-abort:before {
+  content: $Bosch-Ic-abort;
+}
+
+.Bosch-Ic-add-material-manually:before {
+  content: $Bosch-Ic-add-material-manually;
+}
+
+.Bosch-Ic-add-material:before {
+  content: $Bosch-Ic-add-material;
+}
+
+.Bosch-Ic-add-outline:before {
+  content: $Bosch-Ic-add-outline;
+}
+
+.Bosch-Ic-add:before {
+  content: $Bosch-Ic-add;
+}
+
+.Bosch-Ic-adress-consumer:before {
+  content: $Bosch-Ic-adress-consumer;
+}
+
+.Bosch-Ic-adressbook:before {
+  content: $Bosch-Ic-adressbook;
+}
+
+.Bosch-Ic-alarm:before {
+  content: $Bosch-Ic-alarm;
+}
+
+.Bosch-Ic-alert:before {
+  content: $Bosch-Ic-alert;
+}
+
+.Bosch-Ic-analysis:before {
+  content: $Bosch-Ic-analysis;
+}
+
+.Bosch-Ic-anchor:before {
+  content: $Bosch-Ic-anchor;
+}
+
+.Bosch-Ic-apas:before {
+  content: $Bosch-Ic-apas;
+}
+
+.Bosch-Ic-arrow-diagonal:before {
+  content: $Bosch-Ic-arrow-diagonal;
+}
+
+.Bosch-Ic-arrow-down-circle:before {
+  content: $Bosch-Ic-arrow-down-circle;
+}
+
+.Bosch-Ic-arrow-down-filled:before {
+  content: $Bosch-Ic-arrow-down-filled;
+}
+
+.Bosch-Ic-arrow-down:before {
+  content: $Bosch-Ic-arrow-down;
+}
+
+.Bosch-Ic-arrow-end-left:before {
+  content: $Bosch-Ic-arrow-end-left;
+}
+
+.Bosch-Ic-arrow-end-right:before {
+  content: $Bosch-Ic-arrow-end-right;
+}
+
+.Bosch-Ic-arrow-expand-double-down:before {
+  content: $Bosch-Ic-arrow-expand-double-down;
+}
+
+.Bosch-Ic-arrow-expand-double-left:before {
+  content: $Bosch-Ic-arrow-expand-double-left;
+}
+
+.Bosch-Ic-arrow-expand-double-right:before {
+  content: $Bosch-Ic-arrow-expand-double-right;
+}
+
+.Bosch-Ic-arrow-expand-double-up:before {
+  content: $Bosch-Ic-arrow-expand-double-up;
+}
+
+.Bosch-Ic-arrow-expand-down:before {
+  content: $Bosch-Ic-arrow-expand-down;
+}
+
+.Bosch-Ic-arrow-expand-left:before {
+  content: $Bosch-Ic-arrow-expand-left;
+}
+
+.Bosch-Ic-arrow-expand-right:before {
+  content: $Bosch-Ic-arrow-expand-right;
+}
+
+.Bosch-Ic-arrow-expand-up:before {
+  content: $Bosch-Ic-arrow-expand-up;
+}
+
+.Bosch-Ic-arrow-left-circle:before {
+  content: $Bosch-Ic-arrow-left-circle;
+}
+
+.Bosch-Ic-arrow-left-down-circle:before {
+  content: $Bosch-Ic-arrow-left-down-circle;
+}
+
+.Bosch-Ic-arrow-left-down-filled:before {
+  content: $Bosch-Ic-arrow-left-down-filled;
+}
+
+.Bosch-Ic-arrow-left-down:before {
+  content: $Bosch-Ic-arrow-left-down;
+}
+
+.Bosch-Ic-arrow-left-filled:before {
+  content: $Bosch-Ic-arrow-left-filled;
+}
+
+.Bosch-Ic-arrow-left-up-circle:before {
+  content: $Bosch-Ic-arrow-left-up-circle;
+}
+
+.Bosch-Ic-arrow-left-up-filled:before {
+  content: $Bosch-Ic-arrow-left-up-filled;
+}
+
+.Bosch-Ic-arrow-left-up:before {
+  content: $Bosch-Ic-arrow-left-up;
+}
+
+.Bosch-Ic-arrow-left:before {
+  content: $Bosch-Ic-arrow-left;
+}
+
+.Bosch-Ic-arrow-right-circle:before {
+  content: $Bosch-Ic-arrow-right-circle;
+}
+
+.Bosch-Ic-arrow-right-down-circle:before {
+  content: $Bosch-Ic-arrow-right-down-circle;
+}
+
+.Bosch-Ic-arrow-right-down-filled:before {
+  content: $Bosch-Ic-arrow-right-down-filled;
+}
+
+.Bosch-Ic-arrow-right-down:before {
+  content: $Bosch-Ic-arrow-right-down;
+}
+
+.Bosch-Ic-arrow-right-filled:before {
+  content: $Bosch-Ic-arrow-right-filled;
+}
+
+.Bosch-Ic-arrow-right-up-circle:before {
+  content: $Bosch-Ic-arrow-right-up-circle;
+}
+
+.Bosch-Ic-arrow-right-up-filled:before {
+  content: $Bosch-Ic-arrow-right-up-filled;
+}
+
+.Bosch-Ic-arrow-right-up:before {
+  content: $Bosch-Ic-arrow-right-up;
+}
+
+.Bosch-Ic-arrow-right:before {
+  content: $Bosch-Ic-arrow-right;
+}
+
+.Bosch-Ic-arrow-up-circle:before {
+  content: $Bosch-Ic-arrow-up-circle;
+}
+
+.Bosch-Ic-arrow-up-filled:before {
+  content: $Bosch-Ic-arrow-up-filled;
+}
+
+.Bosch-Ic-arrow-up:before {
+  content: $Bosch-Ic-arrow-up;
+}
+
+.Bosch-Ic-autobod:before {
+  content: $Bosch-Ic-autobod;
+}
+
+.Bosch-Ic-batch:before {
+  content: $Bosch-Ic-batch;
+}
+
+.Bosch-Ic-battery-100:before {
+  content: $Bosch-Ic-battery-100;
+}
+
+.Bosch-Ic-battery-25:before {
+  content: $Bosch-Ic-battery-25;
+}
+
+.Bosch-Ic-battery-50:before {
+  content: $Bosch-Ic-battery-50;
+}
+
+.Bosch-Ic-battery-75:before {
+  content: $Bosch-Ic-battery-75;
+}
+
+.Bosch-Ic-battery-charging:before {
+  content: $Bosch-Ic-battery-charging;
+}
+
+.Bosch-Ic-battery-empty:before {
+  content: $Bosch-Ic-battery-empty;
+}
+
+.Bosch-Ic-battery-error:before {
+  content: $Bosch-Ic-battery-error;
+}
+
+.Bosch-Ic-bookmark-add:before {
+  content: $Bosch-Ic-bookmark-add;
+}
+
+.Bosch-Ic-bookmark-check:before {
+  content: $Bosch-Ic-bookmark-check;
+}
+
+.Bosch-Ic-bookmark-delete:before {
+  content: $Bosch-Ic-bookmark-delete;
+}
+
+.Bosch-Ic-bookmark:before {
+  content: $Bosch-Ic-bookmark;
+}
+
+.Bosch-Ic-box:before {
+  content: $Bosch-Ic-box;
+}
+
+.Bosch-Ic-brush:before {
+  content: $Bosch-Ic-brush;
+}
+
+.Bosch-Ic-bug:before {
+  content: $Bosch-Ic-bug;
+}
+
+.Bosch-Ic-builder:before {
+  content: $Bosch-Ic-builder;
+}
+
+.Bosch-Ic-calculator:before {
+  content: $Bosch-Ic-calculator;
+}
+
+.Bosch-Ic-calendar-add:before {
+  content: $Bosch-Ic-calendar-add;
+}
+
+.Bosch-Ic-calendar-delete:before {
+  content: $Bosch-Ic-calendar-delete;
+}
+
+.Bosch-Ic-calendar:before {
+  content: $Bosch-Ic-calendar;
+}
+
+.Bosch-Ic-call-bluetooth:before {
+  content: $Bosch-Ic-call-bluetooth;
+}
+
+.Bosch-Ic-call-deny-outline:before {
+  content: $Bosch-Ic-call-deny-outline;
+}
+
+.Bosch-Ic-call-deny:before {
+  content: $Bosch-Ic-call-deny;
+}
+
+.Bosch-Ic-call-pick-up-outline:before {
+  content: $Bosch-Ic-call-pick-up-outline;
+}
+
+.Bosch-Ic-call-pick-up:before {
+  content: $Bosch-Ic-call-pick-up;
+}
+
+.Bosch-Ic-call-settings:before {
+  content: $Bosch-Ic-call-settings;
+}
+
+.Bosch-Ic-call-wifi:before {
+  content: $Bosch-Ic-call-wifi;
+}
+
+.Bosch-Ic-call:before {
+  content: $Bosch-Ic-call;
+}
+
+.Bosch-Ic-camera-switch:before {
+  content: $Bosch-Ic-camera-switch;
+}
+
+.Bosch-Ic-camera:before {
+  content: $Bosch-Ic-camera;
+}
+
+.Bosch-Ic-cash:before {
+  content: $Bosch-Ic-cash;
+}
+
+.Bosch-Ic-certificate:before {
+  content: $Bosch-Ic-certificate;
+}
+
+.Bosch-Ic-chart:before {
+  content: $Bosch-Ic-chart;
+}
+
+.Bosch-Ic-chat:before {
+  content: $Bosch-Ic-chat;
+}
+
+.Bosch-Ic-checklist:before {
+  content: $Bosch-Ic-checklist;
+}
+
+.Bosch-Ic-checkmark-outline:before {
+  content: $Bosch-Ic-checkmark-outline;
+}
+
+.Bosch-Ic-checkmark:before {
+  content: $Bosch-Ic-checkmark;
+}
+
+.Bosch-Ic-chip:before {
+  content: $Bosch-Ic-chip;
+}
+
+.Bosch-Ic-clear-all-annotations:before {
+  content: $Bosch-Ic-clear-all-annotations;
+}
+
+.Bosch-Ic-clipboard-list:before {
+  content: $Bosch-Ic-clipboard-list;
+}
+
+.Bosch-Ic-clipboard:before {
+  content: $Bosch-Ic-clipboard;
+}
+
+.Bosch-Ic-clock-stop:before {
+  content: $Bosch-Ic-clock-stop;
+}
+
+.Bosch-Ic-clock:before {
+  content: $Bosch-Ic-clock;
+}
+
+.Bosch-Ic-cloud-download:before {
+  content: $Bosch-Ic-cloud-download;
+}
+
+.Bosch-Ic-cloud-upload:before {
+  content: $Bosch-Ic-cloud-upload;
+}
+
+.Bosch-Ic-cloud:before {
+  content: $Bosch-Ic-cloud;
+}
+
+.Bosch-Ic-color-picker:before {
+  content: $Bosch-Ic-color-picker;
+}
+
+.Bosch-Ic-command:before {
+  content: $Bosch-Ic-command;
+}
+
+.Bosch-Ic-compare:before {
+  content: $Bosch-Ic-compare;
+}
+
+.Bosch-Ic-components-available:before {
+  content: $Bosch-Ic-components-available;
+}
+
+.Bosch-Ic-components-reservation:before {
+  content: $Bosch-Ic-components-reservation;
+}
+
+.Bosch-Ic-components:before {
+  content: $Bosch-Ic-components;
+}
+
+.Bosch-Ic-confirmation:before {
+  content: $Bosch-Ic-confirmation;
+}
+
+.Bosch-Ic-connected:before {
+  content: $Bosch-Ic-connected;
+}
+
+.Bosch-Ic-connection:before {
+  content: $Bosch-Ic-connection;
+}
+
+.Bosch-Ic-copy:before {
+  content: $Bosch-Ic-copy;
+}
+
+.Bosch-Ic-core-data:before {
+  content: $Bosch-Ic-core-data;
+}
+
+.Bosch-Ic-creditcard:before {
+  content: $Bosch-Ic-creditcard;
+}
+
+.Bosch-Ic-currency:before {
+  content: $Bosch-Ic-currency;
+}
+
+.Bosch-Ic-curve-scaling-view:before {
+  content: $Bosch-Ic-curve-scaling-view;
+}
+
+.Bosch-Ic-customerservice:before {
+  content: $Bosch-Ic-customerservice;
+}
+
+.Bosch-Ic-cut:before {
+  content: $Bosch-Ic-cut;
+}
+
+.Bosch-Ic-danger-flash-outline:before {
+  content: $Bosch-Ic-danger-flash-outline;
+}
+
+.Bosch-Ic-dashboard:before {
+  content: $Bosch-Ic-dashboard;
+}
+
+.Bosch-Ic-dealer:before {
+  content: $Bosch-Ic-dealer;
+}
+
+.Bosch-Ic-default-trailer:before {
+  content: $Bosch-Ic-default-trailer;
+}
+
+.Bosch-Ic-delete-material-manually:before {
+  content: $Bosch-Ic-delete-material-manually;
+}
+
+.Bosch-Ic-delete:before {
+  content: $Bosch-Ic-delete;
+}
+
+.Bosch-Ic-delivery:before {
+  content: $Bosch-Ic-delivery;
+}
+
+.Bosch-Ic-desktop:before {
+  content: $Bosch-Ic-desktop;
+}
+
+.Bosch-Ic-devices:before {
+  content: $Bosch-Ic-devices;
+}
+
+.Bosch-Ic-diagram:before {
+  content: $Bosch-Ic-diagram;
+}
+
+.Bosch-Ic-directory:before {
+  content: $Bosch-Ic-directory;
+}
+
+.Bosch-Ic-dislike:before {
+  content: $Bosch-Ic-dislike;
+}
+
+.Bosch-Ic-dmc-code:before {
+  content: $Bosch-Ic-dmc-code;
+}
+
+.Bosch-Ic-dna:before {
+  content: $Bosch-Ic-dna;
+}
+
+.Bosch-Ic-do-not-disturb:before {
+  content: $Bosch-Ic-do-not-disturb;
+}
+
+.Bosch-Ic-document-add:before {
+  content: $Bosch-Ic-document-add;
+}
+
+.Bosch-Ic-document-audio:before {
+  content: $Bosch-Ic-document-audio;
+}
+
+.Bosch-Ic-document-copy:before {
+  content: $Bosch-Ic-document-copy;
+}
+
+.Bosch-Ic-document-delete:before {
+  content: $Bosch-Ic-document-delete;
+}
+
+.Bosch-Ic-document-edit:before {
+  content: $Bosch-Ic-document-edit;
+}
+
+.Bosch-Ic-document-error:before {
+  content: $Bosch-Ic-document-error;
+}
+
+.Bosch-Ic-document-locked:before {
+  content: $Bosch-Ic-document-locked;
+}
+
+.Bosch-Ic-document-plain-add:before {
+  content: $Bosch-Ic-document-plain-add;
+}
+
+.Bosch-Ic-document-plain-delete:before {
+  content: $Bosch-Ic-document-plain-delete;
+}
+
+.Bosch-Ic-document-plain:before {
+  content: $Bosch-Ic-document-plain;
+}
+
+.Bosch-Ic-document-save-to:before {
+  content: $Bosch-Ic-document-save-to;
+}
+
+.Bosch-Ic-document-settings:before {
+  content: $Bosch-Ic-document-settings;
+}
+
+.Bosch-Ic-document-test:before {
+  content: $Bosch-Ic-document-test;
+}
+
+.Bosch-Ic-document-text:before {
+  content: $Bosch-Ic-document-text;
+}
+
+.Bosch-Ic-document-to-cloud:before {
+  content: $Bosch-Ic-document-to-cloud;
+}
+
+.Bosch-Ic-document-to-doc:before {
+  content: $Bosch-Ic-document-to-doc;
+}
+
+.Bosch-Ic-document-to-one:before {
+  content: $Bosch-Ic-document-to-one;
+}
+
+.Bosch-Ic-document-to-pdf:before {
+  content: $Bosch-Ic-document-to-pdf;
+}
+
+.Bosch-Ic-document-to-ppt:before {
+  content: $Bosch-Ic-document-to-ppt;
+}
+
+.Bosch-Ic-document-to-pub:before {
+  content: $Bosch-Ic-document-to-pub;
+}
+
+.Bosch-Ic-document-to-rtf:before {
+  content: $Bosch-Ic-document-to-rtf;
+}
+
+.Bosch-Ic-document-to-svg:before {
+  content: $Bosch-Ic-document-to-svg;
+}
+
+.Bosch-Ic-document-to-txt:before {
+  content: $Bosch-Ic-document-to-txt;
+}
+
+.Bosch-Ic-document-to-vsd:before {
+  content: $Bosch-Ic-document-to-vsd;
+}
+
+.Bosch-Ic-document-to-xls:before {
+  content: $Bosch-Ic-document-to-xls;
+}
+
+.Bosch-Ic-document-to-xml:before {
+  content: $Bosch-Ic-document-to-xml;
+}
+
+.Bosch-Ic-document-to-zip:before {
+  content: $Bosch-Ic-document-to-zip;
+}
+
+.Bosch-Ic-document:before {
+  content: $Bosch-Ic-document;
+}
+
+.Bosch-Ic-download-from-folder:before {
+  content: $Bosch-Ic-download-from-folder;
+}
+
+.Bosch-Ic-download:before {
+  content: $Bosch-Ic-download;
+}
+
+.Bosch-Ic-download_outline:before {
+  content: $Bosch-Ic-download_outline;
+}
+
+.Bosch-Ic-edit:before {
+  content: $Bosch-Ic-edit;
+}
+
+.Bosch-Ic-emergency-order:before {
+  content: $Bosch-Ic-emergency-order;
+}
+
+.Bosch-Ic-exit:before {
+  content: $Bosch-Ic-exit;
+}
+
+.Bosch-Ic-export:before {
+  content: $Bosch-Ic-export;
+}
+
+.Bosch-Ic-fabric:before {
+  content: $Bosch-Ic-fabric;
+}
+
+.Bosch-Ic-facebook:before {
+  content: $Bosch-Ic-facebook;
+}
+
+.Bosch-Ic-fast-backwards:before {
+  content: $Bosch-Ic-fast-backwards;
+}
+
+.Bosch-Ic-fast-forwards:before {
+  content: $Bosch-Ic-fast-forwards;
+}
+
+.Bosch-Ic-favorite:before {
+  content: $Bosch-Ic-favorite;
+}
+
+.Bosch-Ic-filter:before {
+  content: $Bosch-Ic-filter;
+}
+
+.Bosch-Ic-first-aid:before {
+  content: $Bosch-Ic-first-aid;
+}
+
+.Bosch-Ic-flag:before {
+  content: $Bosch-Ic-flag;
+}
+
+.Bosch-Ic-flexpress:before {
+  content: $Bosch-Ic-flexpress;
+}
+
+.Bosch-Ic-folder:before {
+  content: $Bosch-Ic-folder;
+}
+
+.Bosch-Ic-fork-lift:before {
+  content: $Bosch-Ic-fork-lift;
+}
+
+.Bosch-Ic-fullscreen-exit:before {
+  content: $Bosch-Ic-fullscreen-exit;
+}
+
+.Bosch-Ic-fullscreen:before {
+  content: $Bosch-Ic-fullscreen;
+}
+
+.Bosch-Ic-gaussian-view:before {
+  content: $Bosch-Ic-gaussian-view;
+}
+
+.Bosch-Ic-general-scaling-view:before {
+  content: $Bosch-Ic-general-scaling-view;
+}
+
+.Bosch-Ic-go-to:before {
+  content: $Bosch-Ic-go-to;
+}
+
+.Bosch-Ic-gps:before {
+  content: $Bosch-Ic-gps;
+}
+
+.Bosch-Ic-grid:before {
+  content: $Bosch-Ic-grid;
+}
+
+.Bosch-Ic-hand:before {
+  content: $Bosch-Ic-hand;
+}
+
+.Bosch-Ic-handover-check:before {
+  content: $Bosch-Ic-handover-check;
+}
+
+.Bosch-Ic-health:before {
+  content: $Bosch-Ic-health;
+}
+
+.Bosch-Ic-help:before {
+  content: $Bosch-Ic-help;
+}
+
+.Bosch-Ic-hidden-project:before {
+  content: $Bosch-Ic-hidden-project;
+}
+
+.Bosch-Ic-history:before {
+  content: $Bosch-Ic-history;
+}
+
+.Bosch-Ic-home-filled:before {
+  content: $Bosch-Ic-home-filled;
+}
+
+.Bosch-Ic-home-outline:before {
+  content: $Bosch-Ic-home-outline;
+}
+
+.Bosch-Ic-image:before {
+  content: $Bosch-Ic-image;
+}
+
+.Bosch-Ic-import:before {
+  content: $Bosch-Ic-import;
+}
+
+.Bosch-Ic-imprint:before {
+  content: $Bosch-Ic-imprint;
+}
+
+.Bosch-Ic-information-tooltip:before {
+  content: $Bosch-Ic-information-tooltip;
+}
+
+.Bosch-Ic-information:before {
+  content: $Bosch-Ic-information;
+}
+
+.Bosch-Ic-input:before {
+  content: $Bosch-Ic-input;
+}
+
+.Bosch-Ic-interface:before {
+  content: $Bosch-Ic-interface;
+}
+
+.Bosch-Ic-laptop-01:before {
+  content: $Bosch-Ic-laptop-01;
+}
+
+.Bosch-Ic-less-minimize:before {
+  content: $Bosch-Ic-less-minimize;
+}
+
+.Bosch-Ic-like:before {
+  content: $Bosch-Ic-like;
+}
+
+.Bosch-Ic-link:before {
+  content: $Bosch-Ic-link;
+}
+
+.Bosch-Ic-list-view:before {
+  content: $Bosch-Ic-list-view;
+}
+
+.Bosch-Ic-list:before {
+  content: $Bosch-Ic-list;
+}
+
+.Bosch-Ic-location-pin:before {
+  content: $Bosch-Ic-location-pin;
+}
+
+.Bosch-Ic-lock-closed:before {
+  content: $Bosch-Ic-lock-closed;
+}
+
+.Bosch-Ic-lock-open:before {
+  content: $Bosch-Ic-lock-open;
+}
+
+.Bosch-Ic-log-file:before {
+  content: $Bosch-Ic-log-file;
+}
+
+.Bosch-Ic-log-in:before {
+  content: $Bosch-Ic-log-in;
+}
+
+.Bosch-Ic-log-out:before {
+  content: $Bosch-Ic-log-out;
+}
+
+.Bosch-Ic-logistics:before {
+  content: $Bosch-Ic-logistics;
+}
+
+.Bosch-Ic-magic-wand:before {
+  content: $Bosch-Ic-magic-wand;
+}
+
+.Bosch-Ic-magnet:before {
+  content: $Bosch-Ic-magnet;
+}
+
+.Bosch-Ic-mail-answer:before {
+  content: $Bosch-Ic-mail-answer;
+}
+
+.Bosch-Ic-mail-forward:before {
+  content: $Bosch-Ic-mail-forward;
+}
+
+.Bosch-Ic-mail-open:before {
+  content: $Bosch-Ic-mail-open;
+}
+
+.Bosch-Ic-mail-out:before {
+  content: $Bosch-Ic-mail-out;
+}
+
+.Bosch-Ic-mail-sent:before {
+  content: $Bosch-Ic-mail-sent;
+}
+
+.Bosch-Ic-mail:before {
+  content: $Bosch-Ic-mail;
+}
+
+.Bosch-Ic-malfunction-history:before {
+  content: $Bosch-Ic-malfunction-history;
+}
+
+.Bosch-Ic-malfunction-order:before {
+  content: $Bosch-Ic-malfunction-order;
+}
+
+.Bosch-Ic-map:before {
+  content: $Bosch-Ic-map;
+}
+
+.Bosch-Ic-material-list:before {
+  content: $Bosch-Ic-material-list;
+}
+
+.Bosch-Ic-material:before {
+  content: $Bosch-Ic-material;
+}
+
+.Bosch-Ic-maximize-window:before {
+  content: $Bosch-Ic-maximize-window;
+}
+
+.Bosch-Ic-measure:before {
+  content: $Bosch-Ic-measure;
+}
+
+.Bosch-Ic-menu-tree:before {
+  content: $Bosch-Ic-menu-tree;
+}
+
+.Bosch-Ic-menu:before {
+  content: $Bosch-Ic-menu;
+}
+
+.Bosch-Ic-message:before {
+  content: $Bosch-Ic-message;
+}
+
+.Bosch-Ic-microphone:before {
+  content: $Bosch-Ic-microphone;
+}
+
+.Bosch-Ic-milkrun-cart:before {
+  content: $Bosch-Ic-milkrun-cart;
+}
+
+.Bosch-Ic-minimize-window:before {
+  content: $Bosch-Ic-minimize-window;
+}
+
+.Bosch-Ic-my-product:before {
+  content: $Bosch-Ic-my-product;
+}
+
+.Bosch-Ic-navigation:before {
+  content: $Bosch-Ic-navigation;
+}
+
+.Bosch-Ic-news:before {
+  content: $Bosch-Ic-news;
+}
+
+.Bosch-Ic-notes-edit:before {
+  content: $Bosch-Ic-notes-edit;
+}
+
+.Bosch-Ic-notes:before {
+  content: $Bosch-Ic-notes;
+}
+
+.Bosch-Ic-notification-error:before {
+  content: $Bosch-Ic-notification-error;
+}
+
+.Bosch-Ic-notification-hint:before {
+  content: $Bosch-Ic-notification-hint;
+}
+
+.Bosch-Ic-notification-outline:before {
+  content: $Bosch-Ic-notification-outline;
+}
+
+.Bosch-Ic-notification-question:before {
+  content: $Bosch-Ic-notification-question;
+}
+
+.Bosch-Ic-notification-success:before {
+  content: $Bosch-Ic-notification-success;
+}
+
+.Bosch-Ic-notification-warning:before {
+  content: $Bosch-Ic-notification-warning;
+}
+
+.Bosch-Ic-notification:before {
+  content: $Bosch-Ic-notification;
+}
+
+.Bosch-Ic-oil-trailer:before {
+  content: $Bosch-Ic-oil-trailer;
+}
+
+.Bosch-Ic-output:before {
+  content: $Bosch-Ic-output;
+}
+
+.Bosch-Ic-palette-trailer:before {
+  content: $Bosch-Ic-palette-trailer;
+}
+
+.Bosch-Ic-paperclip:before {
+  content: $Bosch-Ic-paperclip;
+}
+
+.Bosch-Ic-paste:before {
+  content: $Bosch-Ic-paste;
+}
+
+.Bosch-Ic-pause:before {
+  content: $Bosch-Ic-pause;
+}
+
+.Bosch-Ic-phone:before {
+  content: $Bosch-Ic-phone;
+}
+
+.Bosch-Ic-pin:before {
+  content: $Bosch-Ic-pin;
+}
+
+.Bosch-Ic-pinterest:before {
+  content: $Bosch-Ic-pinterest;
+}
+
+.Bosch-Ic-play:before {
+  content: $Bosch-Ic-play;
+}
+
+.Bosch-Ic-print:before {
+  content: $Bosch-Ic-print;
+}
+
+.Bosch-Ic-problem:before {
+  content: $Bosch-Ic-problem;
+}
+
+.Bosch-Ic-promotion:before {
+  content: $Bosch-Ic-promotion;
+}
+
+.Bosch-Ic-qr-code:before {
+  content: $Bosch-Ic-qr-code;
+}
+
+.Bosch-Ic-radio:before {
+  content: $Bosch-Ic-radio;
+}
+
+.Bosch-Ic-redo:before {
+  content: $Bosch-Ic-redo;
+}
+
+.Bosch-Ic-refresh:before {
+  content: $Bosch-Ic-refresh;
+}
+
+.Bosch-Ic-registration:before {
+  content: $Bosch-Ic-registration;
+}
+
+.Bosch-Ic-remote-cursor:before {
+  content: $Bosch-Ic-remote-cursor;
+}
+
+.Bosch-Ic-remove-from-handover:before {
+  content: $Bosch-Ic-remove-from-handover;
+}
+
+.Bosch-Ic-remove-material:before {
+  content: $Bosch-Ic-remove-material;
+}
+
+.Bosch-Ic-reset:before {
+  content: $Bosch-Ic-reset;
+}
+
+.Bosch-Ic-restore-window:before {
+  content: $Bosch-Ic-restore-window;
+}
+
+.Bosch-Ic-robot-automation:before {
+  content: $Bosch-Ic-robot-automation;
+}
+
+.Bosch-Ic-rotate-360-degrees:before {
+  content: $Bosch-Ic-rotate-360-degrees;
+}
+
+.Bosch-Ic-rotate-clockwise:before {
+  content: $Bosch-Ic-rotate-clockwise;
+}
+
+.Bosch-Ic-rotate-counterclockwise:before {
+  content: $Bosch-Ic-rotate-counterclockwise;
+}
+
+.Bosch-Ic-rotation:before {
+  content: $Bosch-Ic-rotation;
+}
+
+.Bosch-Ic-sandclock:before {
+  content: $Bosch-Ic-sandclock;
+}
+
+.Bosch-Ic-satelite:before {
+  content: $Bosch-Ic-satelite;
+}
+
+.Bosch-Ic-save:before {
+  content: $Bosch-Ic-save;
+}
+
+.Bosch-Ic-scale:before {
+  content: $Bosch-Ic-scale;
+}
+
+.Bosch-Ic-search-chart:before {
+  content: $Bosch-Ic-search-chart;
+}
+
+.Bosch-Ic-search-document:before {
+  content: $Bosch-Ic-search-document;
+}
+
+.Bosch-Ic-search-web:before {
+  content: $Bosch-Ic-search-web;
+}
+
+.Bosch-Ic-search-window:before {
+  content: $Bosch-Ic-search-window;
+}
+
+.Bosch-Ic-search:before {
+  content: $Bosch-Ic-search;
+}
+
+.Bosch-Ic-sensor:before {
+  content: $Bosch-Ic-sensor;
+}
+
+.Bosch-Ic-server:before {
+  content: $Bosch-Ic-server;
+}
+
+.Bosch-Ic-settings:before {
+  content: $Bosch-Ic-settings;
+}
+
+.Bosch-Ic-shape-ellipse:before {
+  content: $Bosch-Ic-shape-ellipse;
+}
+
+.Bosch-Ic-shape-rectangle:before {
+  content: $Bosch-Ic-shape-rectangle;
+}
+
+.Bosch-Ic-share-outline:before {
+  content: $Bosch-Ic-share-outline;
+}
+
+.Bosch-Ic-share:before {
+  content: $Bosch-Ic-share;
+}
+
+.Bosch-Ic-shelve-trailer:before {
+  content: $Bosch-Ic-shelve-trailer;
+}
+
+.Bosch-Ic-shoppingcart:before {
+  content: $Bosch-Ic-shoppingcart;
+}
+
+.Bosch-Ic-show-more-horizontal:before {
+  content: $Bosch-Ic-show-more-horizontal;
+}
+
+.Bosch-Ic-show-more-vertical:before {
+  content: $Bosch-Ic-show-more-vertical;
+}
+
+.Bosch-Ic-show:before {
+  content: $Bosch-Ic-show;
+}
+
+.Bosch-Ic-signal:before {
+  content: $Bosch-Ic-signal;
+}
+
+.Bosch-Ic-skip-back:before {
+  content: $Bosch-Ic-skip-back;
+}
+
+.Bosch-Ic-skip-backward:before {
+  content: $Bosch-Ic-skip-backward;
+}
+
+.Bosch-Ic-skip-for:before {
+  content: $Bosch-Ic-skip-for;
+}
+
+.Bosch-Ic-skip-forward:before {
+  content: $Bosch-Ic-skip-forward;
+}
+
+.Bosch-Ic-snyc-disabled:before {
+  content: $Bosch-Ic-snyc-disabled;
+}
+
+.Bosch-Ic-sort-alphabetically:before {
+  content: $Bosch-Ic-sort-alphabetically;
+}
+
+.Bosch-Ic-sort:before {
+  content: $Bosch-Ic-sort;
+}
+
+.Bosch-Ic-spareparts:before {
+  content: $Bosch-Ic-spareparts;
+}
+
+.Bosch-Ic-stop:before {
+  content: $Bosch-Ic-stop;
+}
+
+.Bosch-Ic-summary:before {
+  content: $Bosch-Ic-summary;
+}
+
+.Bosch-Ic-switch-language:before {
+  content: $Bosch-Ic-switch-language;
+}
+
+.Bosch-Ic-sync-disabled:before {
+  content: $Bosch-Ic-sync-disabled;
+}
+
+.Bosch-Ic-sync-problem:before {
+  content: $Bosch-Ic-sync-problem;
+}
+
+.Bosch-Ic-sync:before {
+  content: $Bosch-Ic-sync;
+}
+
+.Bosch-Ic-tablet:before {
+  content: $Bosch-Ic-tablet;
+}
+
+.Bosch-Ic-taxi-trailer:before {
+  content: $Bosch-Ic-taxi-trailer;
+}
+
+.Bosch-Ic-temperature:before {
+  content: $Bosch-Ic-temperature;
+}
+
+.Bosch-Ic-test:before {
+  content: $Bosch-Ic-test;
+}
+
+.Bosch-Ic-ticket:before {
+  content: $Bosch-Ic-ticket;
+}
+
+.Bosch-Ic-to-order:before {
+  content: $Bosch-Ic-to-order;
+}
+
+.Bosch-Ic-to-raw:before {
+  content: $Bosch-Ic-to-raw;
+}
+
+.Bosch-Ic-tours:before {
+  content: $Bosch-Ic-tours;
+}
+
+.Bosch-Ic-transport-movements:before {
+  content: $Bosch-Ic-transport-movements;
+}
+
+.Bosch-Ic-transport-orders:before {
+  content: $Bosch-Ic-transport-orders;
+}
+
+.Bosch-Ic-tune:before {
+  content: $Bosch-Ic-tune;
+}
+
+.Bosch-Ic-twitter:before {
+  content: $Bosch-Ic-twitter;
+}
+
+.Bosch-Ic-unconnected:before {
+  content: $Bosch-Ic-unconnected;
+}
+
+.Bosch-Ic-undo:before {
+  content: $Bosch-Ic-undo;
+}
+
+.Bosch-Ic-unpin:before {
+  content: $Bosch-Ic-unpin;
+}
+
+.Bosch-Ic-upload-to-folder:before {
+  content: $Bosch-Ic-upload-to-folder;
+}
+
+.Bosch-Ic-upload:before {
+  content: $Bosch-Ic-upload;
+}
+
+.Bosch-Ic-upload_outline:before {
+  content: $Bosch-Ic-upload_outline;
+}
+
+.Bosch-Ic-user-filled:before {
+  content: $Bosch-Ic-user-filled;
+}
+
+.Bosch-Ic-user-outline:before {
+  content: $Bosch-Ic-user-outline;
+}
+
+.Bosch-Ic-user:before {
+  content: $Bosch-Ic-user;
+}
+
+.Bosch-Ic-video-play:before {
+  content: $Bosch-Ic-video-play;
+}
+
+.Bosch-Ic-videocam-disabled:before {
+  content: $Bosch-Ic-videocam-disabled;
+}
+
+.Bosch-Ic-videocam:before {
+  content: $Bosch-Ic-videocam;
+}
+
+.Bosch-Ic-volume-disabled:before {
+  content: $Bosch-Ic-volume-disabled;
+}
+
+.Bosch-Ic-volume-high:before {
+  content: $Bosch-Ic-volume-high;
+}
+
+.Bosch-Ic-volume-low:before {
+  content: $Bosch-Ic-volume-low;
+}
+
+.Bosch-Ic-volume-off:before {
+  content: $Bosch-Ic-volume-off;
+}
+
+.Bosch-Ic-warning-outline:before {
+  content: $Bosch-Ic-warning-outline;
+}
+
+.Bosch-Ic-weblink:before {
+  content: $Bosch-Ic-weblink;
+}
+
+.Bosch-Ic-wifi:before {
+  content: $Bosch-Ic-wifi;
+}
+
+.Bosch-Ic-window-analysis:before {
+  content: $Bosch-Ic-window-analysis;
+}
+
+.Bosch-Ic-window-browser:before {
+  content: $Bosch-Ic-window-browser;
+}
+
+.Bosch-Ic-window-console:before {
+  content: $Bosch-Ic-window-console;
+}
+
+.Bosch-Ic-window-info:before {
+  content: $Bosch-Ic-window-info;
+}
+
+.Bosch-Ic-window-statistic:before {
+  content: $Bosch-Ic-window-statistic;
+}
+
+.Bosch-Ic-wishlist:before {
+  content: $Bosch-Ic-wishlist;
+}
+
+.Bosch-Ic-work-orders:before {
+  content: $Bosch-Ic-work-orders;
+}
+
+.Bosch-Ic-world:before {
+  content: $Bosch-Ic-world;
+}
+
+.Bosch-Ic-wrench:before {
+  content: $Bosch-Ic-wrench;
+}
+
+.Bosch-Ic-youtube:before {
+  content: $Bosch-Ic-youtube;
+}
+
+.Bosch-Ic-zoom-in:before {
+  content: $Bosch-Ic-zoom-in;
+}
+
+.Bosch-Ic-zoom-out:before {
+  content: $Bosch-Ic-zoom-out;
+}
+.bosch-Ic-innovation:before {
+  content: $bosch-Ic-innovation;
+}

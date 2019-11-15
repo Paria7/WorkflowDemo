@@ -1,0 +1,35 @@
+.nav-tabs {
+  @include make-nav-tabs;
+}
+
+.nav-pills {
+  @include make-nav-pills;
+}
+
+.nav-tabs {
+  .dropdown,
+  .dropdown:hover,
+  .dropdown:active,
+  .dropdown:hover:active,
+  .dropdown:focus {
+    @include make-nav-dropdown;
+
+    .dropdown-menu {
+      @include make-nav-dropdown-menu;
+    }
+  }
+}
+
+.nav-pills {
+  .dropdown,
+  .dropdown:hover,
+  .dropdown:active,
+  .dropdown:hover:active,
+  .dropdown:focus {
+    @include make-nav-dropdown;
+
+    .dropdown-menu {
+      @include make-nav-pill-dropdown-menu;
+    }
+  }
+}

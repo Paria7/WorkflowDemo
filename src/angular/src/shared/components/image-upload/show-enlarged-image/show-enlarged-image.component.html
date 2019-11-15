@@ -1,0 +1,18 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title></h2>
+    <button class="close-button mat-icon-button" mat-icon-button="" (click)="dialogRef.close()">
+        <span class="mat-button-wrapper">
+            <i class="Bosch-Ic Bosch-Ic-abort"></i>
+        </span>
+        <div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple="" ng-reflect-centered="true" ng-reflect-disabled="false"
+            ng-reflect-trigger="[object HTMLButtonElement]"></div>
+        <div class="mat-button-focus-overlay"></div>
+    </button>
+</div>
+<form>
+    <mat-dialog-content>
+        <div>
+            <img class="enlarged-image" [src]="imageSrc">
+        </div>
+    </mat-dialog-content>
+</form>

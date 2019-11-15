@@ -1,0 +1,6 @@
+<bci-app [sidebarLinks]="sidebarLinks$ | async" [sidebarFooterLinks]="sidebarFooterLinks$ | async" [applicationTitle]="title">
+  <router-outlet></router-outlet>
+</bci-app>
+<div style="display: none;">
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

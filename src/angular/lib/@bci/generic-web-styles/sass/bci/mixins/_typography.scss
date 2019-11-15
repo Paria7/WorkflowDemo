@@ -1,0 +1,64 @@
+@mixin make-text-muted {
+  color: $muted-text-color;
+}
+
+@mixin make-text-primary {
+  color: $primary-text-color;
+}
+
+@mixin make-text-warning {
+  color: $warning-text-color;
+}
+
+@mixin make-text-danger {
+  color: $danger-text-color;
+}
+
+@mixin make-text-success {
+  color: $success-text-color;
+}
+
+@mixin make-text-info {
+  color: $info-text-color;
+}
+
+@mixin make-bg-success {
+  @include make-text-success;
+  background-color: $success-text-bg-color;
+  padding: 8px;
+  margin: -8px;
+}
+
+@mixin make-anchor {
+  color: $anchor-text-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $anchor-text-hover-color;
+  }
+}
+
+@mixin make-small-text {
+  font-size: 87%;
+}
+
+@mixin make-font($font-size: $font-size-base) {
+  font-family: $font-family-base;
+  font-weight: 300;
+  font-size: $font-size;
+}
+
+@mixin make-font-regular($font-size: $font-size-base) {
+  @include make-font($font-size);
+  font-weight: 400;
+}
+
+@mixin make-font-bold($font-size: $font-size-base) {
+  @include make-font($font-size);
+  font-weight: 700;
+}
+
+@mixin make-addr-text {
+  cursor: help;
+  border-bottom: 1px dotted $addr-text-dot-color;
+}

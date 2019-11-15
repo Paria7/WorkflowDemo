@@ -1,0 +1,38 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+
+mat-option.mat-option,
+mat-checkbox.mat-checkbox {
+  .mat-checkbox-frame,
+  &.mat-checkbox-checked .mat-checkbox-background,
+  &.mat-checkbox-indeterminate .mat-checkbox-background {
+    @include make-border(0 0 2px 0, $boschDarkGray50);
+    background-color: $boschLightGray50;
+  }
+
+  .mat-checkbox-disabled .mat-checkbox-frame,
+  &.mat-checkbox.mat-checkbox-disabled .mat-checkbox-background {
+    background-color: $boschLightGray25;
+    @include make-border(0 0 2px 0, $boschDarkGray25);
+
+    .mat-checkbox-checkmark-path {
+      stroke: $boschDarkGray50 !important;
+    }
+
+    .mat-checkbox-mixedmark {
+      background-color: $boschDarkGray50;
+    }
+  }
+
+  .mat-checkbox-mixedmark {
+    background-color: $boschDarkBlue;
+   // d: path('M4.1,44.7 9,2.6 12.3,6.3');  @todo: set rectangle path for three state
+  }
+  .mat-checkbox-checkmark-path {
+    stroke: $boschDarkBlue !important;
+  }
+
+  h3 {
+    margin: 0;
+  }
+}

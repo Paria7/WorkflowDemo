@@ -1,0 +1,74 @@
+// Table Rows
+
+@function getStateSelector($state) {
+  @if ($state == '') {
+    @return '';
+  }
+  @return '.#{$state}';
+}
+
+@mixin table-row-variant($state) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+
+  $stateSelector: getStateSelector($state);
+
+  > thead > tr,
+  > tbody > tr,
+  > tfoot > tr {
+    > td#{$stateSelector},
+    > th#{$stateSelector},
+    &#{$stateSelector} > td,
+    &#{$stateSelector} > th {
+      @content
+    }
+  }
+}
+
+@mixin table-row-variant-hover($state) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+
+  $stateSelector: getStateSelector($state);
+
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  > tbody > tr {
+    > td#{$stateSelector}:hover,
+    > th#{$stateSelector}:hover,
+    &#{$stateSelector}:hover > td,
+    &#{$stateSelector}:hover > th {
+      @content
+    }
+  }
+}
+
+@mixin table-row-variant-stripes($state) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+
+  $stateSelector: getStateSelector($state);
+
+  > thead > tr,
+  > tbody > tr,
+  > tfoot > tr {
+    > td#{$stateSelector}:nth-of-type(even),
+    &#{$stateSelector} > td:nth-of-type(even) {
+      @content
+    }
+  }
+}
+
+@mixin table-row-variant-stripes-hover($state) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+
+  $stateSelector: getStateSelector($state);
+
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  > tbody > tr {
+    > td#{$stateSelector}:nth-of-type(even):hover,
+    &#{$stateSelector}:hover > td:nth-of-type(even) {
+      @content
+    }
+  }
+}

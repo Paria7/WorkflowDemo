@@ -1,0 +1,11 @@
+.pagination {
+  @include make-pagination-medium;
+}
+
+.pagination-sm {
+  @include make-pagination-small;
+}
+
+.pagination-lg {
+  @include make-pagination-large;
+}

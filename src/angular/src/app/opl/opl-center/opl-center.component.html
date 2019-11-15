@@ -1,0 +1,181 @@
+<app-layout>
+    <form [formGroup]="form">
+        <mat-grid-list cols="8" rowHeight="80px">
+            <mat-grid-tile [colspan]="2">
+                <mat-form-field>
+                    <mat-select placeholder="{{'Common.Area'|translate}}" [(ngModel)]="currentArea"
+                        formControlName="Area">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let area of areas" [value]="area.Id">
+                            {{ area.Name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2">
+                <mat-form-field>
+                    <mat-select placeholder="{{'Common.ValueStream'|translate}}" [(ngModel)]="currentValueStream"
+                        formControlName="ValueStream">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let valueStream of valueStreams" [value]="valueStream.Id">
+                            {{ valueStream.Name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile [colspan]="2">
+                <mat-form-field>
+                    <mat-select placeholder="{{'Common.Line'|translate}}" [(ngModel)]="currentLine"
+                        formControlName="Line">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let line of lines" [value]="line.Id">
+                            {{ line.Name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2">
+                <mat-form-field>
+                    <mat-select placeholder="{{'Common.Device'|translate}}" [(ngModel)]="queryModel.Device"
+                        formControlName="Device">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let device of devices" [value]="device.Id">
+                            {{ device.Name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-grid-list cols="8" rowHeight="80px">
+            <mat-grid-tile [colspan]="2">
+                <mat-form-field>
+                    <mat-select [(ngModel)]="queryModel.Status" placeholder="{{'Common.Status'|translate}}"
+                        formControlName="Status">
+                        <mat-option [value]="'all'">All</mat-option>
+                        <mat-option *ngFor="let status of statuses" [value]="status.Id">
+                            {{ status.Name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2">
+                <button mat-raised-button color="primary" (click)="query()">{{'Common.Query'|translate}}</button>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2">
+                <button mat-raised-button color="primary"
+                    (click)="onClickExport()">{{'Common.Export'|translate}}</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+
+    <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">
+                    {{row.Description}}</div>
+            </mat-cell>
+        </ng-container>
+          <ng-container matColumnDef="tpmDescription">
+            <mat-header-cell *matHeaderCellDef>{{'TpmPlanDetails.TPMDescription'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <div class="overflow-cell" matTooltip="{{row.TpmDescription}}" matTooltipPosition="above">
+                {{row.TpmDescription}}</div>
+            </mat-cell>
+          </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>{{'Common.Status'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.Status}}" matTooltipPosition="above"
+                    [style.background-color]="row.Color==1 ? greenColor:row.Color==2?redColor:row.Color==3?yellowColor:normalColor">
+                    {{row.Status}}
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="result">
+            <mat-header-cell *matHeaderCellDef>{{'OPL.Result'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.Result}}" matTooltipPosition="above">{{row.Result}}</div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="area">
+            <mat-header-cell *matHeaderCellDef>{{'Common.Area'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.Area}}" matTooltipPosition="above">{{row.Area}}</div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valueStream">
+            <mat-header-cell *matHeaderCellDef>{{'Common.ValueStream'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.ValueStream}}" matTooltipPosition="above">
+                    {{row.ValueStream}}</div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="line">
+            <mat-header-cell *matHeaderCellDef>{{'Common.Line'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.Line}}" matTooltipPosition="above">{{row.Line}}</div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="device">
+            <mat-header-cell *matHeaderCellDef>{{'Common.Device'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.Device}}" matTooltipPosition="above">{{row.Device}}</div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="createDate">
+            <mat-header-cell *matHeaderCellDef>{{'OPL.CreateDate'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.CreatedOn}}" matTooltipPosition="above">
+                    {{row.CreatedOn|date: 'yyyy-MM-dd'}}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="closeDate">
+            <mat-header-cell *matHeaderCellDef>{{'OPL.CloseDate'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div class="overflow-cell" matTooltip="{{row.ClosedOn}}" matTooltipPosition="above">
+                    {{row.ClosedOn|date: 'yyyy-MM-dd'}}
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>{{'Common.Operation'|translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button (click)="assign(row)" [disabled]="row.StatusValue>2">
+                    <mat-icon fontIcon="Bosch-Ic-to-order" matTooltip="Assign" matTooltipPosition="above"></mat-icon>
+                </button>
+                <button mat-icon-button (click)="edit(row)">
+                    <mat-icon fontIcon="Bosch-Ic-general-scaling-view" matTooltip="View" matTooltipPosition="above">
+                    </mat-icon>
+                </button>
+                <!-- <button mat-icon-button (click)="delete(row.Id)" [disabled]="row.Status!='New'">
+                    <mat-icon fontIcon="Bosch-Ic-delete" matTooltip="Delete" matTooltipPosition="above"></mat-icon>
+                </button>
+                <button mat-icon-button (click)="cancel(row)" [disabled]="row.Status!='New'">
+                    <mat-icon fontIcon="Bosch-Ic-undo" matTooltip="Cancel" matTooltipPosition="above"></mat-icon>
+                </button> -->
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayColumns">
+        </mat-header-row>
+        <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator (page)="changePage($event)" [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons></mat-paginator>
+</app-layout>

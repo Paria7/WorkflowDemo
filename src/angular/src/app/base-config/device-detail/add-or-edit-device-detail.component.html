@@ -1,0 +1,102 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'DeviceDetail.Title'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form [formGroup]="form">
+    <mat-dialog-content>
+        <div class="grid-container-2">
+            <mat-form-field>
+                <input [(ngModel)]="device.Code" matInput formControlName="Code" [placeholder]="'DeviceDetail.Code'|translate">
+                <mat-error *ngIf="form.hasError('required',['Code'])">{{'DeviceDetail.CodeRequired'|translate}}
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Code'])">{{'DeviceDetail.CodeExceedMaxLength'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input [(ngModel)]="device.Name" matInput formControlName="Name" [placeholder]="'DeviceDetail.Name'|translate">
+                <mat-error *ngIf="form.hasError('required',['Name'])">{{'DeviceDetail.NameRequired'|translate}}
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'DeviceDetail.NameExceedMaxLength'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [(ngModel)]="device.PlantId" placeholder="{{'DeviceDetail.Plant'|translate}}" formControlName="PlantId" (selectionChange)='onChangePlant($event)'>
+                    <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['PlantId'])">{{'DeviceDetail.PlantRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [(ngModel)]="device.AreaId" placeholder="{{'DeviceDetail.Area'|translate}}" formControlName="AreaId" (selectionChange)='onChangeArea($event)'>
+                    <mat-option *ngFor="let area of areas" [value]="area.Id">{{area.AreaName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['AreaId'])">{{'DeviceDetail.AreaRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [(ngModel)]="device.ValueStreamId" placeholder="{{'DeviceDetail.ValueStream'|translate}}" formControlName="ValueStreamId" (selectionChange)='onChangeValueStream($event)'>
+                    <mat-option *ngFor="let valueStream of valueStreams" [value]="valueStream.Id">{{valueStream.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['ValueStreamId'])">{{'DeviceDetail.ValueStreamRequired'|translate}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [(ngModel)]="device.LineId" placeholder="{{'DeviceDetail.Line'|translate}}" formControlName="LineId" (selectionChange)='onChangeLine($event)'>
+                    <mat-option *ngFor="let line of lines" [value]="line.Id">{{line.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['LineId'])">{{'DeviceDetail.LineRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [(ngModel)]="device.StationId" placeholder="{{'DeviceDetail.Station'|translate}}" formControlName="StationId">
+                    <mat-option *ngFor="let station of stations" [value]="station.Id">{{station.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['StationId'])">{{'DeviceDetail.StationRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="status">
+                <mat-select [(ngModel)]="device.Status" placeholder="{{'DeviceDetail.Status'|translate}}" formControlName="Status">
+                    <mat-option *ngFor="let status of statuses" [value]="status.Id">{{status.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['Status'])">{{'DeviceDetail.StatusRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div class="grid-container-1">
+            <mat-form-field>
+                <textarea matInput [(ngModel)]="device.Description" formControlName="Description" [placeholder]="'Common.Description'|translate"></textarea>
+                <mat-error *ngIf="form.hasError('maxlength',['Description'])">{{'Validator.MaxLength1000'|translate}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="grid-container-2">
+            <div>
+                <h6>{{'DeviceDetail.ServiceList'|translate}}</h6>
+                <app-user-list [users]="serviceListUsers"></app-user-list>
+            </div>
+
+            <div>
+                <h6>{{'DeviceDetail.EngineerList'|translate}}</h6>
+                <app-user-list [users]="engineerListUsers"></app-user-list>
+            </div>
+
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+            <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>

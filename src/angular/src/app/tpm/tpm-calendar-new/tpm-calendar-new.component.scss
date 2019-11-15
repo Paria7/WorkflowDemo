@@ -1,0 +1,84 @@
+.ca_month {
+  text-align: center;
+  width: 100%;
+
+  table {
+    // display: inline-block;
+    border-spacing: 0px 0px;
+    float: left;
+    min-width: 22%;
+    margin: 10px;
+    // border-collapse: collapse;
+    text-align: center;
+    border: 1px #DDDDDD solid;
+    border-radius: 3px;
+    border-top: 3px #91bfdb solid;
+
+    .caption {
+      text-align: center;
+      padding: 7px 5px 7px 0;
+      background-color: #E5F2FA;
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: #A00000;
+        font-size: 20px;
+        text-shadow: 1px 1px 1px #fff;
+      }
+    }
+
+    .week_no {
+      color: #ccc !important;
+    }
+
+    th {
+      text-align: center;
+      vertical-align: middle;
+      padding: 0 2px 5px 2px;
+      color: #333333;
+      // background-color: #f6f6f6;
+      border: 0px;
+    }
+
+    td {
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+      font-size: 14px;
+      line-height: 100%;
+      text-align: center;
+      vertical-align: middle;
+      // background-color: #f6f6f6;
+      border: 0px;
+
+      span {
+        border-radius: 15px;
+        display: inline-block;
+        height: 28px;
+        line-height: 28px;
+        padding: 0;
+        width: 28px;
+      }
+
+      .selected {
+        background-color: #87DBEC;
+        border: 1px #5bcee5 solid;
+        color: #FFF;
+        text-shadow: 0 0 1px #177c90;
+        font-weight: 700;
+        font-size: 15px;
+        padding-top: 0;
+
+      }
+
+      :hover {
+        @extend span;
+        background-color: #EEEEEE;
+
+      }
+    }
+
+
+  }
+}

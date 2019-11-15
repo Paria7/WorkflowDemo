@@ -1,0 +1,29 @@
+<app-layout>
+    <div>
+        <mat-tab-group dynamicHeight (selectedTabChange)="onSelectedTabChange($event)">
+            <mat-tab *ngFor="let tabInfo of tabInfos">
+            <ng-template mat-tab-label>
+                {{tabInfo.TabName|translate}}
+            </ng-template>
+            <oplViewModel #oplViewModel [tabIndex]="tabInfo.TabIndex"></oplViewModel>
+          </mat-tab>
+        
+            <!-- <mat-tab label="{{'OPL.NewTab'|translate}}">
+                <div>
+                    <oplViewModel #newOplViewModel [tabType]="tabIndex">
+                    </oplViewModel>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'OPL.DoingTab'|translate}}">
+                <div>
+                    <oplViewModel #doingOplViewModel [tabType]="tabIndex"></oplViewModel>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'OPL.DoneTab'|translate}}">
+                <div>
+                    <oplViewModel #doneOplViewModel [tabType]="tabIndex"></oplViewModel>
+                </div>
+            </mat-tab> -->
+        </mat-tab-group>
+    </div>
+  </app-layout>

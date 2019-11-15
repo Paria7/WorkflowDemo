@@ -1,0 +1,208 @@
+@mixin make-clickable-element {
+  transition: $transition-time-half;
+  cursor: pointer;
+
+  &:hover {
+    color: $boschLightBlue;
+  }
+
+  &:disabled, &.disabled {
+    color: $boschDarkGray50;
+    cursor: not-allowed;
+
+    &:hover {
+      color: $boschDarkGray50;
+    }
+  }
+}
+
+@mixin make-button-base($line-height, $font-size, $padding) {
+  @include make-font($font-size);
+  line-height: $line-height;
+  font-size: $font-size;
+  padding: $padding;
+  cursor: pointer;
+}
+
+/** Bosch primary button mixins */
+@mixin make-primary-button {
+  color: $boschWhite;
+
+  @include make-button-base($button-size-base, $font-size-base, 0 40px 0 40px);
+  @include make-primary-button-background;
+  @include make-border(0, transparent);
+
+  &:active,
+  &.active,
+  &:active:hover,
+  &:hover,
+  &.focus,
+  &:focus {
+    @include make-primary-button-active;
+  }
+
+  &:disabled,
+  &:hover:disabled,
+  &.disabled {
+    @include make-primary-button-disabled;
+  }
+}
+
+@mixin make-primary-button-large {
+  @include make-button-base($button-size-large, $font-size-large, 0 50px 0 50px);
+}
+
+@mixin make-primary-button-small {
+  @include make-button-base($button-size-small, $font-size-base, 0 20px 0 20px);
+}
+
+@mixin make-primary-button-xsmall {
+  @include make-button-base($button-size-xsmall, $font-size-small, 0 10px 0 10px);
+}
+
+@mixin make-primary-button-background {
+  background-image: linear-gradient(to top, $boschLightBlue 50%, $boschDarkBlue 50%);
+  background-size: 100% 200%;
+  transition: .2s;
+}
+
+@mixin make-primary-button-active {
+  border-color: $boschLightBlue;
+  background-position: 0% 100%;
+  background-color: $boschLightBlue;
+  background-image: linear-gradient(to top, $boschLightBlue 50%, $boschDarkBlue 50%);
+  color: $boschWhite;
+  outline: 0;
+}
+
+@mixin make-primary-button-disabled {
+  background-color: $boschLightGray;
+  border-color: $boschDarkGray50;
+  background-image: none;
+  cursor: not-allowed;
+}
+
+/** Bosch secondary button mixins */
+@mixin make-secondary-button {
+  color: $boschDarkGray;
+  background-color: transparent;
+
+  @include make-button-base($button-size-base - 4px, $font-size-base, 0 40px 0 40px);
+  @include transition(all 0.4s ease 0s);
+  @include make-border(2px, $boschDarkGray);
+
+  &:active,
+  &.active,
+  &:focus,
+  &:hover {
+    @include make-secondary-button-active;
+  }
+
+  &:disabled,
+  &:hover:disabled,
+  &.disabled {
+    @include make-secondary-button-disabled;
+  }
+}
+
+@mixin make-secondary-button-large {
+  @include make-button-base($button-size-large - 4px, $font-size-large, 0 50px 0 50px);
+}
+
+@mixin make-secondary-button-small {
+  @include make-button-base($button-size-small - 4px, $font-size-base, 0 20px 0 20px);
+}
+
+@mixin make-secondary-button-xsmall {
+  @include make-button-base($button-size-xsmall - 4px, $font-size-small, 0 10px 0 10px);
+}
+
+@mixin make-secondary-button-active {
+  border-color: $boschLightBlue;
+  outline: 0;
+}
+
+@mixin make-secondary-button-disabled {
+  color: $boschLightGray;
+  border-color: $boschLightGray;
+  cursor: not-allowed;
+}
+
+/** Bosch link button */
+@mixin make-link-button {
+  color: $boschDarkBlue;
+  background-color: transparent;
+  border: none;
+  @include make-font;
+  @include box-shadow(none);
+  @include make-button-base($button-size-base, 16px, 0 40px 0 40px);
+
+  &::after {
+    position: absolute;
+    @include make-icon($Bosch-Ic-arrow-expand-right, 18px);
+    @include transition(all 0.4s ease 0s);
+  }
+
+  &:hover,
+  &:focus {
+    @include make-link-button-hover;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] {
+    @include make-link-button-disabled;
+  }
+}
+
+@mixin make-link-button-large {
+  @include make-button-base($button-size-large, 18px, 0 50px 0 50px);
+
+  &::after {
+    font-size: 22px;
+  }
+}
+
+@mixin make-link-button-small {
+  @include make-button-base(40px, 14px, 0 20px 0 20px);
+
+  &::after {
+    font-size: 14px;
+  }
+}
+
+@mixin make-link-button-hover {
+  color: $boschBlack;
+  text-decoration: none;
+  outline: 0;
+
+  @include transition(all 0.4s ease 0s);
+
+  &::after {
+    @include translate(4px, 0);
+  }
+}
+
+@mixin make-link-button-disabled {
+  color: $boschLightGray;
+  text-decoration: none;
+  cursor: not-allowed;
+
+  @include transition(none);
+
+  &::after {
+    @include translate(0, 0);
+  }
+}
+
+@mixin make-link-button-no-arrow {
+  &::after {
+    content: "";
+  }
+}
+
+/** Block Buttons */
+@mixin make-block-button {
+  display: block;
+  width: 100%;
+}

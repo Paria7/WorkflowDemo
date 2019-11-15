@@ -1,0 +1,7 @@
+.sub-header {
+  @include make-sub-header;
+
+  .sub-header-element {
+    @include make-sub-header-element;
+  }
+}

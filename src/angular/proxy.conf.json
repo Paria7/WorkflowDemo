@@ -1,0 +1,30 @@
+{
+  "/api": {
+    "target": "http://localhost:61655",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": "api"
+    }
+  },
+  "/proxy": {
+    "target": "http://localhost/webui",
+    "secure": false,
+    "pathRewrite": {
+      "^/proxy": "proxy"
+    }
+  },
+  "/swagger-ui": {
+    "target": "http://localhost/webui",
+    "secure": false,
+    "pathRewrite": {
+      "^/swagger-ui": "swagger-ui"
+    }
+  },
+  "/webui/swagger-ui": {
+    "target": "http://localhost/webui",
+    "secure": false,
+    "pathRewrite": {
+      "^/webui/swagger-ui": "swagger-ui"
+    }
+  }
+}

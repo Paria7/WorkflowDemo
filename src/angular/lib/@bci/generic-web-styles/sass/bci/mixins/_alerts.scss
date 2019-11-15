@@ -1,0 +1,68 @@
+@mixin make-alert-base {
+  padding: $alert-base-spacing * 1.5 $alert-base-spacing;
+  display: flex;
+  align-items: center;
+
+  a {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin make-alert-variant($bgColor, $color) {
+  background-color: $bgColor;
+  color: $color;
+
+  * {
+    color: $color;
+  }
+
+  a {
+    color: darken($color, $alert-link-darkening-factor);
+  }
+}
+
+@mixin make-alert-success {
+  @include make-alert-variant($alert-success-bg, $alert-success-text);
+}
+@mixin make-alert-info {
+  @include make-alert-variant($alert-info-bg, $alert-info-text);
+}
+@mixin make-alert-warn {
+  @include make-alert-variant($alert-warning-bg, $alert-warning-text);
+}
+@mixin make-alert-danger {
+  @include make-alert-variant($alert-danger-bg, $alert-danger-text);
+}
+
+@mixin make-alert-content {
+  @include make-font-bold(14px);
+  margin: 0 $alert-base-spacing;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@mixin make-alert-icon {
+  @extend .Bosch-Ic;
+  font-weight: normal;
+  align-self: flex-start;
+  font-size: $alert-icon-font-size;
+}
+
+@mixin make-alert-close {
+  @extend .Bosch-Ic;
+  @extend .Bosch-Ic-abort;
+
+  font-size: $alert-close-font-size;
+  margin-left: auto;
+  align-self: flex-start;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+  }
+}

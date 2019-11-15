@@ -1,0 +1,110 @@
+.text-muted {
+  @include make-text-muted;
+}
+
+.text-primary {
+  @include make-text-primary;
+}
+
+.text-warning {
+  @include make-text-warning;
+}
+
+.text-danger {
+  @include make-text-danger;
+}
+
+.text-success {
+  @include make-text-success;
+}
+
+.text-info {
+  @include make-text-info;
+}
+
+.bg-success {
+  @include make-bg-success;
+}
+
+a {
+  @include make-anchor;
+}
+
+small, .small {
+  @include make-small-text;
+}
+
+strong, .strong {
+  @include make-font-bold;
+}
+
+// in bosch cd there is no italic
+em, .italic {
+  @include make-font;
+}
+
+// in bosch cd there is no bold italic
+strong em, em strong, strong .italic, .italic strong, .italic .strong, .strong .italic {
+  @include make-font-bold;
+}
+
+abbr[data-original-title], abbr[title] {
+  @include make-addr-text;
+}
+
+
+
+
+//
+// Text gradient variations predefinition
+// ==========================================================================
+
+// u-Text__gradient--{modifiers}
+//
+// Markup:
+// <h1 class="{$modifiers}">Headline with font gradient</h1>
+//
+// .u-Text__gradient--fuchsia-violet  -  Gradient from Fuchsia to violet
+// .u-Text__gradient--red-fuchsia - Gradient from Fuchsia to red
+// .u-Text__gradient--violet-darkBlue - Gradient from violet to darkBlue
+// .u-Text__gradient--darkBlue-lightBlue - Gradient from darkBlue to lightBlue
+// .u-Text__gradient--lightBlue-turquoise - Gradient from lightBlue to Turquoise
+// .u-Text__gradient--turquoise-lightGreen - Gradient from Turquoise to lightGreen
+// .u-Text__gradient--lightGreen-darkGreen - Gradient from ligthGreen to DarkGreen
+//
+// Styleguide 0.2.5
+
+.u-Text__gradient--fuchsia-violet {
+
+  @include text-gradient(fuchsia-violet);
+}
+
+.u-Text__gradient--red-fuchsia {
+
+  @include text-gradient(red-fuchsia);
+}
+
+.u-Text__gradient--violet-darkBlue {
+
+  @include text-gradient(violet-darkBlue);
+}
+
+.u-Text__gradient--darkBlue-lightBlue {
+
+  @include text-gradient(darkBlue-lightBlue);
+}
+
+.u-Text__gradient--lightBlue-turquoise {
+
+  @include text-gradient(lightBlue-turquoise);
+}
+
+.u-Text__gradient--turquoise-lightGreen {
+
+  @include text-gradient(turquoise-lightGreen);
+}
+
+.u-Text__gradient--lightGreen-darkGreen {
+
+  @include text-gradient(lightGreen-darkGreen);
+}

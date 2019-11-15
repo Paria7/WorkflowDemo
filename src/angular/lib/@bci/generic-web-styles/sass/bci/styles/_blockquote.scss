@@ -1,0 +1,7 @@
+blockquote, .blockquote {
+  @include make-blockquote;
+
+  &.blockquote-reverse {
+    @include make-blockquote-reverse;
+  }
+}

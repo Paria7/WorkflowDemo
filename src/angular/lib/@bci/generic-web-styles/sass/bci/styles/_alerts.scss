@@ -1,0 +1,28 @@
+.alert {
+  @include make-alert-base;
+
+  .alert-content {
+    @include make-alert-content;
+  }
+
+  .alert-icon {
+    @include make-alert-icon;
+  }
+
+  .alert-close {
+    @include make-alert-close;
+  }
+}
+
+.alert-success {
+  @include make-alert-success;
+}
+.alert-info {
+  @include make-alert-info;
+}
+.alert-warn {
+  @include make-alert-warn;
+}
+.alert-danger {
+  @include make-alert-danger;
+}

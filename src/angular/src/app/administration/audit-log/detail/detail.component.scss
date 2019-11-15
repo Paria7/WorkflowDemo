@@ -1,0 +1,30 @@
+$div-mg-top: 15px;
+.user-info {
+  div {
+    margin-top: $div-mg-top;
+  }
+  h3 {
+    margin-top: 20px;
+  }
+}
+
+.request-info {
+  div {
+    margin-top: $div-mg-top;
+  }
+}
+
+.response-info {
+  div {
+    margin-top: $div-mg-top;
+  }
+}
+
+.request-param, .response-param {
+  background-color: #F5F5F5;
+  border: 1px solid #C1C1C1;
+}
+
+.response-param{
+  overflow-x: auto;
+}

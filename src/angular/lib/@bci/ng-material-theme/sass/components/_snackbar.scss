@@ -1,0 +1,58 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+
+snack-bar-container.mat-snack-bar-container {
+  border-radius: 0;
+  padding: 16px 24px;
+  @include make-alert-info();
+
+  &.mat-snack-bar-top {
+    margin-top: 24px;
+  }
+
+  .mat-simple-snackbar {
+    @include make-font-bold(14px);
+    justify-content: start;
+
+    &:before {
+      @include make-alert-icon();
+      margin: auto 16px auto 0;
+      content: $Bosch-Ic-information;
+    }
+  }
+
+  .mat-simple-snackbar-action {
+    @include make-font-bold(14px);
+  }
+
+  &.error {
+    @include make-alert-danger();
+
+    .mat-simple-snackbar:before {
+      @include make-alert-icon();
+      margin: auto 16px auto 0;
+      content: $Bosch-Ic-notification-error;
+    }
+  }
+
+  &.success {
+    @include make-alert-success();
+
+    .mat-simple-snackbar:before {
+      @include make-alert-icon();
+      margin: auto 16px auto 0;
+      content: $Bosch-Ic-notification-success;
+    }
+  }
+
+  &.warning {
+    @include make-alert-warn();
+
+    .mat-simple-snackbar:before {
+      @include make-alert-icon();
+      margin: auto 16px auto 0;
+      content: $Bosch-Ic-notification-warning;
+    }
+  }
+
+}

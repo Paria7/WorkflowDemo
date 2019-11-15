@@ -1,0 +1,72 @@
+{
+  "_from": "@bci/ng-core",
+  "_id": "@bci/ng-core@6.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-Gd7htAnswtZXaqaonTuLVVZoJYSlKqbREhVX3t+ZNNjkX3QcqbgE/x0IEjDY7wAxHWj2jvfsr5DyNF6QORFHlA==",
+  "_location": "/@bci/ng-core",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@bci/ng-core",
+    "name": "@bci/ng-core",
+    "escapedName": "@bci%2fng-core",
+    "scope": "@bci",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://rb-repobci.de.bosch.com:8081/repository/npm-group/@bci/ng-core/-/ng-core-6.0.1.tgz",
+  "_shasum": "77b04d6465763e1efcc95550da8e3b572e277f8d",
+  "_spec": "@bci/ng-core",
+  "_where": "D:\\Product\\SMC\\WebCore\\6.0",
+  "author": {
+    "name": "Johannes Steier",
+    "url": "BCI/ESW11"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "deprecated": false,
+  "description": "Angular modules, components and services for common functionality in BCI web apps",
+  "es2015": "fesm2015/bci-ng-core.js",
+  "esm2015": "esm2015/bci-ng-core.js",
+  "esm5": "esm5/bci-ng-core.js",
+  "fesm2015": "fesm2015/bci-ng-core.js",
+  "fesm5": "fesm5/bci-ng-core.js",
+  "main": "bundles/bci-ng-core.umd.js",
+  "metadata": "bci-ng-core.metadata.json",
+  "module": "fesm5/bci-ng-core.js",
+  "name": "@bci/ng-core",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@angular/animations": "^6.0.0",
+    "@angular/cdk": "^6.2.1",
+    "@angular/flex-layout": "^6.0.0-beta.16 || ^6.0.0",
+    "@angular/forms": "^6.0.0",
+    "@angular/http": "^6.0.0",
+    "@angular/material": "^6.2.1",
+    "@angular/router": "^6.0.0",
+    "@bci/generic-web-styles": "^1.0.7",
+    "@bci/ng-material-theme": "^6.0.0",
+    "rxjs": "^6.2.0"
+  },
+  "publishConfig": {
+    "@bci:registry": "http://rb-repobci.de.bosch.com:8081/repository/npm-hosted/",
+    "@mes:registry": "http://rb-repobci.de.bosch.com:8081/repository/npm-hosted/",
+    "@nexeed:registry": "http://rb-repobci.de.bosch.com:8081/repository/npm-hosted/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://rb-tfsbci.de.bosch.com/tfs/OpConDev/CoreDev/_git/bci-ng-core"
+  },
+  "sideEffects": false,
+  "typings": "bci-ng-core.d.ts",
+  "version": "6.0.1"
+}

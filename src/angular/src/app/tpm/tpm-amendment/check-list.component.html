@@ -1,0 +1,171 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'TPMPlanDetail.Title'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<div [formGroup]="form">
+    <mat-dialog-content>
+        <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="checkBoxes" *ngIf="isPortal">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="checkedDetails.hasValue() && isAllChecked()"
+                        [indeterminate]="checkedDetails.hasValue() && !isAllChecked()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? checkedDetails.toggle(row) : null"
+                        [checked]="checkedDetails.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="no">
+                <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;let i = index">
+                    {{i+1}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.CnDescription}}" matTooltipPosition="above">
+                        {{row.CnDescription}}</div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>{{'Common.Status'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Status}}" matTooltipPosition="above">{{row.Status}}
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="time">
+                <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.Time'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.CostTime}}" matTooltipPosition="above">{{row.CostTime}}
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="interval">
+                <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.Interval'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Interval}}" matTooltipPosition="above">{{row.Interval}}
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="doBy">
+                <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.DoBy'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.DoUser}}" matTooltipPosition="above">{{row.DoUser}}
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="checkValue">
+                <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.CheckValue'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.CheckValue}}" matTooltipPosition="above">
+                        {{row.CheckValue}}
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayColumns">
+            </mat-header-row>
+            <mat-row *matRowDef="let row ;columns:displayColumns ; let index=index;" (click)="selectRow(row,index)">
+            </mat-row>
+        </mat-table>
+        <br />
+        <div class="grid-container-4">
+            <mat-form-field>
+                <input class="readonlyColor" [(ngModel)]="selectedRow.RowNo" matInput readonly formControlName="No"
+                    [placeholder]="'Common.No'|translate">
+            </mat-form-field>
+            <mat-form-field>
+                <input class="readonlyColor" [(ngModel)]="selectedRow.Status" matInput readonly formControlName="Status"
+                    [placeholder]="'Common.Status'|translate">
+            </mat-form-field>
+            <mat-form-field>
+                <input class="readonlyColor" [(ngModel)]="selectedRow.CostTime" matInput readonly
+                    formControlName="CostTime" [placeholder]="'TPMPlanDetail.Time'|translate">
+            </mat-form-field>
+            <mat-form-field>
+                <input class="readonlyColor" [(ngModel)]="selectedRow.Interval" matInput readonly
+                    formControlName="Interval" [placeholder]="'TPMPlanDetail.Interval'|translate">
+            </mat-form-field>
+        </div>
+        <div class="grid-container-2">
+            <mat-form-field>
+                <textarea class="readonlyColor" [(ngModel)]="selectedRow.HowToMaintain" matInput readonly
+                    formControlName="HowToMaintain" [placeholder]="'TPMPlanDetail.HowToMaintain'|translate"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea class="readonlyColor" [(ngModel)]="selectedRow.Tools" matInput readonly
+                    formControlName="Tools" [placeholder]="'TPMPlanDetail.Tools'|translate"></textarea>
+            </mat-form-field>
+            <mat-checkbox formControlName="IsNg" (change)='changeIsNg($event)' [(ngModel)]="selectedRow.IsNg">
+                {{'TPMPlanDetail.IsNg'|translate}}
+            </mat-checkbox>
+            <div [hidden]="!selectedRow.NeedCheckValue">
+                <mat-form-field class="mat-form-field-width">
+                    <input class="readonlyColor" matInput [(ngModel)]="checkValue" formControlName="Values"
+                        (blur)="saveCheckValue()" [placeholder]="'TPMPlanDetail.CheckValue'|translate"
+                        [readonly]="selectedRow.Status==='Complete'">
+                    <!-- <mat-error *ngIf="form.hasError('required',['Values'])">
+                        {{'CheckDetail.CheckValueRequired'|translate}}</mat-error> -->
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="{{'TPMPlanDetail.Attachment'|translate}}">
+                    <div>
+                        <div *ngFor="let attachment of attachments">
+                            <a [href]="attachment.DownloadUri">
+                                <h5>{{attachment.Name}}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="{{'TPMPlanDetail.OPL'|translate}}">
+                    <div *ngIf="opls">
+                        <oplListModel #oplListModel [oplList]="opls" [checkDetailId]="selectedRow.Id"
+                            [tpmPlanDetailId]='selectedRow.TPMPlanDetailId' [deviceId]="selectedRow.DeviceId"
+                            [viewType]="viewType" [needSwingCard]="!isLogin">
+                        </oplListModel>
+                    </div>
+                </mat-tab>
+                <mat-tab label="{{'TPMPlanDetail.RepairLog'|translate}}">
+                    <div *ngIf="repairLogs">
+                        <repairLogListModel #repairLogListModel [repairList]="repairLogs"
+                            [checkDetailId]="selectedRow.Id" [viewType]="viewType" [needSwingCard]="!isLogin">
+                        </repairLogListModel>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="primary-actions" *ngIf="showButtons">
+            <ng-container *ngIf="selectedRow.Status!='InCompelete' && viewType!=0">
+                <ng-container *ngIf="selectedRow.CanDoSave">
+                    <button mat-raised-button type="button" (click)="save()">{{'Common.Save'|translate}}</button>
+                </ng-container>
+                <ng-container *ngIf="selectedRow.CanDoComplete">
+                    <button mat-raised-button type="button"
+                        (click)="complete()">{{'Common.MarkAsComplete'|translate}}</button>
+                </ng-container>
+            </ng-container>
+            <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</div>

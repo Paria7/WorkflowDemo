@@ -1,0 +1,158 @@
+<app-layout>
+  <form [formGroup]="form">
+    <mat-grid-list cols="8" rowHeight="80px">
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input [(ngModel)]="queryModel.plantName" matInput placeholder="{{'Plant.Title'|translate}}" formControlName="PlantName">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input [(ngModel)]="queryModel.code" matInput placeholder="{{'Line.Code'|translate}}" formControlName="Code">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input [(ngModel)]="queryModel.name" matInput placeholder="{{'Line.Name'|translate}}" formControlName="Name">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input [(ngModel)]="queryModel.processName" matInput placeholder="{{'Process.Name'|translate}}" formControlName="ProcessName">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.isActive" placeholder="{{'Common.IsActive'|translate}}" formControlName="IsActive">
+            <mat-option [value]="'all'">{{'Common.All'|translate}}</mat-option>
+            <mat-option [value]="true">{{'Common.True'|translate}}</mat-option>
+            <mat-option [value]="false">{{'Common.False'|translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3">
+        <button mat-raised-button color="primary" (click)="query()">{{'Common.Query'|translate}}</button>
+        <button mat-raised-button color="primary" (click)="onClickDownloadKPITemplate()">{{'Line.LineDownloadKPITemplate'|translate}}</button>
+        <button mat-raised-button color="primary" (click)="onClickExportLineKPI()">{{'Line.LineExportKPI'|translate}}</button>
+        <button mat-raised-button color="primary" (click)="onClickImportLineKPI()">
+          {{'Line.LineImportKPI'|translate}}
+          <app-file-uploader #kpiFileUploader (fileSelected)="onImportLineKPIFileSelected($event)"></app-file-uploader>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="no">
+      <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row;let i = index">
+        {{i+1}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="plantCode">
+      <mat-header-cell *matHeaderCellDef>{{'Plant.Code'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.PlantCode}}" matTooltipPosition="above">{{row.PlantCode}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="plantName">
+      <mat-header-cell *matHeaderCellDef>{{'Plant.Name'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.PlantName}}" matTooltipPosition="above">{{row.PlantName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="processName">
+      <mat-header-cell *matHeaderCellDef>{{'Process.Name'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.ProcessName}}" matTooltipPosition="above">{{row.ProcessName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef>{{'Line.Code'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Code}}" matTooltipPosition="above">{{row.Code}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>{{'Line.Name'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <mat-header-cell *matHeaderCellDef>{{'Common.IsActive'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.IsActive ? ('Common.Yes'|translate):('Common.Not'|translate)}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isNewLine">
+      <mat-header-cell *matHeaderCellDef>{{'Line.IsNewLine'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.IsNewLine ? ('Common.Yes'|translate):('Common.Not'|translate)}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">{{row.Description}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="createUser">
+      <mat-header-cell *matHeaderCellDef>{{'Common.CreateUser'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.CreatedBy}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="createTime">
+      <mat-header-cell *matHeaderCellDef>{{'Common.CreateTime'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.CreatedOn | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateUser">
+      <mat-header-cell *matHeaderCellDef>{{'Common.UpdateUser'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.UpdatedBy}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateTime">
+      <mat-header-cell *matHeaderCellDef>{{'Common.UpdateTime'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.UpdatedOn | date: 'yyyy-MM-dd HH:mm:ss'}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="add()">
+          <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="edit(row)">
+          <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="remove(row.Id)">
+          <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+    <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</app-layout>

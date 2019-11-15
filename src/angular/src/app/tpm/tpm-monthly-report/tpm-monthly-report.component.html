@@ -1,0 +1,72 @@
+<app-layout>
+  <form [formGroup]="form">
+    <mat-grid-list cols="14" rowHeight="80px">
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="Area" [(ngModel)]="queryModel.AreaId"
+            (selectionChange)='onQueryChangeValueStream($event)' formControlName="Area">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of areas" [value]="item.Id">
+              {{item.AreaName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Area'])">{{'Validator.AreaRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="ValueStream" [(ngModel)]="queryModel.ValueStreamId"
+            (selectionChange)='onQueryChangeLine($event)' formControlName="ValueStream">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of valueStreams" [value]="item.Id">
+              {{item.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['ValueStream'])">{{'Validator.ValueStreamRequired'|translate}}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="Line" [(ngModel)]="queryModel.LineId" (selectionChange)='onQueryChangeDevice($event)'
+            formControlName="Line">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of lines" [value]="item.Id">
+              {{item.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Line'])">{{'Validator.LineRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="Device" [(ngModel)]="queryModel.DeviceId" formControlName="Device">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of devices" [value]="item.Id">
+              {{item.DeviceName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Device'])">{{'Validator.DeviceRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3">
+        <mat-form-field>
+          <input matInput [matDatepicker]="resultPicker" [(ngModel)]="planDate" placeholder="{{'PlanDate'|translate}}"
+            formControlName="PlanDate">
+          <mat-datepicker-toggle matSuffix [for]="resultPicker"></mat-datepicker-toggle>
+          <mat-datepicker #resultPicker startView="year" (monthSelected)="monthSelectedHandler($event)">
+          </mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3">
+        <button mat-raised-button color="primary"
+          (click)="previewTpmDetail($event)">{{'Common.Query'|translate}}</button>
+        <button mat-raised-button color="primary"
+          (click)="exportTpmDetail($event)">{{'Common.Export'|translate}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  <div #targetdiv>
+
+  </div>
+</app-layout>

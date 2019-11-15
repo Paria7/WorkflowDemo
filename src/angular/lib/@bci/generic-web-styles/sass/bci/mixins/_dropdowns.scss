@@ -1,0 +1,94 @@
+//------------------------------------------------------------------------------------------------------ BUTTON
+@mixin make-dropdown {
+  @include make-primary-button;
+  position: relative;
+  display: inline-block;
+
+  * {
+    font-size: $dropdown-font-size;
+  }
+}
+
+@mixin make-dropdown-label {
+  &::after {
+    @include make-icon($Bosch-Ic-arrow-expand-down, $dropdown-font-size);
+    margin-left: 4px;
+  }
+}
+
+
+//------------------------------------------------------------------------------------------------------ MENU ELEMENT
+@mixin make-dropdown-element {
+  padding: 8px 20px;
+  line-height: normal;
+  cursor: pointer;
+  background: $dropdown-bg-color;
+
+  opacity: 0;
+  transition: opacity $dropdown-transition-time 0.0s;
+
+  * {
+    color: $dropdown-menu-color;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  &:hover, &:focus, &:active {
+    background: $dropdown-menu-hover-bg-color;
+
+    * {
+      color: $dropdown-menu-hover-color;
+    }
+  }
+}
+
+@mixin make-dropdown-element-visible {
+  opacity: 1;
+  transition: opacity $dropdown-transition-time $dropdown-transition-time;
+}
+
+
+//------------------------------------------------------------------------------------------------------ MENU
+@mixin make-dropdown-menu {
+  overflow: hidden;
+  z-index: $dropdown-z-index;
+  background: $dropdown-bg-color;
+
+  position: absolute;
+  right: 0;
+  top: calc(100% + 1px);
+  margin: 0;
+  padding: 0;
+
+  @include box-shadow(0 6px 12px rgba(0, 0, 0, .075));
+
+  border-top: $dropdown-border-transparent;
+  border-bottom: $dropdown-border-transparent;
+
+  transform: scaleY(0);
+  transform-origin: top;
+
+  transition: border-top $dropdown-transition-time 0.0s,
+  border-bottom $dropdown-transition-time 0.0s,
+  transform $dropdown-transition-time $dropdown-transition-time;
+
+  > * {
+    @include make-dropdown-element;
+  }
+}
+
+@mixin make-dropdown-menu-visible {
+  border-top: $dropdown-border;
+  border-bottom: $dropdown-border;
+
+  transform: scaleY(1);
+  transform-origin: top;
+
+  transition: border-top $dropdown-transition-time $dropdown-transition-time,
+  border-bottom $dropdown-transition-time $dropdown-transition-time,
+  transform $dropdown-transition-time 0.0s;
+
+  > * {
+    @include make-dropdown-element-visible;
+  }
+}

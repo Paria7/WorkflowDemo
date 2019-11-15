@@ -1,0 +1,153 @@
+$layout-height: 1000px;
+$layout-width: 500px;
+$device-square-default-length: 100px;
+
+.line-edit-header {
+  margin: 15px;
+
+  .summary-info {
+
+    //background-color: #F2F2F2;
+    .had-mapped-device {
+      label {
+        font-size: 16px;
+      }
+
+      span {
+        margin-right: 15px;
+      }
+    }
+
+    .line-map-title {
+      margin-top: 15px;
+
+      label {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.line-eidt-content {
+  margin: 15px 15px 15px 15px;
+
+  .line-layout {
+    //width: $layout-height;
+    //height: $layout-width;
+    //background: url('../../../assets/img/line1.jpg') no-repeat;
+    background-size: $layout-height $layout-width;
+
+    .device-square {
+      position: absolute;
+      /*必须设为absolute，否则前面的原素改变位置和大小会影响后面的原素*/
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+
+      a {
+        color: #FFFFFF;
+      }
+
+      .device-square-header {
+        background-color: #EEEEEE;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      .device-square-content {
+        color: #ffffff;
+        text-align: center;
+
+      }
+    }
+  }
+}
+
+/*重写默认的图标大小*/
+.Bosch-Ic {
+  font-size: 15px;
+}
+
+$icon-length: 25px;
+
+button.mat-icon-button {
+  min-width: $icon-length !important;
+  width: $icon-length !important;
+  height: $icon-length !important;
+  line-height: $icon-length !important;
+}
+
+.operation-btn {
+  //label {
+  //  text-align: left;
+  //}
+  text-align: right;
+
+  span {
+    display: inline-block;
+    text-align: left;
+  }
+}
+
+/*!*自定义鼠标样式*!
+.ng-draggable {
+  cursor: move;
+}*/
+
+
+/*颜色代表的状态设置*/
+ul {
+  li {
+    list-style: none;
+    display: inline-block;
+    width: 50px;
+    height: 15px;
+  }
+
+}
+
+.mat-grid-tile> ::ng-deep figure {
+  justify-content: left !important;
+}
+
+.show-code span {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+
+.default {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.success-msg {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  @extend .default;
+}
+
+.danger-msg {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  @extend .default;
+}
+
+.line-map-title input {
+  // height: 25px;
+  border: 1px;
+  height: 40px;
+}
+
+// .small-btn {
+//   height: 30px;
+//   line-height: 30px;
+// }
+
+.mg15 {
+  margin: 0 15px;
+}

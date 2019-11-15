@@ -1,0 +1,56 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+
+mat-paginator.mat-paginator {
+  color: $font-color;
+  font-size: $font-size-base;
+
+  .mat-paginator-container {
+    padding: 8px 0;
+
+    .mat-paginator-page-size {
+      .mat-paginator-page-size-label {
+        margin: 0 8px;
+      }
+
+      .mat-paginator-page-size-select {
+        min-width: 80px;
+        padding: 0;
+        margin: 0;
+
+        .mat-select-trigger {
+          font-size: $font-size-base;
+        }
+      }
+    }
+
+    .mat-paginator-navigation-previous {
+      .mat-paginator-icon {
+        display: none;
+      }
+
+      &:before {
+        position: absolute;
+        display: block;
+        right: 8px;
+        top: 0px;
+        @include make-icon($Bosch-Ic-arrow-expand-left, 24px);
+      }
+    }
+
+    .mat-paginator-navigation-next {
+      .mat-paginator-icon {
+        display: none;
+      }
+
+      &:before {
+        position: absolute;
+        display: block;
+        right: 8px;
+        top: 0px;
+        @include make-icon($Bosch-Ic-arrow-expand-right, 24px);
+      }
+    }
+  }
+}
+

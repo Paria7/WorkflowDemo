@@ -1,0 +1,114 @@
+<app-layout>
+    <div>
+        <!-- <bci-commandbar (search)="searchData($event)"></bci-commandbar> -->
+        <form [formGroup]="form" (submit)="query()">
+            <mat-grid-list cols="8" rowHeight="80px">
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <input [(ngModel)]="queryModel.UserName" matInput placeholder="{{'UserManagement.UserName'|translate}}" formControlName="UserName">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <input [(ngModel)]="queryModel.EmployeeNo" matInput placeholder="{{'UserManagement.EmployeeNo'|translate}}" formControlName="EmployeeNo">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="queryModel.Role" placeholder="{{'UserManagement.Roles'|translate}}" formControlName="Role">
+                            <mat-option [value]=""></mat-option>
+                            <mat-option *ngFor="let role of roles" [value]="role.Id">{{role.Name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="queryModel.Status" placeholder="{{'UserManagement.Status'|translate}}" formControlName="Status">
+                            <mat-option [value]="''">{{'Common.All'|translate}}</mat-option>
+                            <mat-option *ngFor="let status of userStatuses" [value]="status.Id">{{status.Name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="queryModel.PlantId" placeholder="{{'Plant.Title'|translate}}" formControlName="Plant">
+                            <mat-option [value]=""></mat-option>
+                            <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <button mat-raised-button color="primary">{{'Common.Query'|translate}}</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </div>
+    <div>
+        <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="no">
+                <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;let i = index">
+                    {{i+1}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.UserName'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="employeeNo">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.EmployeeNo'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.EmployeeNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Status'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.StatusName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="plant">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Plant'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.PlantName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="mail">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Mail'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Mail}}" matTooltipPosition="above">{{row.Mail}}</div>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="mobileno">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.MobileNo'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.MobileNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="phoneno">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.PhoneNo'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.PhoneNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="roles">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Roles'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.RoleNames}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>
+                    <button mat-icon-button (click)="add()">
+                        <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+                    </button>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <button (click)="edit(row)" mat-icon-button>
+                        <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
+                    </button>
+                    <button (click)="delete(row.Id)" mat-icon-button>
+                        <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+                    </button>
+                    <button (click)="resetPassword(row.Id)" mat-icon-button>
+                        <mat-icon fontIcon="Bosch-Ic-reset"></mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columns">
+            </mat-header-row>
+            <mat-row *matRowDef="let row ; columns:columns"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</app-layout>

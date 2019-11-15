@@ -1,0 +1,34 @@
+<div class="full-space">
+  <div class="padding20 white-bg">
+    <div class="row col-12">
+      <div class="col-1" style="float: left">
+        <div style="height: 300px">
+          <div style="overflow-y:auto">
+            <div id="tool.data.id" *ngFor="let tool of tools$" [dndDraggable]="tool" [dndEffectAllowed]="'all'"
+              (dndStart)="onDragStart($event)" (dndMoved)="onDraggableMoved($event)"
+              (dndCanceled)="onDragCanceled($event)" (dndEnd)="onDragEnd($event)">
+              <p class="example-button-row">
+                <a mat-fab color="primary">{{tool.name}}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-11" style="float: left">
+        <div style="height: 700px">
+          <div id="flow-panel" dndDropzone (dndDrop)="onDrop($event)"
+            style="position:absolute;width:100%;height:700px;background-color:rgba(245, 239, 239, 0.24)"></div>
+        </div>
+        <br />
+        <div style="height: 100px">
+          <button mat-raised-button color="primary" (click)="save()">{{'Common.Save'|translate}}</button>
+          <textarea id="jsonOutput" rows="10" style="width: 600px;"></textarea>
+        </div>
+        <div style="height: 100px">
+          <button mat-raised-button color="primary" (click)="load()">Load</button>
+          <textarea id="jsonInput" rows="10" style="width: 600px;"></textarea>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

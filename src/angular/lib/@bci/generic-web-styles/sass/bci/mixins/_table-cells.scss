@@ -1,0 +1,64 @@
+// Table Cells
+
+@function accentColorOf($color) {
+  @return darken($color, $table-bg-accent-darken-by);
+}
+
+@mixin table-cell($color, $backgroundColor, $backgroundColorHover) {
+  @if $color != 'inherit' {
+    border-bottom: 2px solid $color;
+  }
+
+  background: transparent;
+  background-color: $backgroundColor;
+
+  transition: .1s;
+
+  color: $color;
+}
+
+@mixin table-cell-hover($colorHover, $backgroundColor, $backgroundColorHover) {
+  background-color: $backgroundColorHover;
+
+  transition: .2s;
+
+  color: $colorHover;
+}
+
+@function getTableCellStylePlaceholder($state) {
+  $prefix: 'table-cell';
+  @if ($state == '') {
+    @return $prefix;
+  }
+  @return '#{$prefix}-#{$state}';
+}
+
+@mixin table-cells($state, $color, $backgroundColor, $backgroundColorAccent:accentColorOf($backgroundColor), $colorHover:$color, $backgroundColorHover:$color, $backgroundColorAccentHover:accentColorOf($backgroundColorHover)) {
+  $placeholder: getTableCellStylePlaceholder($state);
+
+  %#{$placeholder} {
+    @include table-cell($color, $backgroundColor, $backgroundColorHover)
+  }
+
+  %#{$placeholder}-hover {
+    @include table-cell-hover($colorHover, $backgroundColor, $backgroundColorHover)
+  }
+
+  %#{$placeholder}-stripes {
+    @include table-cell($color, $backgroundColorAccent, $backgroundColorAccentHover)
+  }
+
+  %#{$placeholder}-stripes-hover {
+    @include table-cell-hover($colorHover, $backgroundColorAccent, $backgroundColorAccentHover);
+  }
+}
+
+// predefined table row variants
+@include table-cells('', 'inherit', $table-bg, $table-bg-accent, 'inherit', $table-bg-hover, $table-bg-accent-hover);
+@include table-cells('success', $state-success-text, $state-success-bg, $colorHover: $boschWhite);
+@include table-cells('info', $state-info-text, $state-info-bg, $colorHover: $boschWhite);
+@include table-cells('warning', $state-warning-text, $state-warning-bg, $colorHover: $boschWhite);
+@include table-cells('danger', $state-danger-text, $state-danger-bg, $colorHover: $boschWhite);
+@include table-cells('selected', $table-color-selected, $table-bg-selected, $colorHover: $table-color-selected-hover, $backgroundColorHover: $table-bg-selected-hover);
+
+$tableRowStates: ('' 'success' 'info' 'warning' 'danger' 'selected');

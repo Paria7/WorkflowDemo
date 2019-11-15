@@ -1,0 +1,187 @@
+.ngx-datatable {
+
+  .datatable-header {
+    font-weight: bold;
+    border-bottom: 4px solid $boschLightGray;
+
+    .sort-btn {
+      &.datatable-icon-down:before {
+        @include make-icon($Bosch-Ic-arrow-down, 32px);
+        font-weight: normal;
+      }
+
+      &.datatable-icon-up:before {
+        @include make-icon($Bosch-Ic-arrow-up, 32px);
+        font-weight: normal;
+      }
+    }
+  }
+
+  .datatable-checkbox.isSelected::before {
+    @include make-icon($Bosch-Ic-checkmark, 25px);
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    color: $boschDarkBlue;
+  }
+
+  .datatable-body-cell,
+  .datatable-header-cell {
+    padding: 0 12px;
+
+    .datatable-checkbox {
+      width: 16px;
+      height: 16px;
+      line-height: initial;
+      margin-top: 16px;
+      padding: 0;
+      display: block;
+      cursor: pointer;
+      @include make-border(0 0 2px 0, $boschDarkGray50);
+      background-color: $boschLightGray50;
+
+      input {
+        opacity: 0.0;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .datatable-body-cell {
+    &:nth-of-type(even) {
+      background-color: $boschLightGray15;
+    }
+
+    .datatable-body-cell-label {
+      line-height: 48px;
+      height: 48px;
+    }
+  }
+
+  .datatable-header {
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .datatable-header-cell {
+    display: flex !important;
+    align-items: center !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    > div {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: initial;
+    }
+
+    .resize-handle:hover {
+      background-color: $boschLightGray25;
+      transition: background-color 400ms ease;
+    }
+  }
+
+  .datatable-row-wrapper {
+    border-top: 1px solid $boschLightGray;
+
+    &:first-of-type {
+      border-top: none;
+    }
+  }
+
+  .Bosch-Ic {
+    font-size: 24px;
+    color: $boschBlack;
+  }
+
+  .datatable-row-right {
+    color: white;
+    background-color: white;
+  }
+
+  datatable-pager {
+
+    .pager {
+      @include make-pagination-medium;
+
+      .active {
+
+        @include make-pagination-element-selected($pagination-medium-size-base);
+      }
+    }
+
+    .pager {
+
+      > li {
+        vertical-align: middle;
+
+        &:first-child::after,
+        &:hover:first-child::after,
+        &:active:first-child::after,
+        &:focus:first-child::after,
+        &:last-child::after,
+        &:hover:last-child::after,
+        &:active:last-child::after,
+        &:focus:last-child::after {
+          display: none;
+        }
+
+        a {
+          vertical-align: middle;
+          font-size: 20px;
+        }
+      }
+
+      i.datatable-icon-left:before {
+        @include make-icon($Bosch-Ic-arrow-expand-left, 20px);
+      }
+
+      i.datatable-icon-right:before {
+        @include make-icon($Bosch-Ic-arrow-expand-right, 20px);
+      }
+
+      i.datatable-icon-prev:after {
+        @include make-icon($Bosch-Ic-arrow-end-left, 20px);
+      }
+
+      i.datatable-icon-skip:before {
+        @include make-icon($Bosch-Ic-arrow-end-right, 20px);
+      }
+
+      .pages {
+        > *:hover {
+          @include make-pagination-element-hover;
+        }
+
+        > *:disabled, *.disabled {
+          @include make-pagination-element-disabled;
+        }
+
+        &.active a {
+          color: $boschWhite !important;
+          @include make-pagination-element-selected($pagination-medium-size-base);
+        }
+
+        a {
+          @include make-pagination-element($pagination-medium-size-base, $pagination-medium-font-size);
+          margin: 0;
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+}

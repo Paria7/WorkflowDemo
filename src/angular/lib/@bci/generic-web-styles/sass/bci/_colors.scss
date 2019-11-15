@@ -1,0 +1,128 @@
+// bosch master-brand colors
+$boschRed: #E20015;
+$boschFuchsia: #B90276;
+$boschFuchsia50: #DC80BA;
+$boschViolet: #50237F;
+$boschViolet50: #A791BF;
+$boschDarkBlue: #005691;
+$boschDarkBlue50: #7FAAC8;
+$boschLightBlue: #008ECF;
+$boschLightBlue50: #7FC6E7;
+$boschTurquoise: #00A8B0;
+$boschTurquoise50: #7fd3d7;
+$boschLightGreen: #78BE20;
+$boschLightGreen50: #bbde8f;
+$boschDarkGreen: #006249;
+$boschDarkGreen50: #7fb0a4;
+$boschGreen: #328D46;
+
+$boschBlack: #000000;
+$boschDarkGray75: #7d8790;
+$boschDarkGray50: #a8afb5;
+$boschDarkGray25: #d4d7da;
+$boschWhite: #FFFFFF;
+$boschLightGray75: #cfd0d1;
+$boschLightGray50: #dfdfe0;
+$boschLightGray25: #efeff0;
+$boschLightGray15: #F7F7F7;
+$boschLightGray05: #FBFBFB;
+$boschDarkGray: #525f6b;
+$boschLightGray: #bfc0c2;
+
+// Functional colors
+$boschSignalYellow: #fcaf17;
+$boschSignalRed: #e11f26;
+$boschSignalOrange: #ff6a00;
+$boschSignalGreen: #70bf54;
+
+$boschLightBlue15T: rgba($boschLightBlue, 0.15);
+
+// Shades
+$boschRedW75: #F8BFC5;
+$boschRedW50: #F17F8B;
+$boschRedW25: #EA4051;
+$boschRed: #E30015;
+$boschRedB25: #A90010;
+$boschRedB50: #71000B;
+$boschRedB75: #390005;
+$boschFuchsiaW75: #EDC0DD;
+$boschFuchsiaW50: #DC80BA;
+$boschFuchsiaW25: #CB4198;
+$boschFuchsia: #B90276;
+$boschFuchsiaB25: #8B0158;
+$boschFuchsiaB50: #5D013B;
+$boschFuchsiaB75: #2E011E;
+$boschVioletW75: #D3C8DF;
+$boschVioletW50: #A791BF;
+$boschVioletW25: #7C5A9F;
+$boschViolet: #50237F;
+$boschVioletB25: #3C1A5F;
+$boschVioletB50: #281240;
+$boschVioletB75: #140920;
+$boschDarkBlueW75: #BFD5E3;
+$boschDarkBlueW50: #7FAAC8;
+$boschDarkBlueW25: #4080AD;
+$boschDarkBlue: #005691;
+$boschDarkBlueB25: #00406D;
+$boschDarkBlueB50: #002B49;
+$boschDarkBlueB75: #001624;
+$boschLightBlueW75: #BFE3F3;
+$boschLightBlueW50: #7FC6E7;
+$boschLightBlueW25: #40AADB;
+$boschLightBlue: #008ECF;
+$boschLightBlueB25: #006A9B;
+$boschLightBlueB50: #004768;
+$boschLightBlueB75: #002434;
+$boschTurquoiseW75: #BFE9EB;
+$boschTurquoiseW50: #7FD3D7;
+$boschTurquoiseW25: #40BEC4;
+$boschTurquoise: #00A8B0;
+$boschTurquoiseB25: #007E84;
+$boschTurquoiseB50: #005458;
+$boschTurquoiseB75: #002A2C;
+$boschLightGreenW75: #DDEFC7;
+$boschLightGreenW50: #BBDE8F;
+$boschLightGreenW25: #9ACE58;
+$boschLightGreen: #78BE20;
+$boschLightGreenB25: #5A8E18;
+$boschLightGreenB50: #3C5F10;
+$boschLightGreenB75: #1E3008;
+$boschDarkGreenW75: #BFD8D1;
+$boschDarkGreenW50: #7FB0A4;
+$boschDarkGreenW25: #408977;
+$boschDarkGreen: #006249;
+$boschDarkGreenB25: #004937;
+$boschDarkGreenB50: #003125;
+$boschDarkGreenB75: #001912;
+$boschLightGrayW75: #EFEFF0;
+$boschLightGrayW50: #DFDFE0;
+$boschLightGrayW25: #CFD0D1;
+$boschLightGray: #BFC0C2;
+$boschLightGrayB25: #8F9091;
+$boschLightGrayB50: #606061;
+$boschLightGrayB75: #303031;
+$boschDarkGrayW75: #D4D7DA;
+$boschDarkGrayW50: #A8AFB5;
+$boschDarkGrayW25: #7D8790;
+$boschDarkGray: #525F6B;
+$boschDarkGrayB25: #3D4750;
+$boschDarkGrayB50: #293036;
+$boschDarkGrayB75: #15181B;
+$boschYellowW75: #FEEBC5;
+$boschYellowW50: #FDD78B;
+$boschYellowW25: #FDC351;
+$boschYellow: #FCAF17;
+$boschYellowB25: #BD8311;
+$boschYellowB50: #7E580C;
+$boschYellowB75: #3F2C06;
+
+// gradient pairs
+$gradient-pair-variations:(
+        fuchsia-violet:($boschFuchsia, $boschViolet),
+        red-fuchsia:($boschRed, $boschFuchsia),
+        violet-darkBlue:($boschViolet, $boschDarkBlue),
+        darkBlue-lightBlue:($boschDarkBlue, $boschLightBlue),
+        lightBlue-turquoise:($boschLightBlue, $boschTurquoise),
+        turquoise-lightGreen: ($boschTurquoise, $boschLightGreen),
+        lightGreen-darkGreen: ($boschLightGreen, $boschDarkGreen),
+);

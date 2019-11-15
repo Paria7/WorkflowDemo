@@ -1,0 +1,47 @@
+
+@font-face {
+    font-family: 'Bosch-Sans';
+	font-weight: 400;
+    src: url('#{$path-to-assets}/fonts/BoschSans-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('#{$path-to-assets}/fonts/BoschSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    /* url('#{$get-path-to-assets}/fonts/BoschSans-Regular.woff2') format('woff2'),  Super Modern Browsers */
+    url('#{$path-to-assets}/fonts/BoschSans-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('#{$path-to-assets}/fonts/BoschSans-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$path-to-assets}/fonts/BoschSans-Regular.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Bosch-Sans';
+	font-weight: 300;
+    src: url('#{$path-to-assets}/fonts/BoschSans-Light.eot');
+    /* IE9 Compat Modes */
+    src: url('#{$path-to-assets}/fonts/BoschSans-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    /* url('#{$get-path-to-assets}/fonts/BoschSans-Light.woff2') format('woff2'),  Super Modern Browsers */
+    url('#{$path-to-assets}/fonts/BoschSans-Light.woff') format('woff'), /* Pretty Modern Browsers */
+    url('#{$path-to-assets}/fonts/BoschSans-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$path-to-assets}/fonts/BoschSans-Light.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Bosch-Sans';
+	font-weight: 700;
+    src: url('#{$path-to-assets}/fonts/BoschSans-Bold.eot');
+    /* IE9 Compat Modes */
+    src: url('#{$path-to-assets}/fonts/BoschSans-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    /* url('#{$get-path-to-assets}/fonts/BoschSans-Light.woff2') format('woff2'),  Super Modern Browsers */
+    url('#{$path-to-assets}/fonts/BoschSans-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('#{$path-to-assets}/fonts/BoschSans-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$path-to-assets}/fonts/BoschSans-Bold.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+@font-face {
+	font-family: "Bosch-Ic";
+	font-style: normal;
+	font-stretch: normal;
+    src: url("#{$path-to-assets}/fonts/Bosch-Ic.woff?bfe763ade466df49ca222504455d5216") format("woff"),
+         url("#{$path-to-assets}/fonts/Bosch-Ic.ttf?bfe763ade466df49ca222504455d5216") format("truetype");
+}

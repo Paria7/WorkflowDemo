@@ -1,0 +1,57 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>{{'LineEdit.OpTypeRecord'|translate}}</h2>
+  <span class="dialog-tip">{{'LineEdit.ShowOnly100'|translate}}</span>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+</div>
+<mat-dialog-content>
+  <mat-table #table [dataSource]="dataSource">
+    <!--  <ng-container matColumnDef="no">
+        <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+          {{i+1}}
+        </mat-cell>
+      </ng-container>-->
+
+    <ng-container matColumnDef="OpType">
+      <mat-header-cell *matHeaderCellDef>{{'LineEdit.OpType'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.OpType}}" matTooltipPosition="above">{{row.OpType}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CreateTime">
+      <mat-header-cell *matHeaderCellDef>{{'LineEdit.CreateTime'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.CreateTime| date: 'yyyy-MM-dd
+          HH:mm:ss'}}" matTooltipPosition="above">
+          {{row.CreateTime| date: 'yyyy-MM-dd
+          HH:mm:ss'}}
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CreateNo">
+      <mat-header-cell *matHeaderCellDef>{{'LineEdit.CreateNo'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.CreateNo}}" matTooltipPosition="above">{{row.CreateNo}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+
+    <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+  </mat-table>
+
+  <!-- <mat-paginator (page)="changePage($event)" [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+     showFirstLastButtons></mat-paginator> -->
+</mat-dialog-content>
+
+<!--  <mat-dialog-actions>
+    <div class="primary-actions">
+      <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+      <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+    </div>
+  </mat-dialog-actions>-->

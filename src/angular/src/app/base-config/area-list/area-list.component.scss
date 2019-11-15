@@ -1,0 +1,38 @@
+$short-column-flex: 0 0 30px;
+$short-column-width: 30px;
+$short-medium-column-flex: 0 0 45px;
+$short-medium-column-width: 45px;
+$medium-column-flex: 0 0 60px;
+$medium-column-width: 60px;
+$long-medium-column-flex: 0 0 90px;
+$long-medium-column-width: 90px;
+$long-column-flex: 0 0 120px;
+$long-column-width: 120px;
+
+:host mat-form-field {
+    width: 90%
+}
+    
+.mat-column-select {
+    overflow: initial;
+    border-bottom-style: none;
+}
+  
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    border-bottom-style: none!important;
+}
+
+.mat-column-name {
+    flex: $long-column-flex !important;
+    width: $long-column-width !important;
+}
+
+.mat-column-code {
+    flex: $long-column-flex !important;
+    width: $long-column-width !important;
+}
+
+.mat-column-status {
+    flex: $short-column-flex !important;
+    width: $short-column-width !important;
+}

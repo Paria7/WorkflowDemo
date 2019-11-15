@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{'CheckDetail.SwingCard'|translate}}</h1>
+<div mat-dialog-content>
+  <!--<p>{{'LineEdit.InputNewName'|translate}}</p>-->
+  <mat-form-field>
+    <input type="password" matInput [(ngModel)]="data.cardNo">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button autofocus (click)="onClick()">{{'Common.Ok'|translate}}</button>
+  <button mat-button (click)="onNoClick()">{{'Common.Cancel'|translate}}</button>
+</div>

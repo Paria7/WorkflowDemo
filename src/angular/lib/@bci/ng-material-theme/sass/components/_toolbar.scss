@@ -1,0 +1,10 @@
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+
+mat-toolbar {
+  @include make-font($font-size-base);
+  background-color: $boschLightGray50;
+
+  mat-form-field.mat-form-field  {
+    padding: 0;
+  }
+}

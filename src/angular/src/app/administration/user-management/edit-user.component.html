@@ -1,0 +1,83 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'UserManagement.UserInfo'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form [formGroup]="form">
+    <mat-dialog-content *ngIf="user$ | async as user">
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="user.Name" matInput placeholder="{{'UserManagement.UserName'|translate}}" formControlName="Name">
+                <mat-error *ngIf="form.hasError('required',['Name'])">{{'UserManagement.UserNameRequired'|translate}}</mat-error>
+            </mat-form-field>
+            <button mat-icon-button type="button" (click)="search()">
+                <i class="Bosch-Ic Bosch-Ic-search"></i>
+            </button>
+            <!-- <mat-form-field>
+                <input [(ngModel)]="user.Password" matInput placeholder="Password" formControlName="Password">
+                <mat-error *ngIf="form.hasError('required',['Password'])">Please enter the password</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="user.PasswordSalt" formControlName="PasswordSalt" matInput placeholder="Password Salt">
+            </mat-form-field> -->
+            <mat-form-field>
+                <input [(ngModel)]="user.FirstName" formControlName="FirstName" matInput placeholder="{{'UserManagement.FirstName'|translate}}">
+                <!--<mat-error *ngIf="form.hasError('required',['FirstName'])">{{'Validator.FirstNameRequired'|translate}}</mat-error>-->
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="user.SecondName" formControlName="SecondName" matInput placeholder="{{'UserManagement.SecondName'|translate}}">
+            </mat-form-field>
+            <mat-form-field id="mail">
+                <input [(ngModel)]="user.Mail" formControlName="Mail" matInput placeholder="{{'UserManagement.Mail'|translate}}">
+                <mat-error *ngIf="form.hasError('required',['Mail'])">{{'Validator.MailRequired'|translate}}</mat-error>
+                <mat-error *ngIf="form.hasError('pattern',['Mail'])">{{'Validator.MailFormatError'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="user.MobileNo" formControlName="MobileNo" matInput placeholder="{{'UserManagement.MobileNo'|translate}}">
+            </mat-form-field>
+            <mat-form-field id="phoneNo">
+                <input [(ngModel)]="user.PhoneNo" formControlName="PhoneNo" matInput placeholder="{{'UserManagement.PhoneNo'|translate}}">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="user.EmployeeNo" formControlName="EmployeeNo" matInput placeholder="{{'UserManagement.EmployeeNo'|translate}}">
+                <mat-error *ngIf="form.hasError('required',['EmployeeNo'])">{{'UserManagement.EmployeeNoRequired'|translate}}</mat-error>
+            </mat-form-field>
+            <mat-form-field id="status">
+                <mat-select [(ngModel)]="user.Status" placeholder="{{'UserManagement.Status'|translate}}" formControlName="Status">
+                    <mat-option *ngFor="let status of userStatuses" [value]="status.Id">{{status.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['Status'])">{{'UserManagement.NotSelectedStatus'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-select [(ngModel)]="user.PlantId" placeholder="{{'UserManagement.Plant'|translate}}" formControlName="PlantId">
+                    <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['PlantId'])">{{'UserManagement.NotSelectedPlant'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="select">
+                <mat-select [(ngModel)]="selectRoleIds" placeholder="{{'UserManagement.Roles'|translate}}" formControlName="RoleIds" multiple>
+                    <mat-option *ngFor="let role of roles" [value]="role.Id">{{role.Name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <button type="submit" mat-raised-button (click)="save()">{{'Common.Save'|translate}}</button>
+            <button type="button" mat-button (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>

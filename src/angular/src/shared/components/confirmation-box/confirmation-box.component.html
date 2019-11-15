@@ -1,0 +1,18 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'Common.Confirm'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div>
+        <p>{{title}}</p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="primary-actions">
+        <button mat-raised-button button type="button" (click)="confirm()">{{'Common.Confirm'|translate}}</button>
+        <button mat-button (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+    </div>
+</mat-dialog-actions>

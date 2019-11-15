@@ -1,0 +1,11 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+
+mat-tooltip-component .mat-tooltip {
+  @include make-border(1px, $boschLightGray50);
+  @include make-font();
+  padding: 16px;
+  color: $boschBlack;
+  background-color: $boschWhite;
+}

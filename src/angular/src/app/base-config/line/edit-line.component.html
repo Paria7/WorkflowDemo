@@ -1,0 +1,83 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>{{'Line.Title'|translate}}</h2>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+</div>
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="line.PlantId" formControlName="PlantId" [placeholder]="'Plant.Title'|translate">
+          <mat-option *ngFor="let item of plants" [value]="item.Id">
+            {{item.Code}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.hasError('required',['PlantId'])">{{'Line.PlantRequired'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="line.ProcessId" formControlName="ProcessId" [placeholder]="'Process.Name'|translate">
+          <mat-option *ngFor="let item of processes" [value]="item.Id">
+            {{item.Name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.hasError('required',['ProcessId'])">{{'Line.ProcessRequired'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput [(ngModel)]="line.Code" formControlName="Code" [placeholder]="'Line.Code'|translate">
+        <mat-error *ngIf="form.hasError('required',['Code'])">{{'Line.CodeRequired'|translate}}</mat-error>
+        <mat-error *ngIf="form.hasError('maxlength',['Code'])">{{'Line.CodeExceedMaxLength'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput [(ngModel)]="line.Name" formControlName="Name" [placeholder]="'Line.Name'|translate">
+        <mat-error *ngIf="form.hasError('required',['Name'])">{{'Line.NameRequired'|translate}}</mat-error>
+        <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'Line.NameExceedMaxLength'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <section class="mat-form-control">
+        <mat-checkbox formControlName="IsActive" [(ngModel)]="line.IsActive">{{'Common.IsActive'|translate}}</mat-checkbox>
+      </section>
+    </div>
+
+    <div>
+      <section class="mat-form-control">
+        <mat-checkbox formControlName="IsNewLine" [(ngModel)]="line.IsNewLine">{{'Line.IsNewLine'|translate}}</mat-checkbox>
+      </section>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <textarea matInput [(ngModel)]="line.Description" formControlName="Description" [placeholder]="'Common.Description'|translate"></textarea>
+        <mat-error *ngIf="form.hasError('maxlength',['Description'])">{{'Validator.MaxLength1000'|translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <section class="mat-form-control">{{'BusinessUnit.Title'|translate}}</section>
+    </div>
+    <div *ngIf="businessUnits.length > 0" class="check-box-list">
+      <span class="business-unit-check-box" *ngFor="let item of businessUnits;let i = index;">
+        <mat-checkbox formControlName="{{item.Code}}">{{item.Code}}</mat-checkbox>
+      </span>
+    </div>
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="primary-actions">
+      <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+      <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+    </div>
+  </mat-dialog-actions>
+</form>

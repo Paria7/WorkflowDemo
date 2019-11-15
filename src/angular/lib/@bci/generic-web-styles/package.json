@@ -1,0 +1,62 @@
+{
+  "_from": "@bci/generic-web-styles",
+  "_id": "@bci/generic-web-styles@1.0.8",
+  "_inBundle": false,
+  "_integrity": "sha512-aQeb26mPxEeUHj5qSH77G1Typv/31yufKqC3xMBc8UU+dXjn73/XtXtlFZplizGgdw/sQ2OCqpO2exmxPzYhJA==",
+  "_location": "/@bci/generic-web-styles",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@bci/generic-web-styles",
+    "name": "@bci/generic-web-styles",
+    "escapedName": "@bci%2fgeneric-web-styles",
+    "scope": "@bci",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://rb-repobci.de.bosch.com:8081/repository/npm-group/@bci/generic-web-styles/-/generic-web-styles-1.0.8.tgz",
+  "_shasum": "03b65096708f2ad97bf19cac9b334826e6c77ab8",
+  "_spec": "@bci/generic-web-styles",
+  "_where": "D:\\Product\\SMC\\WebCore\\6.0",
+  "author": {
+    "name": "BCI"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Bosch corporate design mixins, styles and assets",
+  "devDependencies": {
+    "fs-extra": "^4.0.1",
+    "glob": "^7.1.2",
+    "json": "^9.0.6",
+    "node-sass": "^4.5.3",
+    "np": "^2.16.0",
+    "npm-snapshot": "^1.0.3",
+    "opentype.js": "^0.8.0",
+    "rimraf": "^2.6.1"
+  },
+  "main": "./css/bci-styles.css",
+  "name": "@bci/generic-web-styles",
+  "publishConfig": {
+    "@bci:registry": "http://rb-repobci.de.bosch.com:8081/repository/npm-hosted/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://rb-tfsbci.de.bosch.com/tfs/OpConDev/CoreDev/_git/bci-generic-web-styles"
+  },
+  "scripts": {
+    "add-publishConfig": "json -I -f package.json -e \"this.publishConfig={ \"'@bci:registry\"' : \"'http://rb-repobci.de.bosch.com:8081/repository/npm-hosted/\"'}\"",
+    "build": "node ./tasks/build",
+    "bumpVersion": "np --no-publish",
+    "charmaps": "node ./tasks/charactermaps",
+    "prebuild": "yarn charmaps && rimraf dist",
+    "sass-watch": "node-sass src/sass -o dist/css/ --watch"
+  },
+  "types": "generic-web-styles.d.ts",
+  "version": "1.0.8"
+}

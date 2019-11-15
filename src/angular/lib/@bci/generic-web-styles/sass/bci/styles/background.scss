@@ -1,0 +1,55 @@
+// u-Background__supergraphic--{modifiers}
+//
+// Markup:
+// <div style="height: 300px" class="{$modifiers}"></div>
+//
+// .u-Background__supergraphic--lightGray  -  Light Gray Supergraphic background
+// .u-Background__supergraphic--mediumGray  -  Medium Gray Supergraphic background
+// .u-Background__supergraphic--darkGray  -  Dark Gray Supergraphic background
+// .u-Background__supergraphic--red  -  Red Supergraphic background
+// .u-Background__supergraphic--violet  -   Violet Supergraphic background
+// .u-Background__supergraphic--darkBlue -  Dark Blue Violet Supergraphic background
+// .u-Background__supergraphic--lightBlue -  Light Blue Violet Supergraphic background
+// .u-Background__supergraphic--green - Green Supergraphic background
+// .u-Background__supergraphic--darkBlue--vertical -  Dark Blue Violet Supergraphic background, vertical
+//
+// sg-wrapper:
+// <sg-wrapper-content/>
+//
+// Styleguide 0.2.10
+
+.u-Background__supergraphic--lightGray {
+  background: url('#{$path-to-assets}/img/supergraphic_light_gray.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--mediumGray {
+  background: url('#{$path-to-assets}/img/supergraphic_medium_gray.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--darkGray {
+  background: url('#{$path-to-assets}/img/supergraphic_dark_gray.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--red {
+  background: url('#{$path-to-assets}/img/supergraphic_red.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--violet {
+  background: url('#{$path-to-assets}/img/supergraphic_violet.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--darkBlue {
+  background: url('#{$path-to-assets}/img/supergraphic_dark_blue.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--lightBlue {
+  background: url('#{$path-to-assets}/img/supergraphic_light_blue.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--green {
+  background: url('#{$path-to-assets}/img/supergraphic_green.svg') 0% 3%/cover;
+}
+
+.u-Background__supergraphic--darkBlue--vertical {
+  background: url('#{$path-to-assets}/img/supergraphic_vertical_dark_blue.svg') 0% 3%/cover;
+}

@@ -1,0 +1,62 @@
+{
+  "_from": "@bci/ng-material-theme",
+  "_id": "@bci/ng-material-theme@6.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-9JnBPe7HObKtWJ/FNAd8DHhQ7OJ6VFBSKDS6cO/jn5HatL0JUFn3clOcEj+sHS7wWblD6akgJ85F9Rkb/BjoFQ==",
+  "_location": "/@bci/ng-material-theme",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@bci/ng-material-theme",
+    "name": "@bci/ng-material-theme",
+    "escapedName": "@bci%2fng-material-theme",
+    "scope": "@bci",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://rb-repobci.de.bosch.com:8081/repository/npm-group/@bci/ng-material-theme/-/ng-material-theme-6.0.2.tgz",
+  "_shasum": "19c86cb620f12178f1ef3c95a9dee0f628ba7764",
+  "_spec": "@bci/ng-material-theme",
+  "_where": "D:\\Product\\SMC\\WebCore\\6.0",
+  "author": {
+    "name": "Ralf Dauenhauer, BCI/ESW14"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Bosch corporate design theme for angular material",
+  "devDependencies": {
+    "@bci/generic-web-styles": "^1.0.6",
+    "fs-extra": "^4.0.1",
+    "glob": "^7.1.2",
+    "np": "^2.16.0",
+    "rimraf": "^2.6.1",
+    "robocopy": "^0.1.15"
+  },
+  "name": "@bci/ng-material-theme",
+  "peerDependencies": {
+    "@angular/cdk": "^6.3.3",
+    "@angular/material": "^6.3.3",
+    "@bci/generic-web-styles": "^1.0.8"
+  },
+  "publishConfig": {
+    "@bci:registry": "http://rb-repobci.de.bosch.com:8081/repository/npm-hosted/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://atmo1tfsapp.de.bosch.com:8080/tfs/OpConDev/CoreDev/_git/bci-ng-material-theme"
+  },
+  "scripts": {
+    "build": "node ./tasks/build",
+    "bumpVersion": "np --no-publish",
+    "dev-build": "npm run build && npm run dev-copy",
+    "dev-copy": "robocopy ./dist ./demoApp/node_modules/@bci/ng-material-theme /mir",
+    "prebuild": "rimraf dist"
+  },
+  "version": "6.0.2"
+}

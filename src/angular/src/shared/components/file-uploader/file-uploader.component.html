@@ -1,0 +1,3 @@
+<form #fileUploadForm>
+  <input #fileUploader style="display: none;" type="file" [accept]="acceptFileTypes" (change)="onSelected($event)" />
+</form>

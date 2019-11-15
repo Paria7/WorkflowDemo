@@ -1,0 +1,12 @@
+:host mat-form-field {
+  width: 90%
+}
+  
+.mat-column-select {
+  overflow: initial;
+  border-bottom-style: none;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  border-bottom-style: none!important;
+}

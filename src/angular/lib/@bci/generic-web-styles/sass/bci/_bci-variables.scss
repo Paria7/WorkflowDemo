@@ -1,0 +1,271 @@
+@import "colors";
+
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+$font-family-base:        'Bosch-Sans';
+$font-family-sans-serif:  $font-family-base;
+$font-family-sans:        $font-family-base;;
+$font-family-serif:       $font-family-base;
+$font-family-monospace:   $font-family-base;
+
+$font-size-base:          14px;
+$font-size-large:         20px;
+$font-size-small:         12px;
+
+$font-weight-light: 			300;
+$font-weight-medium: 			400;
+$font-weight-strong: 			700;
+
+$font-size-h1:            48px;
+$font-size-h2:            36px;
+$font-size-h3:            28px;
+$font-size-h4:            24px;
+$font-size-h5:            20px;
+$font-size-h6:            16px;
+
+$font-color:               $boschBlack;
+
+//== Icon Sizes
+
+$icon-font-size-xlarge:  44px;
+$icon-font-size-large:   28px;
+$icon-font-size-normal:  20px;
+$icon-font-size-small:   16px;
+$icon-font-size-xsmall:  12px;
+
+//== Transition Times
+$transition-time: .8s;
+$transition-time-half: $transition-time / 2;
+$transition-time-quarter: $transition-time / 4;
+
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base:        1.428571429 !default; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
+
+//** By default, this inherits from the `<body>`.
+$headings-font-family:    $font-family-base;
+$headings-font-weight:    300;
+$headings-line-height:    1.1;
+$headings-color:          inherit;
+
+// Base Value for the Grid size
+$gridSize:                8px;
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+$screen-xs-min:              480px;
+
+// Small screen / tablet
+$screen-sm-min:              768px;
+
+// Medium screen / desktop
+$screen-md-min:              992px;
+
+// Large screen / wide desktop
+$screen-lg-min:              1200px;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+$padding-base-vertical:     6px !default;
+$padding-base-horizontal:   12px !default;
+
+$padding-large-vertical:    10px !default;
+$padding-large-horizontal:  16px !default;
+
+$padding-small-vertical:    5px !default;
+$padding-small-horizontal:  10px !default;
+
+$padding-xs-vertical:       1px !default;
+$padding-xs-horizontal:     5px !default;
+
+$line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
+$line-height-small:         1.5 !default;
+
+$border-radius-base:        4px !default;
+$border-radius-large:       6px !default;
+$border-radius-small:       3px !default;
+
+
+//== Dropdowns
+$dropdown-z-index:            100;
+$dropdown-font-size:          $font-size-h6;
+$dropdown-transition-time:    0.4s;
+$dropdown-bg-color:           $boschWhite;
+$dropdown-border-transparent: 1px solid transparent;
+$dropdown-border:             1px solid $boschDarkGray50;
+
+$dropdown-menu-color:         $boschBlack;
+$dropdown-menu-hover-color:   $boschDarkBlue;
+$dropdown-menu-hover-bg-color:$boschLightGray25;
+
+
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+$table-border-color:            $boschLightGray;
+$table-line-height:             $line-height-base * 1.5;
+$table-row-border-width:        1px;
+$table-header-border-width:     4px;
+
+//** Padding for `<th>`s and `<td>`s.
+$table-cell-padding:            8px 12px ;
+//** Padding for cells in `.table-condensed`.
+$table-condensed-cell-padding:  8px;
+
+//== Form states and alerts
+$state-success-text:             $boschSignalGreen;
+$state-success-border:           $boschSignalGreen;
+$state-success-bg:               lighten($state-success-border, 40%);
+
+$state-info-text:                $boschLightBlue;
+$state-info-border:              $boschLightBlue;
+$state-info-bg:                  lighten($state-info-border, 40%);
+
+$state-warning-text:             $boschSignalYellow;
+$state-warning-border:           $boschSignalYellow;
+$state-warning-bg:               lighten($state-warning-border, 40%);
+
+$state-danger-text:              $boschSignalRed;
+$state-danger-border:            $boschSignalRed;
+$state-danger-bg:                lighten($state-danger-border, 40%);
+
+$state-selected-bg:              $boschLightBlue15T;
+
+//** Default background color used for all tables.
+$table-bg:                       transparent;
+//** Background color used for `.table-striped`.
+$table-bg-accent:                $boschLightGray15;
+//** Background color used for `.table-hover`.
+$table-bg-hover:                 $boschLightGray05;
+$table-bg-accent-darken-by:      5;
+$table-bg-accent-hover:          $boschLightGray25;
+$table-color-active:             $boschLightBlue;
+$table-color-selected:           inherit;
+$table-bg-selected:              $state-selected-bg;
+$table-color-selected-hover:     inherit;
+$table-bg-selected-hover:        opacify($table-bg-selected, 0.05);
+
+//== Typography
+$muted-text-color:                #777;
+$primary-text-color:              $boschDarkBlue;
+$warning-text-color:              $boschSignalYellow;
+$danger-text-color:               $boschSignalRed;
+$success-text-color:              $boschSignalGreen;
+$success-text-bg-color:           lighten($success-text-color, 40%);
+$info-text-color:                 #008ecf;
+$anchor-text-hover-color:         #23527c;
+$anchor-text-color:               #337ab7;
+$addr-text-dot-color:             $boschLightGray;
+$blockquote-border-color:         $boschLightGray25;
+$blockquote-footer-text-color:    $boschDarkGray;
+
+//== Header
+$supergraphic-height:             16px;
+$header-logo-width:               140px;
+$header-logo-width-screen-xs:     100px;
+$header-height:                   64px;
+$header-height-screen-xs:         50px;
+
+//== Breadcrumb
+$breadcrumb-font-size:              $font-size-h6;
+$breadcrumb-separator-font-size:    $font-size-h6;
+$breadcrumb-color:                  $info-text-color;
+$breadcrumb-color-unlinked:         $boschBlack;
+$breadcrumb-color-last:             $breadcrumb-color-unlinked; // deprecated
+$breadcrumb-color-separator:        $boschBlack;
+$breadcrumb-element-height:         21px;
+
+//== Sub Header
+$sub-header-icon-color:             $boschDarkGray75;
+
+//== Navigation Elements
+$nav-tab-color:                   $boschBlack;
+$nav-tab-hover-color:             $info-text-color;
+$nav-tab-active-color:            $info-text-color;
+$nav-tab-disabled-color:          $muted-text-color;
+$nav-tab-font-size:               $font-size-h6;
+$nav-tab-line-height:             $gridSize*6;
+$nav-tab-border-bottom-color:     $boschLightGray50;
+$nav-pill-background-color:       $boschLightGray25;
+$table-of-contents-color:         $boschBlack;
+$table-of-contents-border-color:  $boschLightGray50;
+$table-of-contents-hover-bg-color:$boschLightGray25;
+$table-of-contents-hover-color:   $info-text-color;
+
+//== Alerts
+$alert-font-weight:           700;
+$alert-link-darkening-factor: 10%;
+$alert-icon-font-size:        40px;
+$alert-close-font-size:       21px;
+$alert-base-spacing:          16px;
+
+$alert-success-bg:            lighten($boschSignalGreen,40%);
+$alert-success-text:          $boschSignalGreen;
+
+$alert-info-bg:               lighten($boschLightBlue,50%);
+$alert-info-text:             $boschLightBlue;
+
+$alert-warning-bg:            lighten($boschSignalYellow,40%);
+$alert-warning-text:          $boschSignalYellow;
+
+$alert-danger-bg:             lighten($boschSignalRed,40%);
+$alert-danger-text:           $boschSignalRed;
+
+//== Pagination
+$pagination-small-font-size:    $font-size-small;
+$pagination-small-size-base:    32px;
+$pagination-medium-font-size:   $font-size-base;
+$pagination-medium-size-base:   40px;
+$pagination-large-font-size:    $font-size-large;
+$pagination-large-size-base:    56px;
+
+$pagination-hover-color:        $info-text-color;
+$pagination-selected-bg-color:  $boschDarkBlue;
+$pagination-selected-color:     $boschWhite;
+
+//== Path to assets
+$path-to-assets: '../' !default;
+
+//== Checkbox / RadioButton / Switch Sizes
+$input-form-size:  $gridSize * 3;
+
+//== Buttonsizes
+$button-size-large:  $gridSize * 7;
+$button-size-base:   $gridSize * 6;
+$button-size-small:  $gridSize * 5;
+$button-size-xsmall: $gridSize * 4;
+
+//== Chpis
+$chip-height: $button-size-small;
+$chip-padding-horizontal: $gridSize * 2;
+$chip-margin-vertical: $gridSize * 1;
+$chip-margin-horizontal: $gridSize * 2;
+
+//== List, Tab
+$list-tab-size-base: $gridSize * 6;
+
+//== Formfield size
+$form-field-size-base: $gridSize * 6;
+
+//== select size
+$select-size-base: $gridSize * 6;
+
+//== size commandbar
+$commandbar-size: $gridSize * 8;

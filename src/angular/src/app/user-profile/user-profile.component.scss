@@ -1,0 +1,39 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+
+:host table {
+    td {
+      padding: 0 32px 32px 0;
+      border-bottom: 0;
+      p {
+        margin: 0;
+      }
+    }
+    tr {
+      border-bottom: none;
+    }
+    tr > td:first-child {
+      color: $boschDarkGray;
+      font-weight: bold;
+      padding-right: 32px;
+    }
+  }
+
+  :host mat-expansion-panel{
+    width: 30%
+  }
+
+  :host mat-panel-title{
+    font-size:13pt;
+  }
+
+  :host div button{
+    margin: 5ch 0 0 0 
+  }
+
+  :host div label{
+    color: $boschDarkGray;
+      font-weight: bold;
+      padding-right: 32px;
+      display: inline-block;
+  }
+

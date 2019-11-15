@@ -1,0 +1,108 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>{{'AuditLog.AuditLogDetailTile'|translate}}</h2>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+</div>
+<mat-dialog-content>
+  <div class="log-content">
+    <div class="user-info">
+      <div class="sub-title">
+        <h3>{{'AuditLog.UserInformation'|translate}}</h3>
+      </div>
+
+      <div class="user-content">
+        <div>
+          <label>{{'AuditLog.UserName'|translate}}：</label>
+          <span>{{logDetail.UserName}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.UserNo'|translate}}：</label>
+          <span>{{logDetail.UserNo}}</span>
+        </div>
+        <div>
+          <label>{{'AuditLog.IPAddress'|translate}}：</label>
+          <span>{{logDetail.IPAddress}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.ClientBrowser'|translate}}：</label>
+          <span>{{logDetail.ClientBrowser}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="request-info">
+      <div class="sub-title">
+        <h3>{{'AuditLog.RequestInformation'|translate}}</h3>
+      </div>
+
+      <div class="request-content">
+
+        <div>
+          <label>{{'AuditLog.RequestUrl'|translate}}：</label>
+          <span>{{logDetail.RequestUrl}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.Service'|translate}}：</label>
+          <span>{{logDetail.Service}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.Action'|translate}}：</label>
+          <span>{{logDetail.Action}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.Time'|translate}}：</label>
+          <span>{{logDetail.Time}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.Duration'|translate}}：</label>
+          <span>{{logDetail.Duration}}</span>
+        </div>
+
+        <div>
+          <label>{{'AuditLog.RequestParam'|translate}}：</label>
+          <div class="request-param">
+            <pre>{{logDetail.RequestParam}}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="response-info">
+      <div class="sub-title">
+        <h3>{{'AuditLog.ResponseInformation'|translate}}</h3>
+      </div>
+
+      <div class="response-content">
+        <ng-template  [ngIf]="logDetail.LogType==2">
+          <div>
+          <label>{{'AuditLog.Exception'|translate}}：</label>
+          <div class="response-param">
+            <pre>{{logDetail.Exception}}</pre>
+          </div>
+          </div>
+        </ng-template>
+        <div *ngIf="logDetail.LogType!=2">
+          <label>{{'AuditLog.ResponseParam'|translate}}：</label>
+          <div class="response-param">
+            <pre>{{logDetail.ResponseParam}}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-dialog-content>
+
+<!--  <mat-dialog-actions>
+    <div class="primary-actions">
+      <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+      <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+    </div>
+  </mat-dialog-actions>-->
+
+

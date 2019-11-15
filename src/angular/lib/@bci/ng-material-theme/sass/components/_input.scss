@@ -1,0 +1,231 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+@import '~@bci/generic-web-styles/sass/bci/mixins/forms';
+
+mat-form-field.mat-form-field {
+  box-shadow: none;
+  padding: 16px 0;
+  line-height: 48px;
+
+  &[floatLabel="never"],
+  &.mat-focused[floatLabel="never"] {
+    padding-top: 0;
+
+    .mat-form-field-label,
+    .mat-form-field-label.mat-empty {
+      font-size: 14px;
+      padding: 0 8px;
+      color: $boschLightGray;
+      top: 0;
+      overflow: visible;
+      vertical-align: middle;
+      transform: none;
+
+      @include make-font;
+
+      .mat-placeholder-required {
+        display: none;
+      }
+    }
+  }
+
+  .mat-form-field-flex {
+    align-items: center;
+    background-color: $boschLightGray15;
+  }
+
+  .mat-form-field-infix {
+    padding: 0 16px 0 0;
+    border-top: 0;
+    line-height: 48px;
+  }
+
+  textarea {
+    @include make-textarea;
+    margin-bottom: 0;
+  }
+
+  input {
+    @include make-form-input;
+    margin-bottom: 0;
+  }
+
+  &.mat-form-field-disabled {
+    .mat-form-field-underline {
+      background-image: none;
+      background-color: $boschLightGray25;
+    }
+  }
+
+  .mat-form-field-label-wrapper {
+    top: 0;
+    padding-top: 0;
+    overflow: visible;
+    vertical-align: middle;
+  }
+
+  .mat-form-field-placeholder.mat-empty {
+    box-sizing: border-box;
+    color: $boschDarkGray25;
+    padding: 0 8px;
+    height: inherit;
+    line-height: 48px;
+    @include make-font;
+
+    .mat-placeholder-required {
+      color: $boschDarkGray25;
+    }
+  }
+
+  .mat-form-field-label,
+  &.mat-focused .mat-form-field-label {
+    padding: 0 8px;
+    font-size: 14px;
+    color: $boschLightGray;
+    top: 0;
+    overflow: visible;
+    vertical-align: middle;
+
+    .mat-placeholder-required {
+      color: $boschBlack;
+    }
+  }
+
+  &.mat-form-field-should-float .mat-form-field-label {
+    @include make-font-bold;
+    font-size: $font-size-small;
+    color: $boschDarkGray;
+  }
+
+  &.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+  &.mat-focused .mat-form-field-label.mat-form-field-empty,
+  &.mat-form-field-should-float .mat-form-field-label {
+    top: -6px;
+    transform: translateY(-27px) scale(1) perspective(100px) translateZ(0px);
+    font-size: $font-size-small;
+    width: 100%;
+  }
+  .mat-form-field-underline .mat-form-field-ripple {
+    height: 1px;
+  }
+
+  &.mat-focused .mat-form-field-ripple {
+    background-color: transparent;
+  }
+
+  .mat-form-field-ripple {
+    height: 1px;
+    background-color: transparent;
+
+    &.mat-accent {
+      background-color: transparent;
+    }
+
+    &.mat-warn {
+      background-color: $boschSignalRed;
+    }
+  }
+
+  &.mat-input-invalid {
+    .mat-form-field-ripple {
+      background-color: $boschSignalRed;
+    }
+
+    .mat-placeholder-required {
+      color: $boschDarkGray25;
+    }
+  }
+
+  .mat-form-field-subscript-wrapper {
+    padding: 0 8px;
+    width: 100%;
+    margin-top: 22px;
+
+    .mat-error {
+      line-height: 10px;
+      @include make-font-bold(10px);
+      color: $boschSignalRed;
+    }
+
+    .mat-hint {
+      line-height: 10px;
+      @include make-font-bold(10px);
+      color: $boschDarkGray50;
+    }
+  }
+
+  .mat-form-field-underline {
+    background-color: $boschLightGray75;
+    bottom: 1px;
+    position: relative;
+
+    &.mat-disabled {
+      background-image: none;
+      background-color: $boschLightGray25;
+    }
+  }
+
+  .mat-form-field-prefix,
+  .mat-form-field-suffix {
+    line-height: 48px;
+    height: 48px;
+    margin-top: -2px;
+    background-color: $boschLightGray15;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-button-ripple {
+    width: $button-size-small;
+    height: $button-size-small;
+    top: 4px;
+  }
+
+  .mat-icon-button {
+    vertical-align: baseline;
+    line-height: $button-size-small;
+    width: $button-size-small;
+    height: $button-size-small;
+  }
+
+  .mat-icon {
+    vertical-align: middle;
+  }
+
+  .mat-form-field-prefix, .mat-form-field-suffix {
+    .mat-icon-button .mat-icon, .mat-icon {
+      line-height: $icon-font-size-normal;
+      height: $icon-font-size-normal;
+      width: $icon-font-size-normal;
+      font-size: $icon-font-size-normal;
+    }
+  }
+
+  .mat-form-field-suffix {
+    padding-right: $padding-base-horizontal;
+    font-size: 14px;
+
+    .mat-icon-button {
+      margin-right: -$padding-base-horizontal;
+    }
+  }
+
+  .mat-form-field-prefix {
+    padding-left: $padding-base-horizontal;
+    font-size: 14px;
+
+    .mat-icon-button {
+      margin-left: -$padding-base-horizontal;
+    }
+  }
+
+  &.mat-form-field-disabled .mat-form-field-prefix,
+  &.mat-form-field-disabled .mat-form-field-suffix {
+    background-color: $boschWhite;
+  }
+
+}
+
+

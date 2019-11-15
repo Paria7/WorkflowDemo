@@ -1,0 +1,7 @@
+@mixin make-expand-height($deduction: 0px) {
+  height: calc(100% - #{$deduction});
+}
+
+@mixin make-expand-width($deduction: 0px) {
+  width: calc(100% - #{$deduction});
+}

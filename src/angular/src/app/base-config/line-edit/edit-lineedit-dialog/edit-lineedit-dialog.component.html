@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{'LineEdit.EditName'|translate}}</h1>
+<div mat-dialog-content>
+  <p>{{'LineEdit.InputNewName'|translate}}</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.LineEditShowName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">{{'Common.Cancel'|translate}}</button>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>{{'Common.Ok'|translate}}</button>
+</div>

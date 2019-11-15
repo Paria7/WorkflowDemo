@@ -1,0 +1,32 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+
+mat-radio-button.mat-radio-button {
+  @include make-font;
+
+  &.mat-primary,
+  &.mat-accent,
+  &.mat-warn {
+    .mat-radio-outer-circle {
+      border-width: 0;
+      background-color: $boschLightGray50;
+    }
+
+    .mat-radio-inner-circle {
+      background-color: $boschDarkBlue;
+    }
+  }
+
+  &.mat-radio-disabled {
+    .mat-radio-outer-circle {
+      border-width: 0;
+      background-color: $boschLightGray25;
+    }
+
+    .mat-radio-inner-circle {
+      background-color: $boschLightGray;
+    }
+  }
+
+}

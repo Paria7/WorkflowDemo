@@ -1,0 +1,148 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+@import '~@bci/generic-web-styles/sass/bci/mixins/icons';
+@import '~@bci/generic-web-styles/sass/bci/mixins/vendor-prefixes';
+
+
+mat-form-field.mat-form-field-type-mat-select {
+  @include make-font;
+  padding: 16px 0;
+
+  &[floatLabel="never"] {
+    padding-top: 0;
+  }
+
+  .mat-select-trigger{
+    background-color: $boschLightGray15;
+  }
+
+  .mat-select-value {
+    line-height: 48px;
+    padding: 0 8px;
+    font-size: $font-size-base;
+    .mat-select-value-text {
+      margin-right: 16px;
+    }
+  }
+
+  .mat-select-arrow,
+  &:focus .mat-select-arrow {
+    border: 0;
+    height: inherit;
+    padding-left: 16px;
+    color: $boschDarkGray !important;
+    &:before {
+      position: absolute;
+      display: block;
+      top: 50%;
+      right: 8px;
+      @include translate(0, -50%);
+      @include make-icon($Bosch-Ic-arrow-expand-down, 22px);
+    }
+  }
+
+  .mat-form-field-subscript-wrapper,
+  .mat-input-error {
+    padding: 0 8px;
+    width: 100%;
+    margin-top: 20px;
+
+    @include make-font-bold(10px);
+  }
+
+  &:focus {
+
+    .mat-select-placeholder {
+      color: $font-color;
+    }
+
+    .mat-select-underline {
+      height: 1px;
+    }
+
+  }
+
+  .mat-select-underline {
+    background-color: $boschLightGray75;
+  }
+
+  .mat-select-disabled .mat-select-underline {
+    background-image: none;
+    background-color: $boschLightGray25;
+  }
+
+  .mat-select-disabled .mat-select-trigger {
+    background-color: white;
+  }
+
+  .mat-floating-placeholder {
+    font-size: 14px;
+    top: -30px !important;
+    @include make-font-bold;
+    color: $font-color;
+  }
+
+  &.mat-focused[ng-reflect-float-placeholder="never"] {
+    .mat-form-field-label-wrapper {
+      display: none;
+    }
+  }
+
+  &[ng-reflect-float-placeholder="never"] {
+    padding-top: 0;
+
+    .mat-form-field-label-wrapper.mat-form-field-label-wrapper:not[mat-empty] {
+      display: none;
+    }
+  }
+
+  .mat-form-field-infix {
+    padding: 0;
+  }
+
+  mat-select.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline {
+    background-color: $boschLightGray75;
+  }
+
+  mat-select.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-trigger,
+  mat-select.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-arrow {
+    color: $boschDarkGray;
+  }
+
+  mat-select.mat-select-disabled .mat-select-arrow {
+    color: $boschLightGray50 !important;
+  }
+}
+
+.mat-select-panel,
+.mat-select-panel.mat-primary {
+
+  mat-option.mat-option {
+    @include make-font;
+
+    &:hover,
+    &.mat-selected {
+      background-color: $boschLightGray15;
+    }
+
+    &.mat-selected,
+    &.mat-selected{
+      color: $font-color;
+    }
+
+    .mat-pseudo-checkbox,
+    .mat-pseudo-checkbox-checked {
+      background-color: $boschLightGray25;
+      @include make-border(0 0 2px 0, $boschDarkGray25);
+    }
+
+    .mat-pseudo-checkbox::after {
+      color: $boschDarkBlue;
+    }
+
+    .mat-ripple {
+      display: none;
+    }
+  }
+}

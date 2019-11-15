@@ -1,0 +1,11 @@
+.chip {
+  @include make-chip;
+
+  .chip-icon {
+    @include make-chip-icon;
+  }
+}
+
+.chip-list {
+  @include make-chip-list;
+}

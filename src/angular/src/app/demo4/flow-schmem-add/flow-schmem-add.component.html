@@ -1,0 +1,195 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>{{'Add new flow scheme'}}</h2>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+</div>
+<mat-dialog-content class="col-12">
+  <div class="row">
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Basic info</ng-template>
+          <div class="Content">
+            <div>
+              <mat-form-field>
+                <input type="text" matInput placeholder="Flow Name">
+              </mat-form-field>
+            </div>
+            <br>
+            <div>
+              <mat-form-field>
+                <input matInput placeholder="Flow Description">
+              </mat-form-field>
+            </div>
+            <br>
+            <div>
+              <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Select form</ng-template>
+          <div class="content">
+            <mat-form-field>
+              <mat-select matInput placeholder="{{'Flow List'}}" (selectionChange)='loadForm($event)'>
+                <mat-option></mat-option>
+                <mat-option value="0d3f6626-b5ab-4827-9224-bfca28728374">{{'test1'}}</mat-option>
+                <mat-option value="26505689-13ce-491e-b178-0dd801708101">{{'test2'}}</mat-option>
+                <mat-option value="4db5c7a6-2618-4497-85cf-191abd6c778d">{{'机器维修单'}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <div class="container marginT60  marginB30" style="max-width:500px;">
+                <div class="row" style="padding:30px;" [style.backgroundColor]="model.theme.bgColor"
+                  [style.color]="model.theme.textColor">
+                  <div class="col-12">
+                    <h2>{{model.name}}</h2>
+                  </div>
+                  <div class="col-12">
+                    <p>{{model.description}}</p>
+                  </div>
+                  <div *ngIf="success" class="col-12">
+                    <div class="form-group">
+                      <label>Your form has been submitted.</label>
+                    </div>
+                  </div>
+                  <form class="ftheme">
+                    <div class="col-12">
+                      <div *ngFor="let item of model.attributes" class="form-group">
+                        <div *ngIf="item.type=='text'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <input type="text" class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}"
+                            [(ngModel)]="item.value" [required]="item.required" [ngModelOptions]="{standalone: true}"
+                            autocomplete="off">
+                        </div>
+                        <div *ngIf="item.type=='email'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <input type="email" class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}"
+                            [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                        </div>
+                        <div *ngIf="item.type=='phone'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <input type="email" class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}"
+                            [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                        </div>
+                        <div *ngIf="item.type=='number'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <input type="number" class="form-control" id="{{item.name}}" min="{{item.min}}"
+                            max="{{item.max}}" placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                            [ngModelOptions]="{standalone: true}" autocomplete="off">
+                        </div>
+                        <div *ngIf="item.type=='date'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <input type="date" class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}"
+                            [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                        </div>
+                        <div *ngIf="item.type=='datetime-local'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <input type="datetime-local" class="form-control" id="{{item.name}}"
+                            placeholder="{{item.placeholder}}" [(ngModel)]="item.value"
+                            [ngModelOptions]="{standalone: true}" autocomplete="off">
+                        </div>
+                        <div *ngIf="item.type=='textarea'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <textarea class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}"
+                            [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}" autocomplete="off">
+          </textarea>
+                        </div>
+                        <div *ngIf="item.type=='file'">
+                          <label>{{item.label}} (File can't be uploaded right now)</label> <label *ngIf="item.required"
+                            class="text-danger">*</label>
+                          <input type="file" class="form-control" id="{{item.name}}" placeholder="{{item.placeholder}}"
+                            [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}" autocomplete="off">
+                          <small class="form-text text-danger">(File can't be uploaded right now)</small>
+                        </div>
+                        <div *ngIf="item.type=='paragraph'">
+                          <p class="form-text">{{item.placeholder}}</p>
+                        </div>
+                        <div *ngIf="item.type=='autocomplete'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <select class="form-control" id="{{item.name}}" [(ngModel)]="item.value"
+                            [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let v of item.values" [value]="v.value">{{v.label}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="item.type=='checkbox'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <div *ngFor="let v of item.values" class="inline-form-group">
+                            <label class="cust-check-bx">
+                              <input type="checkbox" [value]="v.value" name="{{item.name}}" (click)="toggleValue(v)">
+                              {{v.label}}
+                              <span class="checkmark"></span>
+                            </label>
+                          </div>
+                        </div>
+                        <div *ngIf="item.type=='radio'">
+                          <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+                          <div *ngFor="let v of item.values" class="inline-form-group">
+                            <label class="cust-check-bx">
+                              <input type="radio" [value]="v.value" name="{{item.name}}" [(ngModel)]="item.value"
+                                [ngModelOptions]="{standalone: true}"> {{v.label}}
+                              <span class="checkmark"></span>
+                            </label>
+                          </div>
+                        </div>
+                        <div *ngIf="item.type=='button'" class="btn-cont">
+                          <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}"
+                            class="mat-raised-button primary" id="{{item.name}}">
+                        </div>
+                      </div>
+                      <p (click)="show=1" class="marginT60 pointer">Show developer data</p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Design flow</ng-template>
+          <div class="row col-12">
+            <div class="col-1" style="float: left">
+              <div style="height: 300px">
+                <div style="overflow-y:auto">
+                  <div id="tool.data.id" *ngFor="let tool of tools$" [dndDraggable]="tool" [dndEffectAllowed]="'all'"
+                    (dndStart)="onDragStart($event)" (dndMoved)="onDraggableMoved($event)"
+                    (dndCanceled)="onDragCanceled($event)" (dndEnd)="onDragEnd($event)">
+                    <p class="example-button-row">
+                      <a mat-fab color="primary">{{tool.name}}</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-11" style="float: left">
+              <div style="height: 700px">
+                <div id="flow-panel" dndDropzone (dndDrop)="onDrop($event)"
+                  style="position:absolute;width:100%;height:700px;background-color:rgba(245, 239, 239, 0.24)"></div>
+              </div>
+              <br />
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="primary-actions">
+    <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+    <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+  </div>
+</mat-dialog-actions>

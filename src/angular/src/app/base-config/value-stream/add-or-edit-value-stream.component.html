@@ -1,0 +1,66 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'ValueStream.Title'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form [formGroup]="form">
+    <mat-dialog-content>
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="valueStream.Code" matInput formControlName="Code" [placeholder]="'ValueStream.Code'|translate">
+                <mat-error *ngIf="form.hasError('required',['Code'])">{{'ValueStream.CodeRequired'|translate}}</mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Code'])">{{'ValueStream.CodeExceedMaxLength'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="valueStream.Name" matInput formControlName="Name" [placeholder]="'ValueStream.Name'|translate">
+                <mat-error *ngIf="form.hasError('required',['Name'])">{{'ValueStream.NameRequired'|translate}}</mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'ValueStream.NameExceedMaxLength'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field id="status">
+                <mat-select [(ngModel)]="valueStream.Status" placeholder="{{'ValueStream.Status'|translate}}" formControlName="Status">
+                    <mat-option *ngFor="let status of statuses" [value]="status.Id">{{status.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['Status'])">{{'ValueStream.StatusRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-select [(ngModel)]="valueStream.PlantId" placeholder="{{'ValueStream.Plant'|translate}}" formControlName="PlantId" (selectionChange)='onChangePlant($event)'>
+                    <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['PlantId'])">{{'ValueStream.PlantRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-select [(ngModel)]="valueStream.AreaId" placeholder="{{'ValueStream.Area'|translate}}" formControlName="AreaId">
+                    <mat-option *ngFor="let area of areas" [value]="area.Id">{{area.AreaName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['AreaId'])">{{'ValueStream.AreaRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <textarea matInput [(ngModel)]="valueStream.Description" formControlName="Description" [placeholder]="'Common.Description'|translate"></textarea>
+                <mat-error *ngIf="form.hasError('maxlength',['Description'])">{{'Validator.MaxLength1000'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+            <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>

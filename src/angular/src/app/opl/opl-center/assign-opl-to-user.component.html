@@ -1,0 +1,57 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'OPL.AssignUser'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<div>
+    <bci-commandbar (search)="searchData($event)"></bci-commandbar>
+</div>
+<div [formGroup]="form">
+    <mat-dialog-content>
+        <div>
+            <mat-table #table [dataSource]="users$ | async">
+                <ng-container matColumnDef="no">
+                    <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row;let i = index">
+                        {{i+1}}
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>{{'UserManagement.UserName'|translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}
+                        </div>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="employeeNo">
+                    <mat-header-cell *matHeaderCellDef>{{'UserManagement.EmployeeNo'|translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <div class="overflow-cell" matTooltip="{{row.EmployeeNo}}" matTooltipPosition="above">
+                            {{row.EmployeeNo}}</div>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="firstname">
+                    <mat-header-cell *matHeaderCellDef>{{'UserManagement.FirstName'|translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.FirstName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="secondname">
+                    <mat-header-cell *matHeaderCellDef>{{'UserManagement.SecondName'|translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.SecondName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>{{'Common.Operation'|translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button (click)="assign(row)" mat-icon-button>
+                            <mat-icon fontIcon="Bosch-Ic-go-to" matTooltip="Assign" matTooltipPosition="above">
+                            </mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="columns">
+                </mat-header-row>
+                <mat-row *matRowDef="let row ; columns:columns"></mat-row>
+            </mat-table>
+        </div>
+    </mat-dialog-content>
+</div>

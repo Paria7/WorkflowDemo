@@ -1,0 +1,153 @@
+<app-layout>
+  <form [formGroup]="form">
+    <mat-grid-list cols="12" rowHeight="80px">
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="Area" [(ngModel)]="queryModel.AreaId"
+            (selectionChange)='onQueryChangeValueStream($event)' formControlName="Area">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of areas" [value]="item.Id">
+              {{item.AreaName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Area'])">{{'Validator.AreaRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="ValueStream" [(ngModel)]="queryModel.ValueStreamId"
+            (selectionChange)='onQueryChangeLine($event)' formControlName="ValueStream">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of valueStreams" [value]="item.Id">
+              {{item.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['ValueStream'])">{{'Validator.ValueStreamRequired'|translate}}
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="Line" [(ngModel)]="queryModel.LineId" (selectionChange)='onQueryChangeDevice($event)'
+            formControlName="Line">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of lines" [value]="item.Id">
+              {{item.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Line'])">{{'Validator.LineRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select placeholder="Machine" [(ngModel)]="queryModel.DeviceId" formControlName="Device">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let item of devices" [value]="item.Id">
+              {{item.DeviceName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Device'])">{{'Validator.DeviceRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <button mat-raised-button color="primary" (click)="query($event)">{{'Common.Query'|translate}}</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <button mat-raised-button color="primary"
+          (click)="onClickDownloadTpmPlanTemplate($event)">{{'Common.DownloadTemplate'|translate}}</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <button class="import-button" mat-raised-button color="primary" (click)="onClickImportTpmPlan()">
+          {{'Common.Import'|translate}}
+          <app-file-uploader #kpiFileUploader (fileSelected)="onImportTpmPlanFileSelected($event)"></app-file-uploader>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  <div></div>
+  <div>
+    <mat-table #table [dataSource]="dataSource">
+      <ng-container matColumnDef="version">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.Version'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Version}}" matTooltipPosition="above">{{row.Version}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="area">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.Area'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Area}}" matTooltipPosition="above">{{row.Area}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="valueStream">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.ValueStream'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.ValueStream}}" matTooltipPosition="above">{{row.ValueStream}}
+          </div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="line">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.Line'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Line}}" matTooltipPosition="above">{{row.Line}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="device">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.Device'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.DeviceName}}" matTooltipPosition="above">{{row.DeviceName}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.Status'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.Status}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="issuedate">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.IssueDate'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.IssueDate | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastupdatedtime">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlan.LastUpdatedTime'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.LastUpdatedTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+        </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="tpmdetails(row)" matTooltipPosition="above"
+            matTooltip="{{'TpmPlan.PlanDetails'|translate}}">
+            <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="publishorfreeze(row.Id)" matTooltipPosition="above"
+            matTooltip="{{'TpmPlan.PublishOrFreeze'|translate}}">
+            <mat-icon fontIcon="Bosch-Ic-history"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="tpmhistory(row)" matTooltipPosition="above"
+            matTooltip="{{'TpmPlan.PlanHistory'|translate}}">
+            <mat-icon fontIcon="Bosch-Ic-list-view"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="remove(row.Id)" matTooltipPosition="above"
+            matTooltip="{{'TpmPlan.Delete'|translate}}">
+            <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="rollback(row.Id)" matTooltipPosition="above"
+            matTooltip="{{'TpmPlan.Rollback'|translate}}">
+            <mat-icon fontIcon="Bosch-Ic-undo"></mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayColumns">
+      </mat-header-row>
+      <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+    </mat-table>
+    <mat-paginator (page)="changePage($event)" [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons></mat-paginator>
+  </div>
+</app-layout>

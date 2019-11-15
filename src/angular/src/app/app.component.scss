@@ -1,0 +1,12 @@
+::ng-deep {
+  .mat-drawer-container {
+    background-color: inherit;
+    color: inherit;
+  }
+  .page-heading {
+    margin-top: 0;
+  }
+  mat-sidenav-container .sidenav-header h1 {
+    line-height: 32px!important;
+  }
+}

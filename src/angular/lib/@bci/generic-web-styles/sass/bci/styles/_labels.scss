@@ -1,0 +1,8 @@
+label {
+  @include make-label-left;
+
+  &.label-top {
+    @include make-label-top;
+  }
+}
+

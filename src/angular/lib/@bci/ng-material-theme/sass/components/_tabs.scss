@@ -1,0 +1,54 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+
+
+mat-tab-group .mat-tab-header {
+  border: none;
+  border-bottom: 1px solid $boschLightGray75;
+  padding-left: 16px;
+  mat-ink-bar.mat-ink-bar {
+    height: 3px;
+    background-color: $boschDarkBlue;
+  }
+}
+
+.mat-tab-links {
+  padding-left: 16px;
+}
+
+.mat-tab-links .mat-tab-link,
+.mat-tab-labels .mat-tab-label {
+  @include make-font(18px);
+  color: $font-color;
+  line-height: 60px;
+  height: 60px;
+  padding: 0;
+  text-align: left;
+  min-width: 10px;
+  margin-right: 57px;
+  opacity: 1;
+
+  &:hover {
+    color: $boschDarkBlue;
+  }
+
+  &:focus {
+    background-color: transparent !important;
+  }
+
+  &.mat-tab-label-active {
+    color: $boschDarkBlue;
+  }
+
+  &.mat-tab-disabled {
+    color: $boschDarkGray25;
+  }
+
+  .mat-ripple-element {
+    display: none;
+  }
+}
+
+
+

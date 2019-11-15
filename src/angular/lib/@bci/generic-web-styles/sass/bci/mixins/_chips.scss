@@ -1,0 +1,53 @@
+@import "../bci-variables";
+@import "buttons";
+
+@mixin make-chip-base {
+  @include make-border(0, transparent);
+  @include make-button-base($chip-height, $font-size-base, 0 $chip-padding-horizontal);
+  display: inline-block;
+  cursor: default;
+  color: inherit;
+  background: inherit;
+}
+
+@mixin make-chip {
+  @include make-chip-base;
+  color: $boschWhite;
+  @include make-primary-button-background;
+}
+
+@mixin make-chip-margin {
+  margin: ($chip-margin-vertical/2) ($chip-margin-horizontal/2);
+}
+
+@mixin make-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &, & > * {
+    @include make-chip-margin;
+  }
+}
+
+@mixin make-chip-icon {
+  font-size: $icon-font-size-xsmall;
+  text-align: center;
+
+  box-sizing: border-box;
+  display: inline-block;
+  line-height: ($chip-height - 1px); /* -1px to compensate for line-height rendering issue */
+  height: ($chip-height - 1px); /* -1px to compensate for line-height rendering issue */
+  width: $chip-height;
+  transform: translateY(0.5px);
+
+  margin-right: -$chip-padding-horizontal;
+
+  &:hover {
+    font-weight: bold;
+  }
+
+  &.clickable-element:hover {
+    color: $boschWhite;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,46 @@
+@mixin make-header-logo {
+  margin-left: auto;
+  height: $header-height;
+  width: $header-logo-width;
+  background: url('#{$path-to-assets}/img/bosch-logo-only.svg');
+  background-size: $header-logo-width auto;
+  background-repeat: no-repeat;
+  background-position-y: center;
+
+  @media all and (max-width: $screen-xs-min) {
+    height: $header-height-screen-xs;
+    background-size: $header-logo-width-screen-xs auto;
+    width: $header-logo-width-screen-xs;
+  }
+}
+
+@mixin make-bci-logo-row {
+  padding: 16px 24px 0 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: $header-height;
+  align-items: center;
+  box-sizing: content-box;
+  @include make-border(0 0 1px 0, $boschLightGray50);
+
+  @media all and (max-width: $screen-xs-min) {
+    height: $header-height-screen-xs;
+  }
+
+  .header-content {
+    margin-right: 16px;
+    @include make-font(28px);
+  }
+}
+
+@mixin make-header-breadcrumb {
+  @media all and (max-width: $screen-xs-min) {
+    display: none;
+  }
+}
+
+@mixin make-bci-toolbar-row {
+  @include make-bci-logo-row;
+  padding-top: 0;
+}

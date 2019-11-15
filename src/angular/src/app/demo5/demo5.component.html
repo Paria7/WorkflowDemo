@@ -1,0 +1,65 @@
+<bci-commandbar>
+  <bci-commandbar-actions>
+    <bci-commandbar-button icon="bosch-ic-add">
+    </bci-commandbar-button>
+  </bci-commandbar-actions>
+</bci-commandbar>
+<div class="full-space">
+  <div class="padding20 white-bg">
+    <div class="col-12">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>{{'Form.Name'|translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef>{{'Form.Description'|translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">{{row.Description}}
+            </div>
+          </mat-cell>
+        </ng-container>
+        <!-- <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>{{'Form.Status'|translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.Status}}
+          </mat-cell>
+        </ng-container> -->
+        <ng-container matColumnDef="createdtime">
+          <mat-header-cell *matHeaderCellDef>{{'Form.CreatedOn'|translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.CreatedOn | date: 'yyyy-MM-dd HH:mm:ss'}}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lastupdatedtime">
+          <mat-header-cell *matHeaderCellDef>{{'Form.UpdatedOn'|translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.UpdatedOn | date: 'yyyy-MM-dd HH:mm:ss'}}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button (click)="add()">
+              <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+            </button>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <!-- <button mat-icon-button (click)="tpmdetails(row)" matTooltipPosition="above"
+          matTooltip="{{'TpmPlan.PlanDetails'|translate}}">
+          <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
+        </button> -->
+            <button mat-icon-button (click)="remove(row.Id)" matTooltipPosition="above"
+              matTooltip="{{'TpmPlan.Delete'|translate}}">
+              <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayColumns">
+        </mat-header-row>
+        <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>

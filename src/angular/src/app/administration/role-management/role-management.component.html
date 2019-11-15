@@ -1,0 +1,53 @@
+<app-layout>
+  <div>
+    <mat-table #table [dataSource]="roles$ | async">
+      <!-- <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>{{'Common.Id'|translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.Id}} </mat-cell>
+      </ng-container> -->
+      <ng-container matColumnDef="no">
+        <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+          {{i+1}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef>{{'RoleManagement.RoleCode'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Code}}" matTooltipPosition="above">{{row.Code}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>{{'RoleManagement.RoleName'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>{{'RoleManagement.Description'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">{{row.Description}}
+          </div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button (click)="add()" mat-icon-button>
+            <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button (click)="edit(row)" mat-icon-button>
+            <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
+          </button>
+          <button *ngIf="systemRoles.indexOf(row.Id)<0" (click)="delete(row.Id)" mat-icon-button>
+            <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columns">
+      </mat-header-row>
+      <mat-row *matRowDef="let row ; columns:columns"></mat-row>
+    </mat-table>
+  </div>
+</app-layout>

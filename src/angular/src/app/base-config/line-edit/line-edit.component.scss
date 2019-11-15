@@ -1,0 +1,144 @@
+$layout-height: 1000px;
+$layout-width: 500px;
+$device-square-default-length: 100px;
+$line-edit-hadDoneOrDefault-bgColor: #3ab33a;
+$line-edit-needCheck-bgColor: #FFCC33;
+$line-edit-notDone-bgColor: #ff0000;
+
+.line-edit-header {
+  margin: 15px;
+
+  .summary-info {
+
+    //background-color: #F2F2F2;
+    .had-mapped-device {
+      label {
+        font-size: 16px;
+      }
+
+      span {
+        margin-right: 15px;
+      }
+    }
+
+    .line-map-title {
+      margin-top: 15px;
+
+      label {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.line-eidt-content {
+  margin: 15px 15px 15px 15px;
+
+  .line-layout {
+    //width: $layout-height;
+    //height: $layout-width;
+    //background: url('../../../assets/img/line1.jpg') no-repeat;
+    background-size: $layout-height $layout-width;
+
+    .device-square {
+      position: absolute;
+      /*必须设为absolute，否则前面的原素改变位置和大小会影响后面的原素*/
+      background-color: $line-edit-hadDoneOrDefault-bgColor;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+
+      a {
+        color: #FFFFFF;
+      }
+
+      .device-square-header {
+        background-color: #EEEEEE;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      .device-square-content {
+        color: #ffffff;
+        text-align: center;
+
+      }
+    }
+  }
+}
+
+/*重写默认的图标大小*/
+.Bosch-Ic {
+  font-size: 15px;
+}
+
+$icon-length: 25px;
+
+button.mat-icon-button {
+  min-width: $icon-length !important;
+  width: $icon-length !important;
+  height: $icon-length !important;
+  line-height: $icon-length !important;
+}
+
+.operation-btn {
+  //label {
+  //  text-align: left;
+  //}
+  text-align: right;
+
+  span {
+    display: inline-block;
+    text-align: left;
+  }
+}
+
+/*!*自定义鼠标样式*!
+.ng-draggable {
+  cursor: move;
+}*/
+
+
+/*颜色代表的状态设置*/
+ul {
+  li {
+    list-style: none;
+    display: inline-block;
+    width: 50px;
+    height: 15px;
+  }
+
+  .hadDone {
+    background-color: $line-edit-hadDoneOrDefault-bgColor;
+  }
+
+  .needCheck {
+    background-color: $line-edit-needCheck-bgColor;
+  }
+
+  .notDone {
+    background-color: $line-edit-notDone-bgColor;
+  }
+
+}
+
+
+// .mat-grid-tile .mat-figure {
+//   justify-content: left !important;
+
+// }
+
+
+.mat-grid-tile> ::ng-deep figure {
+  justify-content: left !important;
+}
+
+.warning-msg {
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  font-weight: bold;
+}

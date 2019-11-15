@@ -1,0 +1,36 @@
+$short-column-flex: 0 0 30px;
+$short-column-width: 30px;
+$short-medium-column-flex: 0 0 45px;
+$short-medium-column-width: 45px;
+$medium-column-flex: 0 0 60px;
+$medium-column-width: 60px;
+$long-column-flex: 0 0 110px;
+$long-column-width: 110px;
+
+button.mat-raised-button{
+    padding-top: 0px!important;
+    padding-left: 20px!important;
+    padding-bottom: 0px!important;
+    padding-right: 25px!important;
+    margin-left: 25px;
+}
+
+.mat-column-isActive {
+    flex: $short-column-flex !important;
+    width: $short-column-width !important;
+}
+  
+.mat-column-isNewLine {
+    flex: $short-medium-column-flex !important;
+    width: $short-medium-column-width !important;
+}
+  
+.mat-column-description {
+    flex: $long-column-flex !important;
+    width: $long-column-width !important;
+}
+
+.mat-column-plantName {
+    flex: $long-column-flex !important;
+    width: $long-column-width !important;
+}

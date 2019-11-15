@@ -1,0 +1,16 @@
+.dropdown {
+  @include make-dropdown;
+
+  .dropdown-label {
+    @include make-dropdown-label;
+  }
+
+  .dropdown-menu {
+    @include make-dropdown-menu;
+  }
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus .dropdown-menu {
+  @include make-dropdown-menu-visible;
+}

@@ -1,0 +1,7 @@
+.table-of-contents {
+  @include make-table-of-contents;
+
+  > a {
+    @include make-table-of-contents-element;
+  }
+}

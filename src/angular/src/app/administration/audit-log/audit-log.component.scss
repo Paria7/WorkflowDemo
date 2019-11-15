@@ -1,0 +1,64 @@
+
+.mat-column-LogType {
+  min-width: 60px;
+}
+
+.mat-column-Time{
+  min-width:150px;
+}
+
+.mat-column-UserName{
+  min-width:100px;
+}
+
+.mat-column-UserNo {
+  min-width: 100px;
+}
+
+.mat-column-Service{
+  min-width:100px;
+}
+
+.mat-column-Action{
+  min-width:100px;
+}
+
+.mat-column-Duration{
+  min-width:60px;
+}
+
+.mat-column-IPAddress{
+  min-width:80px;
+}
+
+.mat-column-ClientBrowser{
+  min-width:150px;
+}
+
+.mat-column-actions{
+  max-width:80px;
+}
+
+
+$log-status-length: 15px;
+.status{
+  width: $log-status-length;
+  height: $log-status-length;
+  -webkit-border-radius: $log-status-length;
+  -moz-border-radius: $log-status-length;
+  border-radius: $log-status-length;
+}
+
+.redStatus{
+  @extend .status;
+  background-color: #ff0000;
+}
+
+.greenStatus{
+  @extend .status;
+  background-color: #1976D2;
+}
+
+.input-width{
+  min-width: 268px !important;
+}

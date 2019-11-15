@@ -1,0 +1,138 @@
+.image-upload-layout{
+  width: 100%;
+  //border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 0;
+}
+.selected-file-name{
+  height: 34px;
+  position: relative;
+  padding: 0 15px;
+}
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-right: 4px;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+.fileupload-buttonbar .btn,
+.fileupload-buttonbar .toggle {
+  margin-bottom: 5px;
+}
+.fileupload-loading {
+  position: absolute;
+  left: 50%;
+  width: 128px;
+  height: 128px;
+  //okendoken. removing. using font awesome here
+  //background: url(../img/loading.gif) center no-repeat;
+  display: none;
+}
+.fileupload-processing .fileupload-loading {
+  display: block;
+}
+
+.warning-notification{
+  color:#f0ad4e;
+  padding-left: 10px;
+}
+
+/* Fix for IE 6: */
+* html .fileinput-button {
+  line-height: 24px;
+  margin: 1px -3px 0 0;
+}
+
+/* Fix for IE 7: */
+* + html .fileinput-button {
+  padding: 2px 15px;
+  margin: 1px 0 0 0;
+}
+
+@media (max-width: 767px) {
+  .fileupload-buttonbar .toggle,
+  .files .toggle,
+  .files .btn span {
+    display: none;
+  }
+  .files .name * {
+    width: 80px;
+    display: inline-block;
+    word-wrap: break-word;
+  }
+  .files .progress {
+    width: 20px;
+  }
+}
+
+.file-input{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 20px;
+  color: #ffffff !important;
+  background-color: #005691;
+  cursor: pointer;
+  width: 100px;
+  height: 35px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+.file-input input{
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #005691;
+}
+
+.images-preview{
+  width: 100%;
+  clear: both;
+  position: relative;
+  margin-top: 15px;
+}
+
+.single-image{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  float: left;
+  margin: 5px 5px;
+}
+.single-image span{
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  right: 0;
+  cursor: pointer;
+}
+.single-image span:hover{
+  background: rgba(0,0,0,0.6);
+}
+.single-image span i{
+  font-size: 17px;
+  color: #ffffff;
+  margin-top: 2px;
+}

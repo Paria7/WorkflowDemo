@@ -1,0 +1,51 @@
+@mixin make-button-group-button {
+  @include make-primary-button;
+  position: relative;
+  float: left;
+  text-decoration: none;
+
+  // Bring the "active" button to the front
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    z-index: 2;
+  }
+}
+
+@mixin make-button-group-base {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; // match .button alignment given font-size hack above
+
+  > * {
+    @include make-button-group-button;
+  }
+}
+
+@mixin make-button-group {
+  @include make-button-group-base;
+   * + * {
+     margin-left: -1px;
+   }
+}
+
+//--------------------------------------------------------------------------------------------------------------------- VERTICAL
+@mixin make-button-group-vertical-button {
+  display: block;
+  float: none;
+  max-width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+@mixin make-button-group-vertical {
+  @include make-button-group-base;
+  * + * {
+    margin-top: -1px;
+    margin-left: 0;
+  }
+  > * {
+    @include make-button-group-vertical-button;
+  }
+}

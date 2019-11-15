@@ -1,0 +1,155 @@
+<app-layout>
+  <form [formGroup]="form" (submit)="query()">
+    <mat-grid-list cols="4" rowHeight="80px">
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field class="input-width">
+          <input [(ngModel)]="queryModel.ActionName" matInput placeholder="{{'AuditLog.Action'|translate}}"
+            formControlName="ActionName">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field class="input-width">
+          <input [(ngModel)]="queryModel.UserName" matInput placeholder="{{'AuditLog.UserName'|translate}}"
+            formControlName="UserName">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field class="input-width">
+          <input [(ngModel)]="queryModel.UserNo" matInput placeholder="{{'AuditLog.UserNo'|translate}}"
+            formControlName="UserNo">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field class="input-width">
+          <input [(ngModel)]="queryModel.ServiceName" matInput placeholder="{{'AuditLog.Service'|translate}}"
+            formControlName="ServiceName">
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="4" rowHeight="80px">
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input matInput [matDatepicker]="startTime" (dateInput)="changeAnotherDate('0', $event)"
+            (dateChange)="changeAnotherDate('0', $event)" [(ngModel)]="startTimeTxt" [max]=(endTimeTxt)
+            placeholder="{{'Common.StartTime'|translate}}" formControlName="StartTime">
+          <mat-datepicker-toggle matSuffix [for]="startTime"></mat-datepicker-toggle>
+          <mat-datepicker #startTime startView="month"></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field>
+          <input matInput [matDatepicker]="endTime" (dateInput)="changeAnotherDate('1', $event)"
+            (dateChange)="changeAnotherDate('1', $event)" [(ngModel)]="endTimeTxt" [min]=(startTimeTxt)
+            placeholder="{{'Common.EndTime'|translate}}" formControlName="EndTime">
+          <mat-datepicker-toggle matSuffix [for]="endTime"></mat-datepicker-toggle>
+          <mat-datepicker #endTime startView="month"></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1">
+        <mat-form-field class="input-width">
+          <mat-select [(ngModel)]="queryModel.LogType" placeholder="{{'AuditLog.LogType'|translate}}"
+            formControlName="LogType">
+            <mat-option [value]=""></mat-option>
+            <mat-option [value]="1">{{'AuditLog.AuditLog'|translate}}</mat-option>
+            <mat-option [value]="2">{{'AuditLog.ExceptionLog'|translate}}</mat-option>
+            <!-- <mat-option value="3">{{'AuditLog.BusinessLog'|translate}}</mat-option> -->
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+        <button mat-raised-button color="primary">{{'Common.Query'|translate}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="LogType">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.LogType'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div [ngClass]="{'redStatus':row.LogType==2}"></div>
+        <div [ngClass]="{'greenStatus':row.LogType!=2}"></div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Time">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.Time'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Time}}" matTooltipPosition="above">{{row.Time | date: 'yyyy-MM-dd
+          HH:mm:ss'}}
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="UserName">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.UserName'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.UserName}}" matTooltipPosition="above">{{row.UserName}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="UserNo">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.UserNo'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.UserNo}}" matTooltipPosition="above">{{row.UserNo}}</div>
+      </mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="Service">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.Service'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Service}}" matTooltipPosition="above">{{row.Service}}</div>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.Action'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row" matTooltip="{{row.Action}}" matTooltipPosition="above">
+        {{row.Action}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Duration">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.Duration'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.Duration}} ms
+      </mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="IPAddress">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.IPAddress'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.IPAddress}}
+      </mat-cell>
+    </ng-container> -->
+
+    <!-- <ng-container matColumnDef="ClientBrowser">
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.ClientBrowser'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row" matTooltip="{{row.ClientBrowser}}" matTooltipPosition="above">
+        {{(row.ClientBrowser!=null && row.ClientBrowser.length>30) ? row.ClientBrowser.substr(0,30) + '...' :
+        row.ClientBrowser}}
+      </mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="actions">
+
+      <mat-header-cell *matHeaderCellDef>{{'AuditLog.Operation'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button matTooltip="{{'Common.Detail'|translate}}" matTooltipPosition="above"
+          (click)="logDetail(row)">
+          <mat-icon fontIcon="Bosch-Ic-list-view"></mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+
+    <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator (page)="changePage($event)" [length]="totalCount" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons></mat-paginator>
+</app-layout>

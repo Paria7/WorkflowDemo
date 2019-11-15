@@ -1,0 +1,325 @@
+/* You can add global styles to this file, and also import other style files */
+$path-to-assets: './assets';
+$short-column-flex: 0 0 30px;
+$short-column-width: 30px;
+$short-medium-column-flex: 0 0 45px;
+$short-medium-column-width: 45px;
+$medium-column-flex: 0 0 60px;
+$medium-column-width: 60px;
+$long-medium-column-flex: 0 0 90px;
+$long-medium-column-width: 90px;
+$long-column-flex: 0 0 120px;
+$long-column-width: 120px;
+
+@import "~@bci/ng-material-theme/sass/theme";
+@import "~@bci/generic-web-styles/sass/bci-styles";
+@import '~angular-tree-component/dist/angular-tree-component.css';
+@import '~devextreme/dist/css/dx.common.css';
+@import '~devextreme/dist/css/dx.light.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.snack-error simple-snack-bar {
+  color: red;
+}
+
+.snack-warning simple-snack-bar {
+  color: yellow;
+}
+
+.snack-success simple-snack-bar {
+  color: #4F8A10;
+}
+
+section.mat-form-control {
+  margin-bottom: 16px;
+}
+
+button.mat-menu-item {
+  height: 36px;
+  line-height: 36px;
+  font-size: 18px;
+}
+
+mat-form-field.mat-form-field textarea {
+  height: 54px;
+}
+
+.mat-dialog-content {
+  max-height: calc(95vh - 260px) !important;
+}
+
+/* tree custom style */
+.node-content-wrapper, .tree-children {
+  position: relative;
+}
+
+.node-content-wrapper::before, .tree-children::after {
+  content: "";
+  position: absolute;
+}
+
+.node-content-wrapper::before {
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  height: 28px;
+  top: -17px;
+  width: 20px;
+  left: -28px;
+}
+
+.tree-node-level-1 > tree-node-wrapper > .node-wrapper > .node-content-wrapper::before {
+  display: none;
+}
+
+.tree-node-leaf > .node-wrapper > .node-content-wrapper::before {
+  width: 25px;
+}
+
+.tree-children::after {
+  border-left: 1px solid lightgrey;
+  height: 100%;
+  top: -15px;
+  left: -15px;
+}
+
+tree-node:last-child > .tree-node > .tree-children::after {
+  border-left: none;
+}
+
+.toggle-children {
+  z-index: 1;
+}
+
+.overflow-cell {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
+.report-container {
+  overflow: auto;
+
+  mat-header-row {
+    min-width: 100%;
+    width: fit-content;
+    display: inline-flex;
+  }
+
+  mat-header-row mat-header-cell, mat-row mat-cell {
+    min-width: 70px;
+  }
+
+  .report-lg-cell {
+    min-width: 150px;
+  }
+
+  .overflow-cell {
+    white-space: normal;
+  }
+}
+
+.cdk-overlay-container {
+  overflow-y: auto;
+}
+
+.mat-tab-body-content {
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+.mat-header-cell {
+  min-height: auto;
+}
+
+snack-bar-container.mat-snack-bar-container.mat-snack-bar-top {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+mat-sidenav-container .sidenav-header.closed-sidebar {
+  height: 100vh !important;
+}
+
+mat-sidenav-container .sidenav-header {
+  width: 100%;
+}
+
+.sidenav-header {
+  min-height: 32px !important;
+  max-height: 64px !important;
+}
+
+.sidenav-header.ch h1 {
+  line-height: 48px !important;
+  font-size: 23px;
+}
+
+.mat-column-no {
+  flex: $short-column-flex !important;
+  width: $short-column-width !important;
+}
+
+.mat-column-plantCode {
+  flex: $medium-column-flex !important;
+  width: $medium-column-width !important;
+}
+
+.mat-column-code {
+  flex: $long-column-flex !important;
+  width: $long-column-width !important;
+}
+
+.mat-column-createUser {
+  flex: $long-medium-column-flex !important;
+  width: $long-medium-column-width !important;
+}
+
+.mat-column-createTime {
+  flex: $long-medium-column-flex !important;
+  width: $long-medium-column-width !important;
+}
+
+.mat-column-updateUser {
+  flex: $long-medium-column-flex !important;
+  width: $long-medium-column-width !important;
+}
+
+.mat-column-updateTime {
+  flex: $long-medium-column-flex !important;
+  width: $long-medium-column-width !important;
+}
+
+.mat-column-actions {
+  flex: $long-column-flex !important;
+  width: $long-column-width !important;
+}
+
+.mat-column-isActive {
+  flex: $medium-column-flex !important;
+  width: $medium-column-width !important;
+}
+
+.mat-column-DTReason {
+  flex: $medium-column-flex !important;
+  width: $medium-column-width !important;
+}
+
+
+.huangcard {
+    padding: 5px 10px 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #005691;
+    width:200px;
+}
+
+.checkcard {
+    padding: 5px 10px 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #005691;
+    width:150px;
+    height: 150px;
+    text-align: center;
+    transform:rotate(45deg);   
+    -ms-transform:rotate(45deg); /* Internet Explorer */   
+    -moz-transform:rotate(45deg); /* Firefox */   
+    -webkit-transform:rotate(45deg); /* Safari 和 Chrome */   
+    -o-transform:rotate(45deg); /* Opera */   
+    margin:50px auto;
+}
+
+.checktext{
+  margin-left:0;
+  transform-origin: 80% 0;
+  transform: rotate(-45deg);
+  display: block;
+  color:white;
+}
+
+
+.startCard{
+    padding: 10px ;
+    display: flex;
+    flex-direction: row;
+    background-color: #005691;
+    border-radius:50%;
+    color:white;
+    text-align: center;
+}
+
+.inhover {
+    //border-left: 8px solid #005691;
+}
+
+.outhover {
+    //border-left: 4px solid rgba(0, 0, 0, 0.45);
+}
+
+.zuo {
+    margin-right: 24px
+}
+
+.you {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: 800;
+    //font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.card-content {
+    margin-bottom: 4px;
+    //font-size: 10pt;
+}
+
+.mes {
+    //font-size: 10pt;
+    margin-left: 10px;
+    color:white;
+}
+
+.tools{
+    padding: 5px 10px 5px 10px;
+    display: flex;
+    flex-direction: row;
+    background-color: #005691;
+    height: 30px;
+    width: 30px;
+}
+
+.diamond_outer{
+  width:140px;
+}
+.diamond_top{
+  width:0;
+  height:0;
+  border-bottom:35px solid #005691;
+  border-left: 70px solid white;
+  border-right: 70px solid white;
+}
+.diamond_bottom{
+  width:0;
+  height: 0;
+  border-top:35px solid #005691;
+  border-left:70px solid white;
+  border-right: 70px solid white;
+}
+.diamond_text{
+  width:140px;
+  text-align:center;
+  margin-top:23px;
+  float: left;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+

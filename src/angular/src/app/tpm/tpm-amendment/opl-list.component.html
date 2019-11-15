@@ -1,0 +1,55 @@
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="no">
+    <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row;let i = index">
+      {{i+1}}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="tpmDescription">
+    <mat-header-cell *matHeaderCellDef>{{'TpmPlanDetails.TPMDescription'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.TpmDescription}}" matTooltipPosition="above">
+        {{row.TpmDescription}}</div>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.Description}}" matTooltipPosition="above">{{row.Description}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createTime">
+    <mat-header-cell *matHeaderCellDef>{{'Common.CreateTime'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.CreateTime}}" matTooltipPosition="above">{{row.CreateTime}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createBy">
+    <mat-header-cell *matHeaderCellDef>{{'Common.CreateUser'|translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="overflow-cell" matTooltip="{{row.CreatedBy}}" matTooltipPosition="above">{{row.CreatedBy}}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      <ng-container *ngIf="viewType!=0 && checkDetailId !=null ">
+        <button mat-icon-button (click)="add()">
+          <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+        </button>
+      </ng-container>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <ng-container *ngIf="viewType!=0">
+        <button mat-icon-button (click)="remove(row.Id)">
+          <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+        </button>
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayColumns">
+  </mat-header-row>
+  <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+</mat-table>

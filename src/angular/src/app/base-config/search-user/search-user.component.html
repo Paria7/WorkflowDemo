@@ -1,0 +1,82 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'UserManagement.UserInfo'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form>
+    <mat-dialog-content>
+        <form [formGroup]="form">
+            <mat-grid-list cols="4" rowHeight="80px">
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <input [(ngModel)]="queryModel.EmployeeNo" matInput placeholder="{{'UserManagement.EmployeeNo'|translate}}" formControlName="EmployeeNo">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <input [(ngModel)]="queryModel.Name" matInput placeholder="{{'UserManagement.UserName'|translate}}" formControlName="Name">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="queryModel.PlantId" placeholder="{{'Plant.Title'|translate}}" formControlName="Plant">
+                            <mat-option [value]=""></mat-option>
+                            <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1">
+                    <button mat-raised-button color="primary" type="submit" (click)="query()">{{'Common.Query'|translate}}
+                    </button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+
+        <mat-table #table [dataSource]="users">
+            <ng-container matColumnDef="check">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="checkedUsers.hasValue() && isAllChecked()" [indeterminate]="checkedUsers.hasValue() && !isAllChecked()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? checkedUsers.toggle(row) : null" [checked]="checkedUsers.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="no">
+                <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row;let i = index">
+                    {{i+1}}
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="employeeNo">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.EmployeeNo'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.EmployeeNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.UserName'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="overflow-cell" matTooltip="{{row.Name}}" matTooltipPosition="above">{{row.Name}}</div>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Status'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.StatusName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="plant">
+                <mat-header-cell *matHeaderCellDef>{{'UserManagement.Plant'|translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.PlantName}} </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayColumns">
+            </mat-header-row>
+            <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+        </mat-table>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <button type="button" mat-raised-button (click)="ok()">{{'Common.Ok'|translate}}</button>
+            <button type="button" mat-button (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>

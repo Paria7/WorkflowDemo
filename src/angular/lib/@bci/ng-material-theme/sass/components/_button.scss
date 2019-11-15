@@ -1,0 +1,75 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+@import '~@bci/generic-web-styles/sass/bci/mixins/buttons';
+
+
+button.mat-raised-button,
+button.mat-raised-button.mat-accent {
+  @include make-primary-button;
+  box-shadow: none;
+
+  &:hover,
+  &:active,
+  &:not([disabled]):active,
+  &.active,
+  &:focus,
+  &.focus{
+    box-shadow: none;
+    outline: none;
+  }
+
+  &[disabled],
+  fieldset[disabled] {
+    //cursor: not-allowed;
+  }
+}
+
+button {
+  &.mat-fab:not([class*=mat-elevation-z]),
+  &.mat-mini-fab:not([class*=mat-elevation-z]),
+  &.mat-raised-button:not([class*=mat-elevation-z]),
+  &.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]),
+  &.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]),
+  &.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z])
+  {
+    box-shadow: none;
+  }
+}
+
+
+button.mat-button {
+  @include make-secondary-button;
+
+  .mat-button-focus-overlay {
+    background-color: transparent !important;
+  }
+}
+
+a.mat-button {
+  @include make-link-button;
+
+  .mat-button-focus-overlay {
+    background-color: transparent !important;
+  }
+
+  .mat-button-ripple {
+    display: none;
+  }
+}
+
+button.mat-icon-button {
+  width: auto;
+  min-width: $button-size-small;
+  height: $button-size-small;
+  text-align: left;
+
+  .mat-ripple, .mat-button-focus-overlay {
+    width: $button-size-small;
+  }
+
+  .mat-icon {
+    margin: 0 6px;
+    transform: translateX(2px);
+  }
+}
+

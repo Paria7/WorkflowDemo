@@ -1,0 +1,104 @@
+<app-layout>
+  <table *ngIf="user">
+    <tbody>
+      <tr>
+        <td>{{'UserManagement.UserName'|translate}}:</td>
+        <td>
+          <p>{{user.Name}}</p>
+        </td>
+      </tr>
+      <tr>
+        <td>{{'UserManagement.FirstName'|translate}}:</td>
+        <td>
+          <p>{{user.FirstName}}</p>
+        </td>
+      </tr>
+      <tr *ngIf="user.SecondName">
+        <td>{{'UserManagement.SecondName'|translate}}:</td>
+        <td>
+          <p>{{user.SecondName}}</p>
+        </td>
+      </tr>
+      <tr *ngIf="user.Mail">
+        <td>{{'UserManagement.Mail'|translate}}:</td>
+        <td>
+          <p>{{user.Mail}}</p>
+        </td>
+      </tr>
+      <tr *ngIf="user.MobileNo">
+        <td>{{'UserManagement.MobileNo'|translate}}:</td>
+        <td>
+          <p>{{user.MobileNo}}</p>
+        </td>
+      </tr>
+      <tr *ngIf="user.PhoneNo">
+        <td>{{'UserManagement.PhoneNo'|translate}}:</td>
+        <td>
+          <p>{{user.PhoneNo}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'Common.SelectLanguage'|translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form [formGroup]="settingForm">
+        <mat-grid-list cols="8" rowHeight="80px">
+          <mat-grid-tile [colspan]="4">
+            <mat-radio-group formControlName="Language" [(ngModel)]="currentLanguage" (change)="onLanguageChange($event.value)">
+              <mat-radio-button [value]="'en'">{{'Common.English'|translate}}</mat-radio-button>
+              <mat-radio-button [value]="'ch'">{{'Common.Chinese'|translate}}</mat-radio-button>
+            </mat-radio-group>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+  <mat-expansion-panel>
+  <mat-expansion-panel-header>
+  <mat-panel-title>
+  {{'UserManagement.ChangePassword'|translate}}
+  </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="form" (submit)="form.valid&&confirm()" *ngIf="user">
+  <div>
+  <label>{{'UserManagement.OldPassword'|translate}}</label>
+  <mat-form-field>
+  <input type="password" matInput [(ngModel)]="changePasswordModel.OldPassword" formControlName="OldPassword"/>
+  <mat-error *ngIf="form.hasError('required',['OldPassword'])">{{'UserManagement.OldPasswordRequired'|translate}}</mat-error>
+  <mat-error *ngIf="form.hasError('minlength',['OldPassword'])">{{'UserManagement.OldPasswordNotLongEnough'|translate}}</mat-error>
+  </mat-form-field>
+  </div>
+  <div>
+  <label>{{'UserManagement.NewPassword'|translate}}</label>
+  <mat-form-field>
+  <input type="password" matInput [(ngModel)]="changePasswordModel.NewPassword" formControlName="NewPassword"/>
+  <mat-error *ngIf="form.hasError('required',['NewPassword'])">{{'UserManagement.NewPasswordRequired'|translate}}</mat-error>
+  <mat-error *ngIf="form.hasError('minlength',['NewPassword'])">{{'UserManagement.NewPasswordNotLongEnough'|translate}}</mat-error>
+  </mat-form-field>
+  </div>
+  <div>
+  <label>{{'UserManagement.ConfirmPassword'|translate}}</label>
+  <mat-form-field>
+  <input type="password" matInput [(ngModel)]="changePasswordModel.ConfirmPassword" formControlName="ConfirmPassword"/>
+  <mat-error *ngIf="form.hasError('required',['ConfirmPassword'])">{{'UserManagement.ConfirmPasswordRequired'|translate}}</mat-error>
+  <mat-error *ngIf="form.hasError('confirmPassword',['ConfirmPassword'])">{{'UserManagement.ConfirmPasswordIsNotEqual'|translate}}</mat-error>
+  </mat-form-field>
+  </div>
+  <div>
+  <button type="submit" mat-raised-button >{{'Common.Confirm'|translate}}</button>
+  </div>
+  </form>
+  </mat-expansion-panel>
+  </mat-accordion>
+  <div>
+    <button mat-raised-button (click)="logout()">{{'Common.Logout'|translate}}</button>
+  </div>
+</app-layout>

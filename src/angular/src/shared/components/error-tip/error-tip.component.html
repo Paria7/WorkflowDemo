@@ -1,0 +1,9 @@
+<div class="snack-bar-layout">
+  <button mat-icon-button class="snack-bar-button" (click)="closeErrorTip()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+  <div *ngFor="let message of data">
+    <i class="Bosch-Ic Bosch-Ic-information error-icon"></i>
+    <p>{{message}}</p>
+  </div>
+</div>

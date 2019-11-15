@@ -1,0 +1,37 @@
+<bci-page-content>
+  <bci-commandbar>
+    <bci-commandbar-actions>
+      <bci-commandbar-button icon="bosch-ic-add">
+      </bci-commandbar-button>
+    </bci-commandbar-actions>
+  </bci-commandbar>
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef>{{'Workflow.Code'|translate}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="overflow-cell" matTooltip="{{row.Code}}" matTooltipPosition="above">{{row.Code}}</div>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button (click)="createScheme()">
+          <mat-icon fontIcon="Bosch-Ic-add"></mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="editScheme(row.Id)" matTooltipPosition="above"
+          matTooltip="{{'Common.Edit'|translate}}">
+          <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete(row.Id)" matTooltipPosition="above"
+          matTooltip="{{'Common.Delete'|translate}}">
+          <mat-icon fontIcon="Bosch-Ic-delete"></mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+    <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+  </mat-table>
+</bci-page-content>
+<app-create-workflow #createWorkflowComponent (modalSave)="refresh()"></app-create-workflow>

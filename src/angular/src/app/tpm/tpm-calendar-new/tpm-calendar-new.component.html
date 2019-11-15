@@ -1,0 +1,93 @@
+<form [formGroup]="form">
+  <div class="searchForm">
+    <mat-grid-list cols="12" rowHeight="80px">
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.LineId" [placeholder]="'tpm.line'|translate"
+            (selectionChange)='changeLine($event)' formControlName="LineId">
+            <mat-option [value]=""></mat-option>
+            <mat-option *ngFor="let item of lines" [value]="item.Id">
+              {{item.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['LineId'])">{{'Validator.LineRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <mat-form-field>
+          <mat-select [(ngModel)]="queryModel.Year" [placeholder]="'tpm.Year'|translate"
+            (selectionChange)='changeYear($event)' formControlName="Year">
+            <mat-option *ngFor="let item of years" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.hasError('required',['Year'])">{{'Validator.YearRequired'|translate}}</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6">
+        <label id="example-radio-group-label">{{'tpm.cycle'|translate}}</label>
+        <mat-radio-group aria-label="Select an option" formControlName="Interval" [(ngModel)]="queryModel.Interval">
+          <!-- <mat-radio-button value="1">{{'Interval.Daily'|translate}}</mat-radio-button> -->
+          <mat-radio-button value="2">{{'Interval.Weekly'|translate}}</mat-radio-button>
+          <mat-radio-button value="7">{{'Interval.BiWeekly'|translate}}</mat-radio-button>
+          <mat-radio-button value="3">{{'Interval.Monthly'|translate}}</mat-radio-button>
+          <mat-radio-button value="4">{{'Interval.Quarter'|translate}}</mat-radio-button>
+          <mat-radio-button value="6">{{'Interval.HalfYearly'|translate}}</mat-radio-button>
+          <mat-radio-button value="5">{{'Interval.Yearly'|translate}}</mat-radio-button>
+          <mat-radio-button value="0">{{'Common.All'|translate}}</mat-radio-button>
+
+        </mat-radio-group>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <button mat-raised-button color="primary" (click)="query()">{{'Common.Query'|translate}}</button>
+        <button mat-raised-button color="primary" (click)="save($event)"> {{'Common.Save'|translate}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+
+  <div class="calendar_all_year">
+    <div class="ca_month ">
+      <table *ngFor="let month of months">
+        <thead>
+          <tr>
+            <th colspan="8" class="caption"> <a title="{{month.Name}}">{{month.Name}}</a>
+            </th>
+          </tr>
+          <tr>
+            <th class=""></th>
+            <th class="weekday_name "> Su</th>
+            <th class="weekday_name "> Mo</th>
+            <th class="weekday_name "> Tu</th>
+            <th class="weekday_name "> We</th>
+            <th class="weekday_name "> Th</th>
+            <th class="weekday_name "> Fr</th>
+            <th class="weekday_name last_day"> Sa</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let week of weeksOfMonth;index as weekIndex">
+            <td class="week_no">{{weekIndex + 1}}</td>
+            <!-- 这里是为了防止每月的第一周不是从Sunday开始，会导致第一周的数据都填充到前面几天的情况 -->
+            <td *ngIf="weekIndex==0 && month.FirstDayOfMonth>0"></td>
+            <td *ngIf="weekIndex==0 && month.FirstDayOfMonth>1"></td>
+            <td *ngIf="weekIndex==0 && month.FirstDayOfMonth>2"></td>
+            <td *ngIf="weekIndex==0 && month.FirstDayOfMonth>3"></td>
+            <td *ngIf="weekIndex==0 && month.FirstDayOfMonth>4"></td>
+            <td *ngIf="weekIndex==0 && month.FirstDayOfMonth>5"></td>
+
+            <td *ngFor="let item of dailyEventData | FilterMonthDays:month.Id:weekIndex;index as i"
+              (click)="dayClick($event,item)"> <span [ngClass]=" {'selected': item.IsSelected}">
+                {{weekIndex==0 ? (weekIndex * 7 + i + 1) : (weekIndex * 7 + i - month.FirstDayOfMonth + 1)}}
+              </span>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</form>

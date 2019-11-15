@@ -1,0 +1,7 @@
+.bci-expand-height {
+  @include make-expand-height();
+}
+
+.bci-expand-width {
+  @include make-expand-width();
+}

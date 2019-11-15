@@ -1,0 +1,117 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+@import '~@bci/generic-web-styles/sass/bci/mixins/icons';
+
+mat-datepicker-content.mat-datepicker-content {
+  box-shadow: none;
+}
+
+.mat-form-field-suffix mat-datepicker-toggle {
+  padding: 0 0 0 16px;
+  background: none;
+  margin-right: 16px;
+  margin-top: -6px;
+
+  button:before {
+      position: absolute;
+      display: block;
+      right: 8px;
+      top: 0;
+      @include make-icon($Bosch-Ic-calendar, 24px);
+  }
+
+  button.mat-icon-button {
+    height: $button-size-small;
+    vertical-align: middle;
+    color: $boschDarkGray;
+    .mat-button-wrapper {
+      display: none;
+    }
+  }
+
+  .mat-button-focus-overlay {
+    height: $button-size-small;
+    top: 4px;
+  }
+
+}
+
+
+mat-calendar.mat-calendar {
+  @include make-border(1px, $boschDarkGray50);
+  margin-top: 8px;
+  height: auto;
+
+  .mat-calendar-next-button::after  {
+    border-right-width: 1px;
+    border-top-width: 1px;
+  }
+
+  .mat-calendar-previous-button::after  {
+    border-left-width: 1px;
+    border-top-width: 1px;
+  }
+
+  .mat-calendar-header {
+    padding: 8px;
+
+    .mat-calendar-controls {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+
+      .mat-calendar-period-button {
+        order: 2;
+        border: 0 none;
+        flex-grow: 1;
+
+        .mat-calendar-arrow {
+          display: none;
+        }
+
+        .mat-button-focus-overlay {
+          background-color: transparent;
+        }
+      }
+
+      .mat-calendar-previous-button {
+        order: 1;
+      }
+
+      .mat-calendar-next-button {
+        order: 3;
+      }
+
+      .mat-calendar-spacer {
+        display: none;
+      }
+    }
+  }
+
+  .mat-calendar-body-today.mat-calendar-body-selected {
+    box-shadow: none;
+  }
+
+  .mat-calendar-table-header {
+    @include make-font-bold;
+    color: $boschDarkGray;
+  }
+
+  .mat-calendar-table-header-divider {
+    padding: 0;
+    display: none;
+  }
+
+  .mat-calendar-body-label {
+    color: transparent;
+  }
+
+  .mat-calendar-content {
+    padding-top: 16px;
+    @include make-border(1px 0 0 0, $boschDarkGray50);
+  }
+
+}

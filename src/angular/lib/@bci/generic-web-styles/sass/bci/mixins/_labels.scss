@@ -1,0 +1,31 @@
+// Labels
+
+@mixin make-label-top{
+  @include make-font-bold($font-size-small);
+  line-height: $font-size-small;
+  color: $boschDarkGray;
+  display: block;
+  padding: 0 0 0 8px;
+  margin: 0;
+  height: 16px;
+}
+
+@mixin make-label-left{
+  @include make-font($font-size-base);
+  color: $boschBlack;
+  display: inline;
+  line-height: $font-size-small;;
+  padding: 0 16px 0 0;
+}
+
+@mixin label-variant($color) {
+  border: 1px solid $color;
+  border-top-width: 2px;
+  background-color: inherit;
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: $color;
+    }
+  }
+}

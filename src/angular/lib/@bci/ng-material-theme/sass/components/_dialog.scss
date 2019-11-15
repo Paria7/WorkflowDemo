@@ -1,0 +1,48 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+
+mat-dialog-container.mat-dialog-container {
+  box-shadow: none;
+  position: relative;
+  border-radius: 0;
+
+  .dialog-header {
+    padding: 16px 0 16px 16px;
+
+    h1,h2,h3,h4 {
+      padding: 0;
+      margin: 0;
+      @include make-font(28px)
+    }
+
+    .close-button {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+
+      i {
+        font-size: 22px;
+        color: $boschDarkGray;
+        transition: all .2s ease;
+        &:hover {
+          color: $boschBlack;
+        }
+      }
+    }
+  }
+
+  mat-dialog-content.mat-dialog-content {
+    margin: 0 0;
+    padding: 16px 16px;
+    @include make-font($font-size-base);
+  }
+
+  mat-dialog-actions {
+    padding: 36px 16px;
+    justify-content: space-between;
+
+    .primary-actions {
+      display: flex;
+    }
+  }
+}

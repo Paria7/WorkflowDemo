@@ -1,0 +1,144 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>{{'TPMPlanItemDetail.Title'|translate}}</h2>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+</div>
+<form [formGroup]="form">
+  <mat-dialog-content>
+    <div class="grid-container-1">
+      <mat-form-field>
+        <textarea [(ngModel)]="tpmPlanDetailsModel.Description" matInput formControlName="Description"
+          [placeholder]="'TPMPlanItemDetail.Description'|translate"></textarea>
+        <!-- <mat-error *ngIf="form.hasError('required',['Code'])">{{'LineDetail.CodeRequired'|translate}}</mat-error>
+        <mat-error *ngIf="form.hasError('maxlength',['Code'])">{{'LineDetail.CodeExceedMaxLength'|translate}}
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="grid-container-1">
+      <mat-form-field>
+        <textarea [(ngModel)]="tpmPlanDetailsModel.HowToMaintain" matInput formControlName="HowToMaintain"
+          [placeholder]="'TPMPlanItemDetail.HowToMaintain'|translate"></textarea>
+        <!-- <mat-error *ngIf="form.hasError('required',['Name'])">{{'LineDetail.NameRequired'|translate}}</mat-error>
+                    <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'LineDetail.NameExceedMaxLength'|translate}}
+                    </mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="grid-container-1">
+      <mat-form-field>
+        <textarea [(ngModel)]="tpmPlanDetailsModel.Tools" matInput formControlName="Tools"
+          [placeholder]="'TPMPlanItemDetail.Tools'|translate"></textarea>
+        <!-- <mat-error *ngIf="form.hasError('required',['Name'])">{{'LineDetail.NameRequired'|translate}}</mat-error>
+                                <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'LineDetail.NameExceedMaxLength'|translate}}
+                                </mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="grid-container-3">
+      <mat-form-field>
+        <mat-select placeholder="MaintType" [(ngModel)]="tpmPlanDetailsModel.MaintType" formControlName="MaintType">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let item of mainttypes" [value]="item.Code">
+            {{item.Description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="tpmPlanDetailsModel.IntervalCode" matInput formControlName="Interval"
+          [placeholder]="'TPMPlanItemDetail.Interval'|translate">
+          <mat-option></mat-option>
+          <mat-option [value]="1">{{'Interval.Daily'|translate}}</mat-option>
+          <mat-option [value]="2">{{'Interval.Weekly'|translate}}</mat-option>
+          <mat-option [value]="3">{{'Interval.Monthly'|translate}}</mat-option>
+          <mat-option [value]="4">{{'Interval.Quarter'|translate}}</mat-option>
+          <mat-option [value]="5">{{'Interval.Yearly'|translate}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.hasError('required',['Interval'])">{{'TPMPlanItemDetail.IntervalRequired'|translate}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" [(ngModel)]="tpmPlanDetailsModel.Cost" matInput formControlName="CostTime"
+          [placeholder]="'TPMPlanItemDetail.CostTime'|translate">
+        <!-- <mat-error *ngIf="form.hasError('required',['LineId'])">{{'DeviceDetail.StationRequired'|translate}}
+                </mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="grid-container-3">
+      <mat-form-field>
+        <mat-select [(ngModel)]="tpmPlanDetailsModel.DoBy" matInput formControlName="DoBy"
+          placeholder="{{'TPMPlanItemDetail.DoBy'|translate}}">
+          <mat-option></mat-option>
+          <mat-option value="OP">{{'DoBy.Operator'|translate}}</mat-option>
+          <mat-option value="SER">{{'DoBy.Service'|translate}}</mat-option>
+          <mat-option value="ENG">{{'DoBy.Engineer'|translate}}</mat-option>
+          <mat-option value="ML">{{'DoBy.MachineLeader'|translate}}</mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="form.hasError('required',['Name'])">{{'LineDetail.NameRequired'|translate}}</mat-error>
+            <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'LineDetail.NameExceedMaxLength'|translate}}
+            </mat-error> -->
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="tpmPlanDetailsModel.CheckBy" matInput formControlName="CheckBy"
+          placeholder="{{'TPMPlanItemDetail.CheckBy'|translate}}">
+          <mat-option></mat-option>
+          <mat-option value="Service">{{'CheckBy.Service'|translate}}</mat-option>
+          <mat-option value="Engineer">{{'CheckBy.Engineer'|translate}}</mat-option>
+          <mat-option value="Lineleader">{{'CheckBy.Lineleader'|translate}}</mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="form.hasError('required',['LineId'])">{{'DeviceDetail.StationRequired'|translate}}
+                </mat-error> -->
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="checkValue" placeholder="{{'TPMPlanItemDetail.CheckValue'|translate}}"
+          formControlName="CheckValue">
+          <mat-option [value]="0">{{'Common.No'|translate}}</mat-option>
+          <mat-option [value]="1">{{'Common.Yes'|translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="grid-container-2">
+      <mat-form-field>
+        <mat-select [(ngModel)]="notification" placeholder="{{'TPMPlanItemDetail.Notification'|translate}}"
+          formControlName="Notification">
+          <mat-option [value]="0">{{'Common.No'|translate}}</mat-option>
+          <mat-option [value]="1">{{'Common.Yes'|translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="tpmPlanDetailsModel.NotificationPerson"
+          placeholder="{{'TPMPlanItemDetail.NotificationPerson'|translate}}" formControlName="NotificationPerson">
+          <mat-option></mat-option>
+          <mat-option value="Service">{{'CheckBy.Service'|translate}}</mat-option>
+          <mat-option value="Engineer">{{'CheckBy.Engineer'|translate}}</mat-option>
+          <mat-option value="Lineleader">{{'CheckBy.Lineleader'|translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <!-- <div class="col-md-8 col-sm-8 col-8">
+        <image-upload [max]=20 [extensions]="['image/jpeg','image/png']" [fileName]=""
+          [supportedTypes]="['jpg','png','gif','jpeg','bmp']" [images]="selectedImage"
+          (imageChanged)="onImageChanged($event)" (fileChanged)="onFileChanged($event)"></image-upload>
+      </div> -->
+      <a class="file-input btn btn-primary">
+        <span *ngIf="type!=='all'">{{'Common.SelectImage'|translate}}</span>
+        <span *ngIf="type==='all'">{{'Common.SelectAttachment'|translate}}</span>
+        <input type="file" name="file" id="file" class="form-control" #fileInput (change)="fileChange()"
+          multiple="multiple">
+      </a>
+      <div class="images-preview" *ngIf="type!=='all'">
+        <div class="single-image" *ngFor="let item of imageArray;let idx=index">
+          <span (click)="deleteImage(idx)">
+            <i>X</i>
+          </span>
+          <img [src]="item" width="100%" height="100%" (click)="showEnlargedImage(idx)">
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="primary-actions">
+      <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+      <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+    </div>
+  </mat-dialog-actions>
+</form>

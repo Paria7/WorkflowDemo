@@ -1,0 +1,7 @@
+<mat-card role="group">{{header}}
+    <mat-card-content>
+        <ng-container *ngFor="let function of functions">
+            <mat-checkbox [(ngModel)]="function.Checked">{{function.Name}}</mat-checkbox>
+        </ng-container>
+    </mat-card-content>
+</mat-card>

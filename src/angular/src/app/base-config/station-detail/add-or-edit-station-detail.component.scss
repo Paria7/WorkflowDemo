@@ -1,0 +1,13 @@
+.mat-form-field-width{
+    width: 100%;
+}
+.grid-container-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:5px;
+}
+.grid-container-1{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap:5px;
+}

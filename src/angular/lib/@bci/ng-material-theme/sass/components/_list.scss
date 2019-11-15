@@ -1,0 +1,27 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+
+mat-list.mat-list, mat-selection-list.mat-selection-list {
+  border: none;
+  padding: 0;
+
+  *[md-subheader] {
+    margin: 0;
+    line-height: 48px;
+    padding: 0 16px;
+    background-color: $boschLightGrayW75;
+    @include make-font-bold($font-size-h6);
+  }
+
+  mat-list-item.mat-list-item, mat-list-option.mat-list-item {
+    font-size: $font-size-base;
+    line-height: 48px;
+    @include make-border(0 0 1px 0, $boschLightGrayW50);
+
+    .mat-list-item-content {
+      padding: 0 16px;
+      font-size: $font-size-base;
+    }
+  }
+}
+

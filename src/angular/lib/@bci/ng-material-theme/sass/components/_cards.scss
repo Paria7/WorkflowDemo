@@ -1,0 +1,15 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+
+mat-card.mat-card {
+  box-shadow: none !important;
+  background-color: $boschLightGray25;
+
+  @include make-border(1px, transparent);
+
+  .mat-card-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+

@@ -1,0 +1,118 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/borders';
+@import '~@bci/generic-web-styles/sass/bci/mixins/table-cells';
+
+// Table Rows
+@function getMatStateSelector($state) {
+  @if ($state == '') {
+    @return '';
+  }
+  @return '.#{$state}';
+}
+
+@mixin mat-table-row-variant($state) {
+  $stateSelector: getMatStateSelector($state);
+
+  > mat-row.mat-row {
+    > mat-cell.mat-cell#{$stateSelector},
+    &#{$stateSelector} > mat-cell.mat-cell {
+      @content
+    }
+  }
+}
+
+@mixin mat-table-row-variant-hover($state) {
+  $stateSelector: getMatStateSelector($state);
+
+  > mat-row.mat-row {
+    > mat-cell.mat-cell#{$stateSelector}:hover,
+    &#{$stateSelector}:hover > mat-cell.mat-cell {
+      @content
+    }
+  }
+}
+
+@mixin mat-table-row-variant-stripes($state) {
+  $stateSelector: getMatStateSelector($state);
+
+  > mat-row.mat-row {
+    > mat-cell.mat-cell#{$stateSelector}:nth-of-type(even),
+    &#{$stateSelector} > mat-cell.mat-cell:nth-of-type(even) {
+      @content
+    }
+  }
+}
+
+@mixin mat-table-row-variant-stripes-hover($state) {
+  $stateSelector: getMatStateSelector($state);
+
+  > mat-row.mat-row {
+    > mat-cell.mat-cell#{$stateSelector}:nth-of-type(even):hover,
+    &#{$stateSelector}:hover > mat-cell.mat-cell:nth-of-type(even) {
+      @content
+    }
+  }
+}
+
+@mixin mat-tables-row-variant-link($state) {
+  $placeholder: getTableCellStylePlaceholder($state);
+
+  mat-table.mat-table {
+    @include mat-table-row-variant($state) {
+      @extend %#{$placeholder};
+    }
+  }
+
+  mat-table.mat-table {
+    @include mat-table-row-variant-hover($state) {
+      @extend %#{$placeholder}-hover;
+    }
+  }
+
+  mat-table.mat-table {
+    @include mat-table-row-variant-stripes($state) {
+      @extend %#{$placeholder}-stripes;
+    }
+  }
+
+  mat-table.mat-table {
+    @include mat-table-row-variant-stripes-hover($state) {
+      @extend %#{$placeholder}-stripes-hover;
+    }
+  }
+}
+
+mat-table.mat-table {
+  box-shadow: none !important;
+
+  mat-header-row.mat-header-row {
+    border-bottom: $table-header-border-width solid $table-border-color;
+    min-height: 44px;
+    padding: 0;
+
+    mat-header-cell.mat-header-cell {
+      text-align: left;
+      color: $font-color;
+      padding: 0 16px;
+      @include make-font-bold;
+    }
+  }
+
+  mat-row.mat-row {
+    padding: 0;
+    min-height: 31px;
+
+    mat-cell.mat-cell {
+      line-height: $line-height-base;
+      padding: 8px 16px;
+      display: flex;
+      align-self: stretch;
+      align-items: center;
+    }
+  }
+}
+
+@each $tableRowState in $tableRowStates {
+  @include mat-tables-row-variant-link($tableRowState);
+}
+

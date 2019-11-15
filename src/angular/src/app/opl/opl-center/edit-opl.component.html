@@ -1,0 +1,83 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'OPL.DetailTitle'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form [formGroup]="form">
+    <mat-dialog-content>
+        <div class="grid-container-2">
+            <div>
+                <mat-form-field class="mat-form-field-width">
+                    <input [(ngModel)]="opl.Area" matInput formControlName="Area" readonly
+                        [placeholder]="'Common.Area'|translate">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="mat-form-field-width">
+                    <input [(ngModel)]="opl.ValueStream" matInput formControlName="ValueStream" readonly
+                        [placeholder]="'Common.ValueStream'|translate">
+                </mat-form-field>
+            </div>
+            
+            <div>
+                <mat-form-field class="mat-form-field-width">
+                    <input [(ngModel)]="opl.Line" matInput formControlName="Line" readonly
+                        [placeholder]="'Common.Line'|translate">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="mat-form-field-width">
+                    <input [(ngModel)]="opl.Device" matInput formControlName="Device" readonly
+                        [placeholder]="'Common.Device'|translate">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="mat-form-field-width">
+                    <input [(ngModel)]="opl.Status" matInput formControlName="Status" readonly
+                        [placeholder]="'Common.Status'|translate">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div>
+            <mat-form-field class="mat-form-field-width">
+                <textarea [(ngModel)]="opl.Description" formControlName="Description" matInput readonly
+                    [placeholder]="'Common.Description'|translate"></textarea>
+                <!-- <mat-error *ngIf="form.hasError('required',['Description'])">{{'OPL.DescriptionRequired'|translate}}
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Description'])">{{'Validator.MaxLength1000'|translate}}
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="mat-form-field-width">
+                <textarea [(ngModel)]="opl.Result" formControlName="Result" matInput readonly
+                    [placeholder]="'OPL.Result'|translate"></textarea>
+                <!-- <mat-error *ngIf="form.hasError('maxlength',['Result'])">{{'Validator.MaxLength1000'|translate}}
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="mat-form-field-width">
+                <textarea [(ngModel)]="opl.Comment" formControlName="Comment" matInput readonly
+                    [placeholder]="'OPL.Comment'|translate"></textarea>
+                <!-- <mat-error *ngIf="form.hasError('maxlength',['Comment'])">{{'Validator.MaxLength1000'|translate}}
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <!-- <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+            <button mat-raised-button type="submit" (click)="complete()">{{'Common.MarkAsComplete'|translate}}</button> -->
+            <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>

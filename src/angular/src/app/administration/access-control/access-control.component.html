@@ -1,0 +1,18 @@
+<app-layout>
+    <div>
+        <label>{{'RoleManagement.RoleName'|translate}}:</label>
+        <mat-form-field>
+            <mat-select [(ngModel)]="selectRoleId" (selectionChange)="onRoleChange($event.value)">
+                <mat-option *ngFor="let role of roles$" [value]="role.Id">{{role.Name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngIf="selectRoleId > 0">
+        <div *ngFor="let functionGroup of functionGroupList">
+            <app-function-group [header]="functionGroup.GroupName" [functions]="functionGroup.FunctionList"></app-function-group>
+        </div>
+        <div class="primary-actions">
+            <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+        </div>
+    </div>
+</app-layout>

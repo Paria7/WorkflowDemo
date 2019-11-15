@@ -1,0 +1,19 @@
+// Header for full screen viewport (consisting of the supergraphic, a logo-row and a toolbar-row)
+// --------------------------------------------------
+header.bci-header {
+  .bci-logo-row {
+    @include make-bci-logo-row;
+
+    .breadcrumb {
+      @include make-header-breadcrumb;
+    }
+  }
+
+  .header-logo {
+    @include make-header-logo;
+  }
+
+  .bci-toolbar-row {
+    @include make-bci-toolbar-row;
+  }
+}

@@ -1,0 +1,111 @@
+@mixin make-nav-tab-variant($color, $hover-color, $cursor) {
+  > a,
+  > span {
+    display: block;
+    color: $color;
+
+    &:hover {
+      color: $hover-color;
+      text-decoration: none;
+    }
+    cursor: $cursor;
+  }
+}
+
+@mixin make-nav-tab-base {
+  position: relative;
+  display: flex;
+  // flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0 $gridSize*2;
+
+  * {
+    font-size: $nav-tab-font-size;
+    line-height: $nav-tab-line-height;
+  }
+
+  @include make-nav-tab-variant($nav-tab-color, $nav-tab-hover-color, pointer);
+}
+
+@mixin make-nav-tab-active {
+  @include make-nav-tab-variant($nav-tab-active-color, $nav-tab-active-color, pointer);
+
+  > *::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $nav-tab-active-color;
+  }
+}
+
+@mixin make-nav-tab-disabled {
+  @include make-nav-tab-variant($nav-tab-disabled-color, $nav-tab-disabled-color, not-allowed);
+}
+
+@mixin make-nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: $list-tab-size-base;
+  margin: 0;
+  padding: 0;
+  border-bottom: solid 1px $nav-tab-border-bottom-color;
+  white-space: nowrap;
+  list-style: none;
+
+  a { cursor: pointer; }
+
+  > li {
+    @include make-nav-tab-base;
+    height: 100%;
+
+    &.active, &.rb-is-active,
+    &:active:not(.disabled):not(:disabled):not(.rb-spacer):not(.rb-icon-tab) {
+      @include make-nav-tab-active;
+    }
+
+    &.disabled, &:disabled {
+      @include make-nav-tab-disabled;
+    }
+
+    &.rb-spacer {
+      flex: 1;
+    }
+  }
+}
+
+@mixin make-nav-dropdown {
+  @include make-nav-tab-base;
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: $nav-tab-line-height;
+  margin-top: -1px;
+}
+
+@mixin make-nav-dropdown-menu {
+  top: 35px;
+}
+
+//------------------------------------------------------------------------------------------------- PILLS
+@mixin make-nav-pill {
+  background-color: $nav-pill-background-color;
+}
+
+@mixin make-nav-pills {
+  @include make-nav-tabs;
+  border-bottom: none;
+
+  > * {
+    @include make-nav-pill;
+  }
+}
+
+@mixin make-nav-pill-dropdown-menu {
+  top: 33px;
+}

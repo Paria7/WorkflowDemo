@@ -1,0 +1,35 @@
+// text-gradient
+//
+// Mixin building a text gradient and set the first color as fallback
+//
+// Usage:
+// <code>
+// @include text-gradient($gradient-name: 'fuchsia-violet');
+// </code>
+//
+// Parameters:
+//  * $gradient-name: The name of the gradient pair
+//
+// Styleguide 0.4.8
+
+
+//
+// Colors for the gradients
+// ==========================================================================
+
+
+
+@mixin text-gradient($gradient-name: 'fuchsia-violet') {
+  $gradient-colors: map-get($gradient-pair-variations, $gradient-name);
+  $firstColor: nth($gradient-colors, 1);
+  $lastColor: nth($gradient-colors, 2);
+
+  color: $firstColor;
+
+  .backgroundcliptext & {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include two-color-gradient($gradient-name);
+  }
+}

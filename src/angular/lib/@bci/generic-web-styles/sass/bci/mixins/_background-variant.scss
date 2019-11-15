@@ -1,0 +1,18 @@
+// Contextual backgrounds
+
+// [converter] $parent hack
+@mixin bg-variant($parent, $color,$bg-color) {
+  #{$parent} {
+    background-color: $bg-color;
+    color: $color;
+    font-weight: 700;
+    font-family: "Bosch-Sans";
+    padding: 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  a#{$parent}:hover,
+  a#{$parent}:focus {
+    background-color: darken($bg-color, 10%);
+  }
+}

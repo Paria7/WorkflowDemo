@@ -1,0 +1,25 @@
+<div class="image-upload-layout">
+
+  <a class="file-input btn btn-primary">
+    <span *ngIf="type!=='all'">{{'Common.SelectImage'|translate}}</span>
+    <span *ngIf="type==='all'">{{'Common.SelectAttachment'|translate}}</span>
+    <input type="file" multiple (change)="fileChange(input.files)" [accept]="supportedExtensions" #input>
+  </a>
+  <span *ngIf="type==='all' && !NotSupportedType && !SizeLimit" class="selected-file-name">{{selectedFileName}}</span>
+  <a href="javascript:void(0);" *ngIf="selectedFileName && selectedFileName !== '' " (click)="deleteFile()">{{'CommonForm.Delete'|translate}}</a>
+  <span *ngIf="this.supportedTypes && NotSupportedType" class="warning-notification">{{'CommonError.SupportedFileType'|translate}}{{supportFileTypes}}</span>
+  <span *ngIf="this.SizeLimit" class="warning-notification">{{'CommonError.FileSizeExceeded'|translate}}{{this.size}}MB</span>
+
+  <div class="images-preview" *ngIf="type!=='all'">
+    <div class="single-image" *ngFor="let item of imageArray;let idx=index">
+      <span (click)="deleteImage(idx)">
+        <i>X</i>
+      </span>
+      <img [src]="item" width="100%" height="100%" (click)="showEnlargedImage()">
+    </div>
+  </div>
+
+</div>
+
+
+

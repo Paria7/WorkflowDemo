@@ -1,0 +1,126 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'TPMPlanDetail.Title'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="no">
+        <mat-header-cell *matHeaderCellDef>{{'Common.No'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row;let i = index">
+            {{i+1}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>{{'Common.Description'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.CnDescription}}" matTooltipPosition="above">
+                {{row.CnDescription}}</div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>{{'Common.Status'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.Status}}" matTooltipPosition="above">{{row.Status}}</div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.Time'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.CostTime}}" matTooltipPosition="above">{{row.CostTime}}
+            </div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="interval">
+        <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.Interval'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.Interval}}" matTooltipPosition="above">{{row.Interval}}
+            </div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="doBy">
+        <mat-header-cell *matHeaderCellDef>{{'TPMPlanDetail.DoBy'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="overflow-cell" matTooltip="{{row.DoBy}}" matTooltipPosition="above">{{row.DoBy}}</div>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayColumns">
+    </mat-header-row>
+    <mat-row *matRowDef="let row ;columns:displayColumns"></mat-row>
+</mat-table>
+<div [formGroup]="form">
+    <mat-dialog-content>
+        <div class="grid-container-2">
+            <mat-form-field>
+                <textarea [(ngModel)]="planDetail.HowToMaintain" matInput readonly formControlName="HowToMaintain"
+                    [placeholder]="'TPMPlanDetail.HowToMaintain'|translate"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea [(ngModel)]="planDetail.Tools" matInput readonly formControlName="Tools"
+                    [placeholder]="'TPMPlanDetail.Tools'|translate"></textarea>
+            </mat-form-field>
+            <div *ngIf="planDetail.NeedCheckValue">
+                <mat-form-field class="mat-form-field-width">
+                    <input matInput [(ngModel)]="checkValue" formControlName="Values"
+                        [placeholder]="'TPMPlanDetail.CheckValue'|translate">
+                    <mat-error *ngIf="form.hasError('required',['Values'])">
+                        {{'CheckDetail.CheckValueRequired'|translate}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="{{'TPMPlanDetail.Attachment'|translate}}">
+                    <div>
+                        <div *ngFor="let attachment of attachments">
+                            <a [href]="attachment.DownloadUri">
+                                <h5>{{attachment.Name}}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="{{'TPMPlanDetail.OPL'|translate}}">
+                    <div *ngIf="opls">
+                        <oplListModel #oplListModel [oplList]="opls" [checkDetailId]="planDetail.CheckDetailId"
+                            [deviceId]="planDetail.DeviceId" [viewType] = "viewType" [needSwingCard]="needSwingCard">
+                        </oplListModel>
+                    </div>
+                </mat-tab>
+                <mat-tab label="{{'TPMPlanDetail.RepairLog'|translate}}">
+                    <div *ngIf="repairLogs">
+                        <repairLogListModel #repairLogListModel [repairList]="repairLogs"
+                            [checkDetailId]="planDetail.CheckDetailId" [viewType] = "viewType" [needSwingCard]="needSwingCard"></repairLogListModel>
+                    </div>
+                </mat-tab>
+                <mat-tab label="{{'TPMPlanDetail.Amendment'|translate}}">
+                    <div *ngIf="amendmentLogs">
+                        <amendmentListModel #amendmentListModel [amendmentList]="amendmentLogs"></amendmentListModel>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <ng-container *ngIf="planDetail.Status!='InCompelete'">
+                <ng-container *ngIf="canDoSave">
+                    <button [disabled]="planDetail.NeedCheckValue && checkValue==''" mat-raised-button type="button"
+                        (click)="save()">{{'Common.Save'|translate}}</button>
+                </ng-container>
+
+                <ng-container *ngIf="canDoComplete">
+                    <button mat-raised-button type="button"
+                        (click)="complete()">{{'Common.MarkAsComplete'|translate}}</button>
+                </ng-container>
+            </ng-container>
+            <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</div>

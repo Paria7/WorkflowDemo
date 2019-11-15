@@ -1,0 +1,71 @@
+@mixin make-breadcrumb-base() {
+  white-space: nowrap;
+  list-style: none;
+  color: $breadcrumb-color-unlinked;
+  text-decoration: none;
+  font-size: $breadcrumb-font-size;
+  font-weight: normal;
+  height: $breadcrumb-element-height;
+
+  * {
+    font-size: $breadcrumb-font-size;
+    color: $breadcrumb-color-unlinked;
+  }
+
+  &::after {
+    font-family: "Bosch-Ic";
+    content: $Bosch-Ic-arrow-expand-right;
+    color: $breadcrumb-color-separator;
+    font-size: $breadcrumb-separator-font-size;
+    font-weight: bold;
+    margin: 0 8px;
+  }
+}
+@mixin make-breadcrumb-element-base() {
+  @include make-breadcrumb-base;
+}
+
+@mixin make-breadcrumb-link() {
+  color: $breadcrumb-color;
+
+  * {
+    color: $breadcrumb-color;
+  }
+}
+@mixin make-breadcrumb-element-link() {
+  @include make-breadcrumb-link;
+}
+
+@mixin make-breadcrumb-last() {
+  &::after {
+    content: "";
+  }
+}
+@mixin make-breadcrumb-element-last() {
+  @include make-breadcrumb-last;
+}
+
+@mixin make-breadcrumbs {
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  > * {
+    @include make-breadcrumb-base;
+
+    &:last-child {
+      @include make-breadcrumb-last;
+    }
+
+    a {
+      @include make-breadcrumb-link;
+
+      &:last-child {
+        @include make-breadcrumb-last;
+      }
+    }
+  }
+}
+@mixin make-breadcrumb {
+  @include make-breadcrumb;
+}

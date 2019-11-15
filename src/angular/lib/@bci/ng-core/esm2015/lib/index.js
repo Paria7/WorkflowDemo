@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+export { BciCoreModule, CoreConfigurationModule, coreConfigInitializer, CoreConfig, CORE_CONFIG, BOSCH_COLORS, NotFoundComponent, NotificationService, NotificationComponent, LoggerService, NavigationService, NavigationResponse, BciImprintComponent, LogoutComponent, BciContentComponent, BciFooterComponent, BciHeaderComponent, BciLoaderComponent, BciLoaderService, BciSidebarComponent, BciSidebarService, BciSidebarFooterComponent, SidebarNavItem, BciLayoutModule, BciSidebarNavItemComponent, BciSidebarNavListComponent, BciAppComponent, ModalWindowService, BreadcrumbsService } from './core/index';
+export { BciSharedModule, CommandbarInlinefiltersComponent, CommandbarInlinefilterComponent, FilterPanelComponent, SidePanelComponent, SidePanelItemComponent, ContentSidebarComponent, ContentSidebarItemComponent, CommandbarComponent, CommandbarButtonComponent, CommandbarButtonsDirective, ToggleButtonDirective, CommandbarQuickfiltersDirective, MasterDetailViewComponent, MasterViewComponent, DetailViewComponent, CloseDetailsGuard, PageContentComponent, BreadcrumbsModule, BreadcrumbsComponent, BreadcrumbComponent, Breadcrumb } from './shared/index';
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYmNpL25nLWNvcmUvIiwic291cmNlcyI6WyJsaWIvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHdrQkFBYyxjQUFjLENBQUM7QUFDN0IsdWhCQUFjLGdCQUFnQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9jb3JlL2luZGV4JztcbmV4cG9ydCAqIGZyb20gJy4vc2hhcmVkL2luZGV4JztcbiJdfQ==

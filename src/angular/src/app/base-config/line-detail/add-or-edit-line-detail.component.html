@@ -1,0 +1,106 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>{{'LineDetail.Title'|translate}}</h2>
+    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+        <i class="Bosch-Ic Bosch-Ic-abort"></i>
+    </button>
+</div>
+<form [formGroup]="form">
+    <mat-dialog-content>
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="line.Code" matInput formControlName="Code" [placeholder]="'LineDetail.Code'|translate">
+                <mat-error *ngIf="form.hasError('required',['Code'])">{{'LineDetail.CodeRequired'|translate}}</mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Code'])">{{'LineDetail.CodeExceedMaxLength'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="line.Name" matInput formControlName="Name" [placeholder]="'LineDetail.Name'|translate">
+                <mat-error *ngIf="form.hasError('required',['Name'])">{{'LineDetail.NameRequired'|translate}}</mat-error>
+                <mat-error *ngIf="form.hasError('maxlength',['Name'])">{{'LineDetail.NameExceedMaxLength'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field id="status">
+                <mat-select [(ngModel)]="line.Status" placeholder="{{'LineDetail.Status'|translate}}" formControlName="Status">
+                    <mat-option *ngFor="let status of statuses" [value]="status.Id">{{status.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['Status'])">{{'LineDetail.StatusRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="line.WI" matInput formControlName="WI" [placeholder]="'LineDetail.WI'|translate">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-select [(ngModel)]="line.PlantId" placeholder="{{'LineDetail.Plant'|translate}}" formControlName="PlantId" (selectionChange)='onChangePlant($event)'>
+                    <mat-option *ngFor="let plant of plants" [value]="plant.Id">{{plant.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['PlantId'])">{{'LineDetail.PlantRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-select [(ngModel)]="line.AreaId" placeholder="{{'LineDetail.Area'|translate}}" formControlName="AreaId" (selectionChange)='onChangeArea($event)'>
+                    <mat-option *ngFor="let area of areas" [value]="area.Id">{{area.AreaName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['AreaId'])">{{'LineDetail.AreaRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-select [(ngModel)]="line.ValueStreamId" placeholder="{{'LineDetail.ValueStream'|translate}}" formControlName="ValueStreamId">
+                    <mat-option *ngFor="let valueStream of valueStreams" [value]="valueStream.Id">{{valueStream.Name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.hasError('required',['ValueStreamId'])">{{'LineDetail.ValueStreamRequired'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <textarea matInput [(ngModel)]="line.Description" formControlName="Description" [placeholder]="'Common.Description'|translate"></textarea>
+                <mat-error *ngIf="form.hasError('maxlength',['Description'])">{{'Validator.MaxLength1000'|translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <h6>{{'LineDetail.OwnerList'|translate}}</h6>
+            <app-user-list [users]="ownerListUsers"></app-user-list>
+        </div>
+
+        <div class="memberList">
+            <h6>{{'LineDetail.MemberList'|translate}}</h6>
+            <app-user-list [users]="memberListUsers"></app-user-list>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-3">
+                <label class="col-form-label text-left">
+                    <h6>{{'LineDetail.Image'|translate}}</h6>
+                </label>
+            </div>
+            <div class="col-md-8 col-sm-8 col-8">
+                <image-upload [max]=1 [extensions]="['image/jpeg','image/png']" 
+                [fileName]=""
+                [supportedTypes]="['jpg','png','gif','jpeg','bmp']"
+                [images]="selectedImage"
+                (imageChanged)="onImageChanged($event)"
+                (fileChanged)="onFileChanged($event)"></image-upload>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="primary-actions">
+            <button mat-raised-button type="submit" (click)="save()">{{'Common.Save'|translate}}</button>
+            <button mat-button type="button" (click)="dialogRef.close()">{{'Common.Cancel'|translate}}</button>
+        </div>
+    </mat-dialog-actions>
+</form>

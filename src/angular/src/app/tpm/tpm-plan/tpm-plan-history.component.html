@@ -1,0 +1,55 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>{{'TpmPlanHistory.HistoryTitle'|translate}}</h2>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <i class="Bosch-Ic Bosch-Ic-abort"></i>
+  </button>
+</div>
+<mat-dialog-content>
+  <div>
+    <table>
+      <th class="tablepadding">
+        <label class="labelText">{{'TpmPlanHistory.Version'|translate}}：</label>
+        <span>{{tpmPlanModel.Version}}</span>
+      </th>
+      <th class="tablepadding">
+        <label class="labelText">{{'TpmPlanHistory.IssueDate'|translate}}：</label>
+        <span>{{tpmPlanModel.IssueDate| date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+      </th>
+      <th class="tablepadding"><label class="labelText">{{'TpmPlanHistory.Area'|translate}}：</label>
+        <span>{{tpmPlanModel.Area}}</span></th>
+      <th class="tablepadding"><label class="labelText">{{'TpmPlanHistory.Line'|translate}}：</label>
+        <span>{{tpmPlanModel.Line}}</span></th>
+      <th class="tablepadding"><label class="labelText">{{'TpmPlanHistory.Device'|translate}}：</label>
+        <span>{{tpmPlanModel.DeviceName}}</span></th>
+    </table>
+    <br />
+  </div>
+  <div>
+    <mat-table #table [dataSource]="dataSource">
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlanHistory.Action'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <div class="overflow-cell" matTooltip="{{row.Action}}" matTooltipPosition="above">{{row.Action}}</div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actiontime">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlanHistory.ActionTime'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.ActionTime| date: 'yyyy-MM-dd HH:mm:ss'}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="doby">
+        <mat-header-cell *matHeaderCellDef>{{'TpmPlanHistory.DoBy'|translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.DoBy }}
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayColumns">
+      </mat-header-row>
+      <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <div>
+  </div>
+</mat-dialog-content>

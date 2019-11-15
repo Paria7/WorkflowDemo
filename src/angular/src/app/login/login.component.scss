@@ -1,0 +1,46 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+
+:host {
+  flex: 1;
+}
+
+.bg-img-container {
+  height: 100%;
+  overflow: hidden;
+  background: url('/assets/img/supergraphic_dark_blue.svg'), #0080bc;
+  background-size: cover;
+  color: white;
+
+  .container {
+    width: 30%;
+    min-width: 500px;
+    margin: 3em auto;
+
+    .form {
+      padding: 55px;
+      background: #fff;
+      color: #0080bc;
+
+      h2 {
+        margin-top: 0;
+        color: $boschDarkBlue;
+      }
+
+      button {
+        float: right;
+      }
+
+      div {
+        margin-bottom: 16px;
+      }
+
+      .form-actions {
+        margin-top: 40px;
+      }
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}

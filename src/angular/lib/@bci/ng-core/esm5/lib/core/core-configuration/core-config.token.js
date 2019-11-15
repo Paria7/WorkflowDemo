@@ -1,0 +1,13 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+import { inject, InjectionToken } from '@angular/core';
+import { CoreConfigurationService } from './core-configuration.service';
+/** @type {?} */
+export var CORE_CONFIG = new InjectionToken('CORE_CONFIG', {
+    factory: function () { return inject(CoreConfigurationService).getConfig(); },
+    providedIn: 'root'
+});
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29yZS1jb25maWcudG9rZW4uanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYmNpL25nLWNvcmUvIiwic291cmNlcyI6WyJsaWIvY29yZS9jb3JlLWNvbmZpZ3VyYXRpb24vY29yZS1jb25maWcudG9rZW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFBRSxNQUFNLEVBQUUsY0FBYyxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBQ3ZELE9BQU8sRUFBRSx3QkFBd0IsRUFBRSxNQUFNLDhCQUE4QixDQUFDOztBQUd4RSxXQUFhLFdBQVcsR0FBRyxJQUFJLGNBQWMsQ0FBYSxhQUFhLEVBQUU7SUFDdkUsT0FBTyxFQUFFLGNBQU0sT0FBQSxNQUFNLENBQUMsd0JBQXdCLENBQUMsQ0FBQyxTQUFTLEVBQUUsRUFBNUMsQ0FBNEM7SUFDM0QsVUFBVSxFQUFFLE1BQU07Q0FDbkIsQ0FBQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgaW5qZWN0LCBJbmplY3Rpb25Ub2tlbiB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgQ29yZUNvbmZpZ3VyYXRpb25TZXJ2aWNlIH0gZnJvbSAnLi9jb3JlLWNvbmZpZ3VyYXRpb24uc2VydmljZSc7XG5pbXBvcnQgeyBDb3JlQ29uZmlnIH0gZnJvbSAnLi9jb3JlLWNvbmZpZyc7XG5cbmV4cG9ydCBjb25zdCBDT1JFX0NPTkZJRyA9IG5ldyBJbmplY3Rpb25Ub2tlbjxDb3JlQ29uZmlnPignQ09SRV9DT05GSUcnLCB7XG4gIGZhY3Rvcnk6ICgpID0+IGluamVjdChDb3JlQ29uZmlndXJhdGlvblNlcnZpY2UpLmdldENvbmZpZygpLFxuICBwcm92aWRlZEluOiAncm9vdCdcbn0pO1xuIl19

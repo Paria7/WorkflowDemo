@@ -1,0 +1,7 @@
+.button-group {
+  @include make-button-group;
+}
+
+.button-group-vertical {
+  @include make-button-group-vertical;
+}

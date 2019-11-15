@@ -1,0 +1,81 @@
+[
+  {
+    "title": "Home",
+    "url": "/",
+    "position": 0,
+    "icon": "Bosch-Ic-home-outline",
+    "routerLinkActiveOptions": {
+      "exact": true
+    }
+  },
+  {
+    "title": "Base Config",
+    "url": "/",
+    "position": 3,
+    "unlinked":true,
+    "icon": "Bosch-Ic-components",
+    "routerLinkActiveOptions": {
+      "exact": true
+    },
+    "items": [
+      {
+        "title": "Plant",
+        "url": "plant",
+        "position": 0,
+        "icon": "Bosch-Ic-components",
+        "routerLinkActiveOptions": {
+          "exact": true
+        }
+      },
+      {
+        "title": "Line",
+        "url": "line",
+        "position": 0,
+        "icon": "Bosch-Ic-components",
+        "routerLinkActiveOptions": {
+          "exact": true
+        }
+      },
+      {
+        "title": "Route",
+        "url": "route",
+        "position": 0,
+        "icon": "Bosch-Ic-components",
+        "routerLinkActiveOptions": {
+          "exact": true
+        }
+      }
+    ]
+  },
+  {
+    "title": "Adminstration",
+    "url": "/",
+    "position": 3,
+    "unlinked":true,
+    "icon": "Bosch-Ic-components",
+    "routerLinkActiveOptions": {
+      "exact": true
+    },
+    "items": [
+      {
+        "title": "User Management",
+        "url": "user-management",
+        "position": 0,
+        "icon": "Bosch-Ic-components",
+        "routerLinkActiveOptions": {
+          "exact": true
+        }
+      },
+      {
+        "title": "Role Management",
+        "url": "role-management",
+        "position": 0,
+        "icon": "Bosch-Ic-components",
+        "routerLinkActiveOptions": {
+          "exact": true
+        }
+      }
+     
+    ]
+  }
+]

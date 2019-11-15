@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+@import 'palette';
+@import 'components';
+
+
+// @todo: import these global styles into one scss file..
+@import '~@bci/generic-web-styles/sass/bci/styles/header';
+@import '~@bci/generic-web-styles/sass/bci/styles/labels';
+
+@import "~@bci/generic-web-styles/sass/bci-theme";
+@import "~@bci/generic-web-styles/sass/bci/styles/typography";
+@import "~@bci/generic-web-styles/sass/bci/styles/headings";
+@import "~@bci/generic-web-styles/sass/bci/styles/breadcrumb";
+@import "~@bci/generic-web-styles/sass/bci/styles/icons";
+
+
+@include mat-core();
+
+// Define bci typography config
+$bci-typography: mat-typography-config(
+        $font-family:   $font-family-base,
+        $display-4:     mat-typography-level(112px, 112px, 300),
+        $display-3:     mat-typography-level(56px, 56px, 300),
+        $display-2:     mat-typography-level(45px, 1.2, 300),
+        $display-1:     mat-typography-level(34px, 1.2, 300),
+        $headline:      mat-typography-level($font-size-h1, 52px, 300),
+        $title:         mat-typography-level($font-size-h2, 40px, 300),
+        $subheading-2:  mat-typography-level($font-size-h3, 32px, 300),
+        $subheading-1:  mat-typography-level($font-size-h4, 28px,  300),
+        $body-2:        mat-typography-level($font-size-base, 24px, 300),
+        $body-1:        mat-typography-level($font-size-base, 24px, 300),
+        $caption:       mat-typography-level($font-size-h3, 32px, 300),
+        $button:        mat-typography-level($font-size-base, 48px, 300),
+        $input:         mat-typography-level(16px, 3.0, 300)
+);
+@include angular-material-typography($bci-typography);
+
+// BCI theme
+$bci-app-primary: mat-palette($mat-bci);
+$bci-app-accent:  mat-palette($mat-bci-light-blue, A200, A100, A400);
+$bci-app-warn:    $boschSignalRed;
+
+//$mat-light-theme-foreground : mat-palette($mat-bci-theme-foreground);
+//$mat-light-theme-background : mat-palette($mat-bci-theme-background, $boschBlack, $boschDarkGray, $boschLightGray);
+
+$bci-app-theme:   mat-light-theme($bci-app-primary, $bci-app-accent);
+//$bci-app-theme: (foreground mat-palette($mat-bci-theme-foreground));
+//append($bci-app-theme, )
+
+@include angular-material-theme($bci-app-theme);

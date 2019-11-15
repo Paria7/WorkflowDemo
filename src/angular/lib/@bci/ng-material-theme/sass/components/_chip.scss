@@ -1,0 +1,31 @@
+@import '~@bci/generic-web-styles/sass/bci/bci-variables';
+@import '~@bci/generic-web-styles/sass/bci/mixins/chips';
+
+mat-chip-list.mat-chip-list .mat-chip-list-wrapper {
+  @include make-chip-list;
+  &:focus {
+    outline: none;
+  }
+}
+
+mat-chip, mat-basic-chip {
+  &.mat-chip, &.mat-chip:not(.mat-basic-chip) {
+    @include make-chip;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    & + & {
+      @include make-chip-margin;
+    }
+
+    .mat-icon, .mat-chip-remove.mat-icon {
+      color: inherit;
+      margin-left: 0;
+      opacity: 1;
+      @include make-chip-icon;
+    }
+  }
+}
+

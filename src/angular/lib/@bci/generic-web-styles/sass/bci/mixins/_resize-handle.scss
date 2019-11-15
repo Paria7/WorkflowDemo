@@ -1,0 +1,23 @@
+@mixin make-resize-handle() {
+  position: absolute;
+  z-index: 10;
+  right: -$gridSize*2;
+  top: calc(50% - 12px);
+
+  cursor: e-resize;
+
+  @include make-border(1px, $boschLightGray50);
+  @include border-radius(50%);
+  background: $boschWhite;
+
+  transform: rotate(90deg);
+
+  @extend .Bosch-Ic;
+  @extend .Bosch-Ic-Normal;
+  @extend .Bosch-Ic-menu;
+
+  width: $gridSize*4;
+  height: $gridSize*4;
+  line-height: $gridSize*4;
+  text-align: center;
+}

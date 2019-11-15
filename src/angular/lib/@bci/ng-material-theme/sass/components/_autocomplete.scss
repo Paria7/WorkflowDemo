@@ -1,0 +1,10 @@
+@import '~@bci/generic-web-styles/sass/bci/mixins/typography';
+
+.mat-autocomplete-panel,
+.mat-autocomplete-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+
+  .mat-option {
+    @include make-font($font-size-base);
+  }
+}

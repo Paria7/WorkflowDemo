@@ -1,0 +1,30 @@
+// two-color-gradient
+//
+// Mixin to create linear gradients
+//
+// Usage:
+// <code>
+// @include two-color-gradient($gradient-name: 'fuchsia-violet', $gradient-direction: to right, $firstColorPosition: 40%, $lastColorPosition: 60%);
+// </code>
+//
+// Parameters:
+//  * $gradient-name: The name of the gradient pair
+//  * $gradient-direction - the gradient direction, default is right oriented
+//  *$firstColorPosition - A percentage number, it defines until will value the first color will reach
+//  * $lastColorPosition - A percentage number, it defines until will value the second color will reach
+//
+// Styleguide 0.4.9
+
+
+@mixin two-color-gradient($gradient-name: 'fuchsia-violet', $firstColorPosition: 10%, $lastColorPosition: 90%) {
+  $gradient-colors: map-get($gradient-pair-variations, $gradient-name);
+  $firstColor: nth($gradient-colors, 1);
+  $lastColor: nth($gradient-colors, 2);
+  background-color: $firstColor;
+
+  background-image: linear-gradient(to right,
+  $firstColor $firstColorPosition,
+  $lastColor $lastColorPosition);
+  background-size: cover;
+  background-position: center center;
+}
