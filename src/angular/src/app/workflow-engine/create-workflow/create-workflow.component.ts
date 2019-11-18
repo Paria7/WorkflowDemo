@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
+import { WorkflowSchemeDto } from 'shared/models/workflow';
 
 @Component({
   selector: 'app-create-workflow',
@@ -7,18 +9,26 @@ import { ModalDirective } from 'ngx-bootstrap';
   styleUrls: ['./create-workflow.component.scss']
 })
 export class CreateWorkflowComponent implements OnInit {
-  @ViewChild('createWorkflowComponent') modal: ModalDirective;
 
-  active: boolean = false;
-  saving: boolean = false;
+  scheme: WorkflowSchemeDto = null;
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<CreateWorkflowComponent>,
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      WorkflowScheme: WorkflowSchemeDto
+    },
+    private router: Router
+  ) {
+
+  }
 
   ngOnInit() {
+    this.scheme = this.data.WorkflowScheme;
+  }
+  save() {
+    this.dialogRef.close();
+    this.router.navigate(['/workflowedit', this.scheme.Code]);
   }
 
-  show(): void {
-    this.active = true;
-    this.modal.show();
-  }
 }

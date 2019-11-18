@@ -1,18 +1,18 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {Title} from '@angular/platform-browser';
-import {BciImprintComponent, CORE_CONFIG, ModalWindowService, NavigationService, SidebarNavItem, BciSidebarService} from '@bci/ng-core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { BciImprintComponent, CORE_CONFIG, ModalWindowService, NavigationService, SidebarNavItem, BciSidebarService } from '@bci/ng-core';
 
-import {Router} from '@angular/router';
-import {AuthService} from 'shared/services';
-import {BehaviorSubject, Observable, of, empty} from 'rxjs';
-import {SystemService} from 'shared/services/system.service';
-import {tap, catchError, switchMap} from 'rxjs/operators';
-import {PaginatorService} from 'shared/services';
-import {MatDialog, MatPaginator, MatTableDataSource, PageEvent} from '@angular/material';
-import {TranslateService} from '@ngx-translate/core';
-import {HtmlParser} from '@angular/compiler';
-import {IConfig} from './interface/config';
-import {ApiConfigService} from '../shared/services/api-config.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'shared/services';
+import { BehaviorSubject, Observable, of, empty } from 'rxjs';
+import { SystemService } from 'shared/services/system.service';
+import { tap, catchError, switchMap } from 'rxjs/operators';
+import { PaginatorService } from 'shared/services';
+import { MatDialog, MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
+import { HtmlParser } from '@angular/compiler';
+import { IConfig } from './interface/config';
+import { ApiConfigService } from '../shared/services/api-config.service';
 
 @Component({
   selector: 'app-root',
@@ -39,21 +39,21 @@ export class AppComponent implements OnInit {
 
 
   constructor(private titleService: Title,
-              @Inject(CORE_CONFIG) private config: any,
-              private navigationService: NavigationService, private router: Router,
-              private modalWindowService: ModalWindowService, private authService: AuthService,
-              private sidebarService: BciSidebarService,
-              private dialog: MatDialog,
-              private systemService: SystemService,
-              private translate: TranslateService,
-              private paginatorService: PaginatorService,
-              private apiConfigService: ApiConfigService) {
+    @Inject(CORE_CONFIG) private config: any,
+    private navigationService: NavigationService, private router: Router,
+    private modalWindowService: ModalWindowService, private authService: AuthService,
+    private sidebarService: BciSidebarService,
+    private dialog: MatDialog,
+    private systemService: SystemService,
+    private translate: TranslateService,
+    private paginatorService: PaginatorService,
+    private apiConfigService: ApiConfigService) {
 
     this.getConfig();
   }
 
   ngOnInit() {
-
+    // this.sidebarService.setSidebarState(false);
     this.translate.get('Common').subscribe(message => {
       this.title = message['Title'];
       const logo = message['Logo'];

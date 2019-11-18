@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +20,7 @@ import { Demo5Component } from './demo5/demo5.component';
 import { WorkflowEngineComponent } from './workflow-engine/workflow-engine.component';
 import { WorkflowEngineFormComponent } from './workflow-engine-form/workflow-engine-form.component';
 import { WorkflowEngine1Component } from './workflow-engine1/workflow-engine1.component';
+import { EditWorkflowComponent } from './workflow-engine/edit-workflow/edit-workflow.component';
 
 const routes: Routes = [
   {
@@ -120,12 +122,42 @@ const routes: Routes = [
     path: 'workflow-engine1',
     component: WorkflowEngine1Component,
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'workflowedit/:code',
+    component: EditWorkflowComponent,
+  },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)
+    // RouterModule.forChild([
+    //   {
+    //     path: '',
+    //     component: AppComponent,
+    //     children: [
+    //       { path: 'home', component: HomeComponent },
+    //       { path: 'login', component: LoginComponent },
+    //       { path: 'register', component: RegistrationComponent },
+    //       { path: 'change-password', component: ChangePasswordComponent },
+    //       { path: 'default', component: DefaultComponent },
+    //       { path: 'form', component: FormComponent },
+    //       { path: 'form1', component: Form1Component },
+    //       { path: 'workflow-template', component: WorkflowTemplateComponent },
+    //       { path: 'orchestration', component: OrchestrationComponent },
+    //       { path: 'demo1', component: Demo1Component },
+    //       { path: 'demo2', component: Demo2Component },
+    //       { path: 'demo3', component: Demo3Component },
+    //       { path: 'demo4', component: Demo4Component },
+    //       { path: 'demo5', component: Demo5Component },
+    //       { path: 'workflow-engine', component: WorkflowEngineComponent },
+    //       { path: 'workflow-engine1', component: WorkflowEngine1Component },
+    //       { path: 'workflow-engine-form', component: WorkflowEngineFormComponent },
+    //       { path: 'workflowedit/:code', component: EditWorkflowComponent },
+    //     ]
+    //   }
+    // ])
   ],
   exports: [
     RouterModule

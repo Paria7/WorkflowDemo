@@ -5,7 +5,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'environments/environment';
-import { BciCoreModule, BciImprintComponent, BciLayoutModule, BciSharedModule, BreadcrumbsModule, LogoutComponent } from '@bci/ng-core';
+import { BciCoreModule, BciImprintComponent, BciLayoutModule, BciSharedModule, BreadcrumbsModule, LogoutComponent } from '@bci/ng-core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -167,7 +167,9 @@ import { EditWorkflowComponent } from './workflow-engine/edit-workflow/edit-work
     NodeSelectfileComponent,
     NodeParamsetComponent,
     FormDetailsComponent,
-    FlowSchmemAddComponent
+    FlowSchmemAddComponent,
+    CreateWorkflowComponent,
+    EditWorkflowComponent
   ]
 })
 export class AppModule {

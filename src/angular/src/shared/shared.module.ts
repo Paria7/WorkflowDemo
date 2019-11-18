@@ -79,6 +79,7 @@ import { TpmCalendarService } from './services/tpm-calendar.service';
 import { TpmPlanService } from './services/tpm-plan.service';
 import * as ApiServiceProxies from './service-proxies/service-proxies';
 import { WorkflowService } from './services/workflow.service';
+import { WorkflowSchemeService } from './services/workflow-scheme.service';
 
 @NgModule({
   declarations: [
@@ -219,6 +220,7 @@ export class SharedModule {
         OplCenterService,
         LineDetailService,
         WorkflowService,
+        WorkflowSchemeService,
         StationDetailService,
         ValueStreamService,
         FormService,

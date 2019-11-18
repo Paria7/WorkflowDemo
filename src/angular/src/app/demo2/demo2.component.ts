@@ -19,6 +19,8 @@ export class Demo2Component implements OnInit {
   remainingTime: number;
   minutes: number;
   seconds: number;
+  report: boolean;
+  model: any;
 
   everySecond: Observable<number> = timer(0, 1000);
   constructor(private ref: ChangeDetectorRef) {

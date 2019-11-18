@@ -1,0 +1,23 @@
+:host mat-horizontal-stepper{
+    width: 100%;
+}
+
+:host mat-form-field {
+    width: 60%;
+    // padding:1px !important;
+    padding: 20px;
+}
+
+.content{
+    border:1px solid;
+    margin: 20px;
+}
+
+.start{
+    padding: 5px ;
+    display: flex;
+    flex-direction: row;
+    background-color: #005691;
+    border-radius:50%;
+  
+}

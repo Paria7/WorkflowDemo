@@ -60,7 +60,7 @@
     "jwt-decode": "^2.2.0",
     "ncp": "^2.0.0",
     "ng-zorro-antd": "7.3.3",
-    "ngx-bootstrap": "^5.2.0",
+    "ngx-bootstrap": "^3.0.0",
     "ngx-drag-drop": "^1.1.0",
     "ngx-echarts": "^4.0.1",
     "node-red": "^0.20.7",

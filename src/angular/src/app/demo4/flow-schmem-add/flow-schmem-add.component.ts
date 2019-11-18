@@ -26,6 +26,8 @@ export class FlowSchmemAddComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  success: boolean;
+  show: any;
 
   modelFields: Array<field> = [];
   model: any = {

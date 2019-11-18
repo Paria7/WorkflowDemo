@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WorkflowDemo.WebUI.Entities
 {
-    public class WorkflowScheme
+    public class WorkflowScheme:EntityBase1
     {
         [Key]
         [MaxLength(256)]

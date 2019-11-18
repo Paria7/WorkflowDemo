@@ -106,21 +106,6 @@ namespace WorkflowDemo.WebUI
             }
 
             services.Configure<object>(Configuration.GetSection("SystemConfigKeys"));
-            services.AddHangfire(x => x
-            .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-            .UseSimpleAssemblyNameTypeSerializer()
-            .UseRecommendedSerializerSettings()
-            .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new Hangfire.SqlServer.SqlServerStorageOptions
-            {
-                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                QueuePollInterval = TimeSpan.Zero,
-                UseRecommendedIsolationLevel = true,
-                UsePageLocksOnDequeue = true,
-                DisableGlobalLocks = true
-            }));
-
-            services.AddHangfireServer();
             services.AddScoped<AdminstrationRepository>();
             services.AddScoped<AuthRepository>();
             services.AddScoped<RegistrationRepository>();
@@ -133,6 +118,7 @@ namespace WorkflowDemo.WebUI
             services.AddScoped<CommonService>();
             services.AddScoped<FlowSchemeService>();
             services.AddScoped<FlowInstanceService>();
+            services.AddScoped<WorkflowEngineService>();
             services.AddScoped<FormService>();
             var httpClientHandler = new HttpClientHandler
             {
@@ -148,6 +134,7 @@ namespace WorkflowDemo.WebUI
             var builder = new ContainerBuilder();
 
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(RepositoryWithoutEntityBase<>)).As(typeof(IRepositoryWithoutEntityBase<>)).InstancePerLifetimeScope();
 
             builder.Populate(services);
 
@@ -211,29 +198,16 @@ namespace WorkflowDemo.WebUI
 
             app.UseMvc(routes =>
             {
-                routes.MapAreaRoute(
-                    name: "areaRoute",
-                    areaName: "api",
-                    template: "api/{controller}/{action=Index}/{id?}");
+                routes.MapRoute(
+                   name: "defaultWithArea",
+                   template: "{area}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/swagger");
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
         }
-
-        //private void ConfigHangfire(IApplicationBuilder app)
-        //{
-        //    var options = new BackgroundJobServerOptions
-        //    {
-        //        SchedulePollingInterval = TimeSpan.FromSeconds(11)
-        //    };
-        //    app.UseHangfireServer(options);
-        //    app.UseHangfireDashboard();
-
-        //    BackgroundJob.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
-        //    //RecurringJob.AddOrUpdate(()=>Console.WriteLine("Minutely"),Cron.Minutely);
-        //}
     }
 }

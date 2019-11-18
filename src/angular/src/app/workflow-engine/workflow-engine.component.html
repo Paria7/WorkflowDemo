@@ -1,10 +1,4 @@
-<bci-page-content>
-  <bci-commandbar>
-    <bci-commandbar-actions>
-      <bci-commandbar-button icon="bosch-ic-add">
-      </bci-commandbar-button>
-    </bci-commandbar-actions>
-  </bci-commandbar>
+<app-layout>
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="code">
       <mat-header-cell *matHeaderCellDef>{{'Workflow.Code'|translate}}</mat-header-cell>
@@ -19,7 +13,7 @@
         </button>
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="editScheme(row.Id)" matTooltipPosition="above"
+        <button mat-icon-button (click)="editScheme(row)" matTooltipPosition="above"
           matTooltip="{{'Common.Edit'|translate}}">
           <mat-icon fontIcon="Bosch-Ic-edit"></mat-icon>
         </button>
@@ -33,5 +27,9 @@
     </mat-header-row>
     <mat-row *matRowDef="let row ; columns:displayColumns"></mat-row>
   </mat-table>
-</bci-page-content>
-<app-create-workflow #createWorkflowComponent (modalSave)="refresh()"></app-create-workflow>
+  <!-- <br />
+  <br />
+  <h4>Create Workflow</h4>
+  <app-edit-workflow></app-edit-workflow> -->
+  <!-- <app-create-workflow #createWorkflowComponent></app-create-workflow> -->
+</app-layout>
