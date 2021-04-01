@@ -6906,10 +6906,10 @@ ng-zorro-antd@7.3.3:
     date-fns "^1.29.0"
     tslib "^1.9.0"
 
-ngx-bootstrap@^5.2.0:
-  version "5.2.0"
-  resolved "https://rb-artifactory.bosch.com:443/artifactory/api/npm/bci-npm-virtual/ngx-bootstrap/-/ngx-bootstrap-5.2.0.tgz#3b8fc064a2830af014292070066ac6e64749ba14"
-  integrity sha1-O4/AZKKDCvAUKSBwBmrG5kdJuhQ=
+ngx-bootstrap@^3.0.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-3.3.0.tgz#91f1644a6fff8a493bc58a16bd9d02db7320bd6a"
+  integrity sha512-eGKjMPM4XhYVCr/NdGnQ3SCOSUGMe00lytOmuDAgHf2JwMGfMD3EE7hX9KAONfNbUEuHzRfsjDAuQhWbCvZ8xg==
 
 ngx-countdown@^3.0.0:
   version "3.2.0"
@@ -10810,9 +10810,9 @@ xxhashjs@^0.2.1:
     cuint "^0.2.2"
 
 y18n@^3.2.1:
-  version "3.2.1"
-  resolved "https://rb-artifactory.bosch.com/artifactory/api/npm/bci-npm-virtual/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
